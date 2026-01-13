@@ -6,10 +6,10 @@ import {
   SiPython, 
   SiShopify, 
   SiSupabase,
-  SiMeta,
+  
   SiGit
 } from "@icons-pack/react-simple-icons";
-import { Bot, Workflow, MessageSquare, Zap } from "lucide-react";
+import { Bot, Workflow, Zap } from "lucide-react";
 
 const categories = [
   {
@@ -33,13 +33,6 @@ const categories = [
       { name: "Claude Code", icon: Bot },
       { name: "n8n", icon: Workflow },
       { name: "APIs IA", icon: Zap },
-    ],
-  },
-  {
-    title: "Marketing",
-    items: [
-      { name: "Meta Ads", icon: SiMeta },
-      { name: "Email/SMS", icon: MessageSquare },
     ],
   },
   {
