@@ -361,32 +361,32 @@ export function TabContent({ activeTab, onTabChange }: TabContentProps) {
     <div className="w-full">
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-        <div className="overflow-x-auto scrollbar-hide mb-8">
-          <TabsList className="inline-flex w-max min-w-full h-auto p-1 bg-secondary/30 gap-1">
+        <div className="overflow-x-auto mb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <TabsList className="inline-flex w-max min-w-full h-auto p-1.5 bg-background/80 border border-border/50 backdrop-blur-sm gap-2 rounded-xl">
             <TabsTrigger 
               value="developpement" 
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+              className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all"
             >
               <Code className="h-4 w-4" />
               Développement
             </TabsTrigger>
             <TabsTrigger 
               value="ecommerce"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+              className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all"
             >
               <TrendingUp className="h-4 w-4" />
               Ecommerce
             </TabsTrigger>
             <TabsTrigger 
               value="acquisition"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+              className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all"
             >
               <Target className="h-4 w-4" />
               Acquisition
             </TabsTrigger>
             <TabsTrigger 
               value="academique"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+              className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all"
             >
               <GraduationCap className="h-4 w-4" />
               Parcours académique
