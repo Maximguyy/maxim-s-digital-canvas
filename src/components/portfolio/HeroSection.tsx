@@ -29,14 +29,6 @@ export function HeroSection() {
           >
             Maxim Guy, 23 ans
           </h1>
-          
-          {/* Introduction paragraph */}
-          <p 
-            className="relative max-w-2xl text-sm md:text-base text-muted-foreground leading-relaxed opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.15s" }}
-          >
-            Après avoir généré 700k€ de CA en e-commerce, j'ai pivotté vers le développement IA-first. En 3 ans de veille active, j'ai construit des systèmes qui automatisent le développement : workspace Claude Code avec sous-agents et validation automatique. Cette approche me permet de livrer rapidement des projets complexes (apps mobile 80k lignes, automations IA, apps Shopify) peu importe le stack technique.
-          </p>
         </div>
 
         {/* Tab Content */}
