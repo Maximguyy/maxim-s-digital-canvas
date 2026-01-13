@@ -9,9 +9,12 @@ export function HeroSection() {
     <section className="min-h-screen flex flex-col pt-20 pb-12">
       <div className="container mx-auto px-4">
         {/* Profile Header */}
-        <div className="flex flex-col items-center text-center mb-10">
+        <div className="relative flex flex-col items-center text-center mb-10">
+          {/* Background circle with low opacity */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/5 blur-3xl" />
+          
           {/* Profile Photo */}
-          <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden mb-6 animate-fade-in ring-4 ring-border/50">
+          <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden mb-6 animate-fade-in ring-4 ring-border/50">
             <img 
               src={profilePhoto} 
               alt="Maxim Guy" 
