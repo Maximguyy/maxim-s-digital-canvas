@@ -1,22 +1,19 @@
-import { GlassCard } from "./GlassCard";
 import { SectionContainer } from "./SectionContainer";
 import { 
   SiReact, 
-  SiTypescript, 
   SiPython, 
   SiShopify, 
   SiSupabase,
-  
-  SiGit
+  SiGit,
+  SiMeta
 } from "@icons-pack/react-simple-icons";
-import { Bot, Workflow, Zap } from "lucide-react";
+import { Bot, Workflow, Zap, Mail, Layers } from "lucide-react";
 
 const categories = [
   {
     title: "Frontend",
     items: [
       { name: "React Native", icon: SiReact },
-      { name: "TypeScript", icon: SiTypescript },
       { name: "Shopify Liquid", icon: SiShopify },
     ],
   },
@@ -36,10 +33,18 @@ const categories = [
     ],
   },
   {
+    title: "Marketing",
+    items: [
+      { name: "Meta Ads", icon: SiMeta },
+      { name: "Email/SMS", icon: Mail },
+    ],
+  },
+  {
     title: "Tools",
     items: [
       { name: "Git", icon: SiGit },
-      { name: "MCP", icon: Workflow },
+      { name: "MCP", icon: Layers },
+      { name: "Workflow Auto", icon: Workflow },
     ],
   },
 ];
@@ -51,29 +56,35 @@ export function StackSection() {
       title="Stack Technique"
       subtitle="Technologies et outils maîtrisés"
     >
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="space-y-12 md:space-y-16">
         {categories.map((category, catIndex) => (
-          <GlassCard
+          <div 
             key={category.title}
-            className="p-5 opacity-0 animate-fade-in"
+            className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 opacity-0 animate-fade-in"
             style={{ animationDelay: `${0.1 * catIndex}s` } as React.CSSProperties}
           >
-            <h3 className="text-sm font-medium text-primary mb-4">{category.title}</h3>
-            <div className="space-y-3">
+            <div className="sm:col-span-4 lg:col-span-3">
+              <p className="text-3xl md:text-5xl font-bold leading-none text-muted-foreground uppercase tracking-tight">
+                {category.title}
+              </p>
+            </div>
+            <div className="sm:col-span-8 lg:col-span-9 flex gap-x-8 gap-y-6 flex-wrap items-center">
               {category.items.map((item) => {
                 const IconComponent = item.icon;
                 return (
                   <div
                     key={item.name}
-                    className="flex items-center gap-3 text-foreground"
+                    className="flex gap-3 items-center leading-none group"
                   >
-                    <IconComponent className="h-5 w-5 text-muted-foreground" />
-                    <span className="text-sm">{item.name}</span>
+                    <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary/50 group-hover:bg-primary/20 transition-colors">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                    <span className="text-lg md:text-xl capitalize text-foreground">{item.name}</span>
                   </div>
                 );
               })}
             </div>
-          </GlassCard>
+          </div>
         ))}
       </div>
     </SectionContainer>
