@@ -1,23 +1,15 @@
 import { useTheme } from "./ThemeProvider";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-
-const navItems = [
-  { label: "Développement", href: "#developpement" },
-  { label: "E-commerce", href: "#ecommerce" },
-  { label: "Acquisition", href: "#acquisition" },
-  { label: "Académique", href: "#academique" },
-  { label: "Contact", href: "#contact" },
-];
 
 export function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+  const scrollToContact = () => {
+    const element = document.querySelector("#contact");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -27,33 +19,21 @@ export function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <a 
-            href="#" 
-            className="text-xl font-bold text-foreground hover:text-primary transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
+        <div className="flex h-14 items-center justify-between">
+          {/* Menu Button (Mobile) */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:opacity-0 md:pointer-events-none"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            MG
-          </a>
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <Button
-                key={item.href}
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground hover:text-foreground"
-                onClick={() => scrollToSection(item.href)}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </div>
+          {/* Center - Empty for balance on mobile */}
+          <div className="flex-1" />
 
+          {/* Right side - Theme toggle & Contact */}
           <div className="flex items-center gap-2">
             <Button
               variant="ghost"
@@ -68,14 +48,13 @@ export function Navigation() {
               )}
             </Button>
 
-            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={scrollToContact}
+              className="rounded-full"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <Mail className="h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -88,16 +67,13 @@ export function Navigation() {
           )}
         >
           <div className="flex flex-col gap-1">
-            {navItems.map((item) => (
-              <Button
-                key={item.href}
-                variant="ghost"
-                className="justify-start text-muted-foreground hover:text-foreground"
-                onClick={() => scrollToSection(item.href)}
-              >
-                {item.label}
-              </Button>
-            ))}
+            <Button
+              variant="ghost"
+              className="justify-start text-muted-foreground hover:text-foreground"
+              onClick={scrollToContact}
+            >
+              Contact
+            </Button>
           </div>
         </div>
       </div>
