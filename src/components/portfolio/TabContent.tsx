@@ -361,32 +361,38 @@ export function TabContent({ activeTab, onTabChange }: TabContentProps) {
     <div className="w-full">
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-        <TabsList className="w-full grid grid-cols-4 mb-8 h-auto p-1 bg-secondary/30">
-          <TabsTrigger 
-            value="developpement" 
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 text-xs md:text-sm"
-          >
-            Développement
-          </TabsTrigger>
-          <TabsTrigger 
-            value="ecommerce"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 text-xs md:text-sm"
-          >
-            Ecommerce
-          </TabsTrigger>
-          <TabsTrigger 
-            value="acquisition"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 text-xs md:text-sm"
-          >
-            Acquisition
-          </TabsTrigger>
-          <TabsTrigger 
-            value="academique"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 text-xs md:text-sm"
-          >
-            Parcours académique
-          </TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto scrollbar-hide mb-8">
+          <TabsList className="inline-flex w-max min-w-full h-auto p-1 bg-secondary/30 gap-1">
+            <TabsTrigger 
+              value="developpement" 
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+            >
+              <Code className="h-4 w-4" />
+              Développement
+            </TabsTrigger>
+            <TabsTrigger 
+              value="ecommerce"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+            >
+              <TrendingUp className="h-4 w-4" />
+              Ecommerce
+            </TabsTrigger>
+            <TabsTrigger 
+              value="acquisition"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+            >
+              <Target className="h-4 w-4" />
+              Acquisition
+            </TabsTrigger>
+            <TabsTrigger 
+              value="academique"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap"
+            >
+              <GraduationCap className="h-4 w-4" />
+              Parcours académique
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="developpement" className="mt-0">
           <DeveloppementContent />
