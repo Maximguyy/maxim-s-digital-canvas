@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
 import { Navigation } from "@/components/portfolio/Navigation";
 import { HeroSection } from "@/components/portfolio/HeroSection";
-import { StackSection } from "@/components/portfolio/StackSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 
 const Index = () => {
@@ -11,7 +10,6 @@ const Index = () => {
         <Navigation />
         <main>
           <HeroSection />
-          <StackSection />
           <ContactSection />
         </main>
       </div>
