@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { 
-  Code, Cpu, Smartphone, Palette, 
+  Code, Cpu, Smartphone, 
   TrendingUp, Globe, Users, Package, Mail, CreditCard,
   Target, Zap, Bot, ArrowRight,
-  GraduationCap, MapPin, Calendar
+  GraduationCap, MapPin, Calendar,
+  ChevronDown, Star, AlertTriangle,
+  Image as ImageIcon
 } from "lucide-react";
 import {
   SiReact,
@@ -15,73 +18,324 @@ import {
   SiSupabase,
   SiTypescript,
   SiGit,
-  SiDocker,
+  SiExpo,
+  SiPostgresql,
+  SiNodedotjs,
+  SiGraphql,
 } from "@icons-pack/react-simple-icons";
 
 // ==================== DÉVELOPPEMENT ====================
 const devProjects = [
   {
-    icon: Cpu,
-    title: "Workspace Claude Code",
-    subtitle: "20k lignes de code",
-    description: "Workspace IA optimisé pour le développement React Native avec sous-agents spécialisés.",
-    features: [
-      "Sous-agents spécialisés (UI, Backend...)",
-      "Validation auto par screenshots",
-      "MCP custom pour autonomie",
-      "Interface visuelle de pilotage",
-    ],
-    tags: ["Claude Code", "Python", "MCP", "IA"],
+    id: "noor",
+    title: "Noor App",
+    badge: "Projet phare",
+    tagline: "App mobile type Duolingo pour l'apprentissage du Coran",
+    tags: ["React Native", "Expo", "TypeScript", "Supabase", "IA/Perplexity"],
+    stats: "15 screens • 80k lignes • 100+ contenus IA • 1 mois",
+    content: "Application mobile complète d'apprentissage du Coran avec système de progression gamifié. Intégration de Perplexity API pour générer automatiquement des questions, récupérer des interprétations d'imams, et créer du contenu pédagogique. Stack : React Native 0.81, Expo 54, TypeScript 5.9, Supabase (auth + PostgreSQL), React Native Reanimated, i18next, support iOS/Android/Web.",
+    hasScreenshots: true,
   },
   {
-    icon: Code,
-    title: "App Shopify - Outfit Bundle",
-    subtitle: "En développement",
-    description: "Application IA pour créer des shootings photo virtuels et proposer des bundles produits.",
-    features: [
-      "Shootings photo IA multi-produits",
-      "Bundles automatisés",
-      "Intégration Fashn Tryon",
-      "Workflows IA personnalisés",
-    ],
-    tags: ["Shopify", "IA", "React", "Node.js"],
+    id: "workspace",
+    title: "Workspace React Native Optimisé",
+    tagline: "Configuration Claude Code pour dev mobile autonome",
+    tags: ["MCP Servers", "Claude Code", "ADB", "Maestro", "Automatisation"],
+    stats: "20k lignes • 6 serveurs MCP",
+    content: "Environnement de développement configuré pour maximiser l'autonomie de Claude Code. Serveurs MCP intégrés : Figma, Supabase, ADB, Maestro, Mobile MCP, Sequential Thinking. Scripts permettant à l'IA de visualiser l'émulateur via screenshots automatiques et d'itérer jusqu'au résultat souhaité sans intervention humaine.",
   },
   {
-    icon: Smartphone,
-    title: "Application Mobile React Native",
-    subtitle: "80k lignes de code",
-    description: "Application mobile complète dans la niche Muslim avec backend Supabase.",
-    features: [
-      "Architecture scalable",
-      "Backend Supabase optimisé",
-      "Gestion utilisateurs avancée",
-      "Performance native",
-    ],
-    tags: ["React Native", "Supabase", "TypeScript"],
+    id: "bot-shooting",
+    title: "Bot Shooting IA",
+    tagline: "Génération de shootings photo IA pour e-commerce",
+    tags: ["Python", "Node.js", "Telegram API", "IA Générative", "Shopify/Liquid"],
+    stats: "MVP fonctionnel",
+    secondaryBadge: "Marché trop early",
+    content: "Bot Telegram permettant d'envoyer plusieurs produits e-commerce et de générer des shootings photos IA avec mannequin portant les articles. Objectif : permettre aux petits e-commerçants de créer des bundles visuels comme les grands sites (Asos, Levis). Coût par shooting : ~1€. Projet arrêté car la technologie IA n'était pas encore assez mature pour les détails vestimentaires.",
   },
   {
-    icon: Palette,
-    title: "Customisation Thèmes Shopify",
-    subtitle: "Optimisation UI/UX",
-    description: "Personnalisation avancée de thèmes pour optimiser les conversions e-commerce.",
-    features: [
-      "Snippets Shopify custom",
-      "Optimisation UX basée data",
-      "Landing pages performantes",
-      "A/B testing intégré",
+    id: "automations",
+    title: "Automatisations IA E-commerce",
+    tagline: "Workflows IA pour réponses clients et qualification leads",
+    tags: ["Python", "n8n", "API Mail", "Instagram API"],
+    stats: "3 automatisations • ~10 mails/jour traités",
+    content: "",
+    subSections: [
+      { title: "Réponse auto suivi colis", description: "Détection automatique des demandes de suivi et réponse avec infos tracking" },
+      { title: "Collecte d'avis intelligente", description: "L'IA identifie si le client est satisfait avant d'envoyer le lien d'avis" },
+      { title: "Qualification leads Instagram", description: "Pour un coach sportif, l'IA qualifie les prospects via DM et envoie le lien de RDV si qualifié" },
     ],
-    tags: ["Shopify", "Liquid", "CSS", "JavaScript"],
+  },
+  {
+    id: "shopify-sections",
+    title: "Sections Shopify Custom",
+    tagline: "Développement front Shopify personnalisé",
+    tags: ["Liquid", "HTML/CSS", "JavaScript"],
+    stats: "",
+    content: "Création de sections custom pour boutiques Shopify : modules d'upsell, cross-sell, et sections visuelles pour mettre en avant les bénéfices produits.",
   },
 ];
 
 const devStack = [
-  { icon: SiReact, name: "React Native" },
-  { icon: SiTypescript, name: "TypeScript" },
-  { icon: SiPython, name: "Python" },
-  { icon: SiSupabase, name: "Supabase" },
-  { icon: SiShopify, name: "Shopify" },
-  { icon: SiGit, name: "Git" },
+  { category: "Mobile", items: [
+    { icon: SiReact, name: "React Native" },
+    { icon: SiExpo, name: "Expo" },
+    { icon: SiTypescript, name: "TypeScript" },
+  ]},
+  { category: "Backend", items: [
+    { icon: SiSupabase, name: "Supabase" },
+    { icon: SiPostgresql, name: "PostgreSQL" },
+    { icon: SiNodedotjs, name: "Node.js" },
+  ]},
+  { category: "IA & Automatisation", items: [
+    { icon: Bot, name: "Claude Code" },
+    { icon: Zap, name: "Perplexity API" },
+    { icon: Cpu, name: "n8n" },
+    { icon: SiPython, name: "Python" },
+  ]},
+  { category: "DevOps IA", items: [
+    { icon: Code, name: "MCP Servers" },
+  ]},
+  { category: "E-commerce", items: [
+    { icon: SiShopify, name: "Shopify" },
+    { icon: Code, name: "Liquid" },
+    { icon: SiGraphql, name: "GraphQL" },
+  ]},
+  { category: "Autres", items: [
+    { icon: Code, name: "SQL" },
+    { icon: SiGit, name: "Git" },
+  ]},
 ];
+
+interface ProjectCardProps {
+  project: typeof devProjects[0];
+  isExpanded: boolean;
+  onToggle: () => void;
+  index: number;
+}
+
+function ProjectCard({ project, isExpanded, onToggle, index }: ProjectCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.4 }}
+    >
+      <div
+        onClick={onToggle}
+        className="group cursor-pointer border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300 overflow-hidden"
+      >
+        {/* Header */}
+        <div className="p-6">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 flex-wrap mb-2">
+                <h4 className="text-lg font-semibold text-foreground">{project.title}</h4>
+                {project.badge && (
+                  <Badge className="bg-primary/10 text-primary border-0 text-xs">
+                    <Star className="h-3 w-3 mr-1" />
+                    {project.badge}
+                  </Badge>
+                )}
+                {project.secondaryBadge && (
+                  <Badge variant="outline" className="text-xs text-muted-foreground border-muted-foreground/30">
+                    <AlertTriangle className="h-3 w-3 mr-1" />
+                    {project.secondaryBadge}
+                  </Badge>
+                )}
+              </div>
+              <p className="text-muted-foreground text-sm">{project.tagline}</p>
+            </div>
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="p-2 rounded-full bg-secondary/50 text-muted-foreground group-hover:bg-secondary group-hover:text-foreground transition-colors"
+            >
+              <ChevronDown className="h-4 w-4" />
+            </motion.div>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-xs font-normal rounded-full">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Stats */}
+          {project.stats && (
+            <p className="text-primary text-sm font-medium">{project.stats}</p>
+          )}
+        </div>
+
+        {/* Expandable Content */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="px-6 pb-6 pt-2 border-t border-border/30">
+                {project.content && (
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {project.content}
+                  </p>
+                )}
+
+                {/* Sub-sections for automations project */}
+                {project.subSections && (
+                  <div className="space-y-3">
+                    {project.subSections.map((section, idx) => (
+                      <div key={idx} className="flex gap-3 items-start">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <div>
+                          <span className="text-foreground font-medium text-sm">{section.title}</span>
+                          <span className="text-muted-foreground text-sm"> : {section.description}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Screenshots placeholder */}
+                {project.hasScreenshots && (
+                  <div className="mt-4">
+                    <p className="text-muted-foreground text-xs mb-3">Screenshots</p>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className="aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 flex items-center justify-center">
+                          <ImageIcon className="h-6 w-6 text-muted-foreground/50" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
+
+function DeveloppementContent() {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  return (
+    <div className="space-y-16">
+      {/* Hero Section */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+          AI Engineer & Problem Solver
+        </h2>
+        <p className="text-muted-foreground italic text-lg mb-8">
+          "Je conçois l'architecture, l'IA exécute."
+        </p>
+
+        {/* Metrics */}
+        <div className="flex justify-center gap-8 md:gap-16">
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-foreground">80k</div>
+            <div className="text-muted-foreground text-sm">lignes de code</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-foreground">20k</div>
+            <div className="text-muted-foreground text-sm">lignes (workspace)</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-foreground">1 mois</div>
+            <div className="text-muted-foreground text-sm">→ app complète</div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Projects Section */}
+      <div>
+        <motion.h3 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-2xl font-bold text-foreground mb-6"
+        >
+          Projets
+        </motion.h3>
+        <div className="space-y-4">
+          {devProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              isExpanded={expandedId === project.id}
+              onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Stack Section */}
+      <div>
+        <motion.h3 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-2xl font-bold text-foreground mb-6"
+        >
+          Stack
+        </motion.h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {devStack.map((category, catIndex) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + catIndex * 0.1 }}
+              className="p-4 rounded-xl border border-border/50 bg-card/30"
+            >
+              <h4 className="text-xs uppercase tracking-wider text-primary mb-3 font-medium">
+                {category.category}
+              </h4>
+              <div className="space-y-2">
+                {category.items.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div key={item.name} className="flex items-center gap-2 text-foreground text-sm">
+                      <IconComponent className="h-4 w-4 text-muted-foreground" />
+                      {item.name}
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Philosophy Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <GlassCard className="p-8 text-center">
+          <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
+            "Je n'avais aucune connaissance technique en React Native. Mais je maîtrise l'architecture, la logique métier, et j'utilise l'IA pour exécuter. Résultat : une app de 80k lignes en 1 mois."
+          </p>
+        </GlassCard>
+      </motion.div>
+    </div>
+  );
+}
 
 // ==================== E-COMMERCE ====================
 const ecomStats = [
@@ -112,111 +366,6 @@ const ecomSkills = [
     items: ["Emailing automatisé", "SMS & WhatsApp automation", "Séquences de relance"],
   },
 ];
-
-// ==================== ACQUISITION ====================
-const acquisitionHighlights = [
-  {
-    icon: Target,
-    title: "Publicité Meta",
-    description: "Création et optimisation de campagnes Facebook & Instagram pour l'acquisition de nouveaux clients.",
-  },
-  {
-    icon: Bot,
-    title: "Automatisation IA",
-    description: "Développement de workflows d'automatisation avec n8n, puis migration vers Python pour plus de performance.",
-  },
-  {
-    icon: Zap,
-    title: "Suivi client",
-    description: "Automatisation du suivi par SMS, upsell email et relance de leads potentiels.",
-  },
-];
-
-// ==================== ACADÉMIQUE ====================
-const timeline = [
-  {
-    period: "2023 - Présent",
-    title: "ESILV Paris",
-    subtitle: "École d'ingénieur informatique",
-    location: "Paris",
-    current: true,
-  },
-  {
-    period: "2021 - 2023",
-    title: "Double Licence Maths/Physique",
-    subtitle: "Université Nice Côte d'Azur",
-    location: "Nice",
-    current: false,
-  },
-  {
-    period: "2020 - 2021",
-    title: "CPGE PTSI",
-    subtitle: "Lycée des Eucalyptus",
-    location: "Nice",
-    current: false,
-  },
-  {
-    period: "2020",
-    title: "Baccalauréat S",
-    subtitle: "Mention Assez Bien • Lycée Masséna",
-    location: "Nice",
-    note: "Année COVID",
-    current: false,
-  },
-];
-
-function DeveloppementContent() {
-  return (
-    <div className="space-y-8">
-      {/* Présentation */}
-      <div>
-        <h3 className="text-lg font-semibold text-foreground mb-3">Présentation :</h3>
-        <p className="text-muted-foreground leading-relaxed">
-          Ma force : exploiter l'IA au maximum pour développer, peu importe le langage. Cette approche m'a permis de livrer des applications/sites complexes dans plusieurs langages différents qui auraient demandé des années d'expertise classique. Je me concentre sur l'architecture et la logique métier, tout en essayant de suivre toutes les nouveautés et best practices liées à l'IA.
-        </p>
-      </div>
-
-      {/* Stack */}
-      <div>
-        <h3 className="text-lg font-semibold text-foreground mb-4">Stack</h3>
-        <div className="flex flex-wrap gap-3">
-          {devStack.map((tech) => (
-            <div key={tech.name} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 text-foreground text-sm">
-              <tech.icon className="h-4 w-4" />
-              {tech.name}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Projets */}
-      <div>
-        <h3 className="text-lg font-semibold text-foreground mb-4">Projets</h3>
-        <div className="grid md:grid-cols-2 gap-4">
-          {devProjects.map((project) => (
-            <GlassCard key={project.title} className="p-5">
-              <div className="flex items-start gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                  <project.icon className="h-5 w-5" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-foreground">{project.title}</h4>
-                  <p className="text-primary text-sm">{project.subtitle}</p>
-                </div>
-              </div>
-              <p className="text-muted-foreground text-sm mb-3">{project.description}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
-                ))}
-              </div>
-            </GlassCard>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function EcommerceContent() {
   return (
@@ -263,6 +412,25 @@ function EcommerceContent() {
   );
 }
 
+// ==================== ACQUISITION ====================
+const acquisitionHighlights = [
+  {
+    icon: Target,
+    title: "Publicité Meta",
+    description: "Création et optimisation de campagnes Facebook & Instagram pour l'acquisition de nouveaux clients.",
+  },
+  {
+    icon: Bot,
+    title: "Automatisation IA",
+    description: "Développement de workflows d'automatisation avec n8n, puis migration vers Python pour plus de performance.",
+  },
+  {
+    icon: Zap,
+    title: "Suivi client",
+    description: "Automatisation du suivi par SMS, upsell email et relance de leads potentiels.",
+  },
+];
+
 function AcquisitionContent() {
   return (
     <div className="space-y-8">
@@ -308,6 +476,39 @@ function AcquisitionContent() {
     </div>
   );
 }
+
+// ==================== ACADÉMIQUE ====================
+const timeline = [
+  {
+    period: "2023 - Présent",
+    title: "ESILV Paris",
+    subtitle: "École d'ingénieur informatique",
+    location: "Paris",
+    current: true,
+  },
+  {
+    period: "2021 - 2023",
+    title: "Double Licence Maths/Physique",
+    subtitle: "Université Nice Côte d'Azur",
+    location: "Nice",
+    current: false,
+  },
+  {
+    period: "2020 - 2021",
+    title: "CPGE PTSI",
+    subtitle: "Lycée des Eucalyptus",
+    location: "Nice",
+    current: false,
+  },
+  {
+    period: "2020",
+    title: "Baccalauréat S",
+    subtitle: "Mention Assez Bien • Lycée Masséna",
+    location: "Nice",
+    note: "Année COVID",
+    current: false,
+  },
+];
 
 function AcademiqueContent() {
   return (
