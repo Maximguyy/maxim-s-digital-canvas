@@ -1,29 +1,19 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Smartphone } from "lucide-react";
 
-import noorScreen1 from "@/assets/noor-screen-1.png";
-import noorScreen2 from "@/assets/noor-screen-2.png";
-import noorScreen3 from "@/assets/noor-screen-3.png";
-import noorScreen4 from "@/assets/noor-screen-4.png";
-import noorScreen5 from "@/assets/noor-screen-5.png";
-import noorScreen6 from "@/assets/noor-screen-6.png";
-import noorScreen7 from "@/assets/noor-screen-7.png";
-import noorScreen8 from "@/assets/noor-screen-8.png";
-import noorScreen9 from "@/assets/noor-screen-9.png";
-import noorScreen10 from "@/assets/noor-screen-10.png";
-
+// Placeholder screenshots - will be replaced when real images are uploaded
 const screenshots = [
-  { src: noorScreen1, alt: "Noor App - Écran 1" },
-  { src: noorScreen2, alt: "Noor App - Écran 2" },
-  { src: noorScreen3, alt: "Noor App - Écran 3" },
-  { src: noorScreen4, alt: "Noor App - Écran 4" },
-  { src: noorScreen5, alt: "Noor App - Écran 5" },
-  { src: noorScreen6, alt: "Noor App - Écran 6" },
-  { src: noorScreen7, alt: "Noor App - Écran 7" },
-  { src: noorScreen8, alt: "Noor App - Écran 8" },
-  { src: noorScreen9, alt: "Noor App - Écran 9" },
-  { src: noorScreen10, alt: "Noor App - Écran 10" },
+  { id: 1, alt: "Suivi des prières" },
+  { id: 2, alt: "Lecture du Coran" },
+  { id: 3, alt: "Récitateurs" },
+  { id: 4, alt: "Apprentissage gamifié" },
+  { id: 5, alt: "Journaling quotidien" },
+  { id: 6, alt: "Chatbot IA" },
+  { id: 7, alt: "Système de streak" },
+  { id: 8, alt: "Quizz Coran" },
+  { id: 9, alt: "Dashboard" },
+  { id: 10, alt: "Authentification" },
 ];
 
 export function ScreenshotCarousel() {
@@ -71,14 +61,11 @@ export function ScreenshotCarousel() {
       <div className="hidden md:grid md:grid-cols-5 gap-2">
         {screenshots.map((screenshot, i) => (
           <div 
-            key={i} 
-            className="aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden"
+            key={screenshot.id} 
+            className="aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden flex flex-col items-center justify-center p-2"
           >
-            <img
-              src={screenshot.src}
-              alt={screenshot.alt}
-              className="w-full h-full object-cover"
-            />
+            <Smartphone className="h-6 w-6 text-muted-foreground/50 mb-2" />
+            <span className="text-xs text-muted-foreground/70 text-center">{screenshot.alt}</span>
           </div>
         ))}
       </div>
@@ -92,16 +79,13 @@ export function ScreenshotCarousel() {
           className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {screenshots.map((screenshot, i) => (
+          {screenshots.map((screenshot) => (
             <motion.div
-              key={i}
-              className="flex-shrink-0 w-[45%] aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden snap-center"
+              key={screenshot.id}
+              className="flex-shrink-0 w-[45%] aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden snap-center flex flex-col items-center justify-center p-2"
             >
-              <img
-                src={screenshot.src}
-                alt={screenshot.alt}
-                className="w-full h-full object-cover"
-              />
+              <Smartphone className="h-6 w-6 text-muted-foreground/50 mb-2" />
+              <span className="text-xs text-muted-foreground/70 text-center">{screenshot.alt}</span>
             </motion.div>
           ))}
         </div>
