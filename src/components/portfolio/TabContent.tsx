@@ -306,23 +306,6 @@ function DeveloppementContent() {
           {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index} />)}
         </div>
       </div>
-
-      {/* Philosophy Section */}
-      <motion.div initial={{
-      opacity: 0,
-      y: 20
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      delay: 0.5
-    }}>
-        <GlassCard className="p-8 text-center">
-          <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
-            "Je n'avais aucune connaissance technique en React Native. Mais je maîtrise l'architecture, la logique métier, et j'utilise l'IA pour exécuter. Résultat : une app de 80k lignes en 1 mois."
-          </p>
-        </GlassCard>
-      </motion.div>
     </div>;
 }
 
