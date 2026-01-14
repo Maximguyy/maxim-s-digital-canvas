@@ -236,59 +236,17 @@ function DeveloppementContent() {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-          AI Engineer & Problem Solver
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          AI Engineer
         </h2>
-        <p className="text-muted-foreground italic text-lg mb-8">
-          "Je conçois l'architecture, l'IA exécute."
-        </p>
-
-        {/* Metrics */}
-        <div className="flex justify-center gap-8 md:gap-16">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">80k</div>
-            <div className="text-muted-foreground text-sm">lignes de code</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">20k</div>
-            <div className="text-muted-foreground text-sm">lignes (workspace)</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">1 mois</div>
-            <div className="text-muted-foreground text-sm">→ app complète</div>
-          </div>
-        </div>
       </motion.div>
-
-      {/* Projects Section */}
-      <div>
-        <motion.h3 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-2xl font-bold text-foreground mb-6"
-        >
-          Projets
-        </motion.h3>
-        <div className="space-y-4">
-          {devProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              isExpanded={expandedId === project.id}
-              onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)}
-              index={index}
-            />
-          ))}
-        </div>
-      </div>
 
       {/* Stack Section */}
       <div>
         <motion.h3 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2 }}
           className="text-2xl font-bold text-foreground mb-6"
         >
           Stack
@@ -299,7 +257,7 @@ function DeveloppementContent() {
               key={category.category}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + catIndex * 0.1 }}
+              transition={{ delay: 0.2 + catIndex * 0.1 }}
               className="p-4 rounded-xl border border-border/50 bg-card/30"
             >
               <h4 className="text-xs uppercase tracking-wider text-primary mb-3 font-medium">
@@ -317,6 +275,29 @@ function DeveloppementContent() {
                 })}
               </div>
             </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Projects Section */}
+      <div>
+        <motion.h3 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-2xl font-bold text-foreground mb-6"
+        >
+          Projets
+        </motion.h3>
+        <div className="space-y-4">
+          {devProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              isExpanded={expandedId === project.id}
+              onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)}
+              index={index}
+            />
           ))}
         </div>
       </div>
