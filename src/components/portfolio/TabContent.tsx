@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Image as ImageIcon } from "lucide-react";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Image as ImageIcon, Github } from "lucide-react";
 import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql } from "@icons-pack/react-simple-icons";
 
 // ==================== DÉVELOPPEMENT ====================
@@ -15,22 +15,25 @@ const devProjects = [{
   tags: ["React Native", "Expo", "TypeScript", "Supabase", "IA/Perplexity"],
   stats: "15 screens • 80k lignes • 100+ contenus IA • 1 mois",
   content: "Application mobile complète d'apprentissage du Coran avec système de progression gamifié. Intégration de Perplexity API pour générer automatiquement des questions, récupérer des interprétations d'imams, et créer du contenu pédagogique. Stack : React Native 0.81, Expo 54, TypeScript 5.9, Supabase (auth + PostgreSQL), React Native Reanimated, i18next, support iOS/Android/Web.",
-  hasScreenshots: true
+  hasScreenshots: true,
+  githubUrl: "https://github.com/Maximguyy/Noor-App"
 }, {
   id: "workspace",
   title: "Workspace React Native Optimisé",
   tagline: "Configuration Claude Code pour dev mobile autonome",
   tags: ["MCP Servers", "Claude Code", "ADB", "Maestro", "Automatisation"],
   stats: "20k lignes • 6 serveurs MCP",
-  content: "Environnement de développement configuré pour maximiser l'autonomie de Claude Code. Serveurs MCP intégrés : Figma, Supabase, ADB, Maestro, Mobile MCP, Sequential Thinking. Scripts permettant à l'IA de visualiser l'émulateur via screenshots automatiques et d'itérer jusqu'au résultat souhaité sans intervention humaine."
+  content: "Environnement de développement configuré pour maximiser l'autonomie de Claude Code. Serveurs MCP intégrés : Figma, Supabase, ADB, Maestro, Mobile MCP, Sequential Thinking. Scripts permettant à l'IA de visualiser l'émulateur via screenshots automatiques et d'itérer jusqu'au résultat souhaité sans intervention humaine.",
+  githubUrl: "https://github.com/Maximguyy/RN-Workspace"
 }, {
-  id: "bot-shooting",
-  title: "Bot Shooting IA",
+  id: "outfit-bundle",
+  title: "Outfit Bundle",
   tagline: "Génération de shootings photo IA pour e-commerce",
   tags: ["Python", "Node.js", "Telegram API", "IA Générative", "Shopify/Liquid"],
   stats: "MVP fonctionnel",
   secondaryBadge: "Marché trop early",
-  content: "Bot Telegram permettant d'envoyer plusieurs produits e-commerce et de générer des shootings photos IA avec mannequin portant les articles. Objectif : permettre aux petits e-commerçants de créer des bundles visuels comme les grands sites (Asos, Levis). Coût par shooting : ~1€. Projet arrêté car la technologie IA n'était pas encore assez mature pour les détails vestimentaires."
+  content: "Bot Telegram permettant d'envoyer plusieurs produits e-commerce et de générer des shootings photos IA avec mannequin portant les articles. Objectif : permettre aux petits e-commerçants de créer des bundles visuels comme les grands sites (Asos, Levis). Coût par shooting : ~1€. Projet arrêté car la technologie IA n'était pas encore assez mature pour les détails vestimentaires.",
+  githubUrl: "https://github.com/Maximguyy/OutfitBundle"
 }, {
   id: "automations",
   title: "Automatisations IA E-commerce",
@@ -163,13 +166,26 @@ function ProjectCard({
               </div>
               <p className="text-muted-foreground text-sm">{project.tagline}</p>
             </div>
-            <motion.div animate={{
-            rotate: isExpanded ? 180 : 0
-          }} transition={{
-            duration: 0.2
-          }} className="p-2 rounded-full bg-secondary/50 text-muted-foreground group-hover:bg-secondary group-hover:text-foreground transition-colors">
-              <ChevronDown className="h-4 w-4" />
-            </motion.div>
+            <div className="flex items-center gap-2">
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="p-2 rounded-full bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
+              )}
+              <motion.div animate={{
+              rotate: isExpanded ? 180 : 0
+            }} transition={{
+              duration: 0.2
+            }} className="p-2 rounded-full bg-secondary/50 text-muted-foreground group-hover:bg-secondary group-hover:text-foreground transition-colors">
+                <ChevronDown className="h-4 w-4" />
+              </motion.div>
+            </div>
           </div>
 
           {/* Tags */}
