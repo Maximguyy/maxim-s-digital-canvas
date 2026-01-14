@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Image as ImageIcon, Github } from "lucide-react";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github } from "lucide-react";
 import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql } from "@icons-pack/react-simple-icons";
+import { SectionTitle } from "./SectionTitle";
+import { ScreenshotCarousel } from "./ScreenshotCarousel";
 
 // ==================== DÉVELOPPEMENT ====================
 const devProjects = [{
@@ -229,15 +231,8 @@ function ProjectCard({
                       </div>)}
                   </div>}
 
-                {/* Screenshots placeholder */}
-                {project.hasScreenshots && <div className="mt-4">
-                    <p className="text-muted-foreground text-xs mb-3">Screenshots</p>
-                    <div className="grid grid-cols-4 gap-2">
-                      {[1, 2, 3, 4].map(i => <div key={i} className="aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 flex items-center justify-center">
-                          <ImageIcon className="h-6 w-6 text-muted-foreground/50" />
-                        </div>)}
-                    </div>
-                  </div>}
+                {/* Screenshots */}
+                {project.hasScreenshots && <ScreenshotCarousel />}
               </div>
             </motion.div>}
         </AnimatePresence>
@@ -293,15 +288,15 @@ function DeveloppementContent() {
 
       {/* Projects Section */}
       <div>
-        <motion.h3 initial={{
+        <motion.div initial={{
         opacity: 0
       }} animate={{
         opacity: 1
       }} transition={{
         delay: 0.3
-      }} className="text-2xl font-bold text-foreground mb-6">
-          Projets
-        </motion.h3>
+      }}>
+          <SectionTitle>Projets</SectionTitle>
+        </motion.div>
         <div className="space-y-4">
           {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index} />)}
         </div>
