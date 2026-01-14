@@ -1,19 +1,28 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Smartphone } from "lucide-react";
 
-// Placeholder screenshots - will be replaced when real images are uploaded
+import noorScreen1 from "@/assets/noor-screen-1.png";
+import noorScreen2 from "@/assets/noor-screen-2.png";
+import noorScreen3 from "@/assets/noor-screen-3.png";
+import noorScreen4 from "@/assets/noor-screen-4.png";
+import noorScreen5 from "@/assets/noor-screen-5.png";
+import noorScreen6 from "@/assets/noor-screen-6.png";
+import noorScreen7 from "@/assets/noor-screen-7.png";
+import noorScreen8 from "@/assets/noor-screen-8.png";
+import noorScreen9 from "@/assets/noor-screen-9.png";
+import noorScreen10 from "@/assets/noor-screen-10.png";
+
 const screenshots = [
-  { id: 1, alt: "Suivi des prières" },
-  { id: 2, alt: "Lecture du Coran" },
-  { id: 3, alt: "Récitateurs" },
-  { id: 4, alt: "Apprentissage gamifié" },
-  { id: 5, alt: "Journaling quotidien" },
-  { id: 6, alt: "Chatbot IA" },
-  { id: 7, alt: "Système de streak" },
-  { id: 8, alt: "Quizz Coran" },
-  { id: 9, alt: "Dashboard" },
-  { id: 10, alt: "Authentification" },
+  { src: noorScreen1, alt: "Suivi des prières" },
+  { src: noorScreen2, alt: "Progression quotidienne" },
+  { src: noorScreen3, alt: "Lecture du Coran" },
+  { src: noorScreen4, alt: "Chatbot IA Noor" },
+  { src: noorScreen5, alt: "Profil et fonctionnalités" },
+  { src: noorScreen6, alt: "Quiz quotidien" },
+  { src: noorScreen7, alt: "Verset du jour" },
+  { src: noorScreen8, alt: "Interprétation" },
+  { src: noorScreen9, alt: "Journal spirituel" },
+  { src: noorScreen10, alt: "Série quotidienne" },
 ];
 
 export function ScreenshotCarousel() {
@@ -41,18 +50,6 @@ export function ScreenshotCarousel() {
     }
   };
 
-  const goToPrevious = () => {
-    const newIndex = Math.max(0, currentIndex - 1);
-    setCurrentIndex(newIndex);
-    scrollToIndex(newIndex);
-  };
-
-  const goToNext = () => {
-    const newIndex = Math.min(screenshots.length - 1, currentIndex + 1);
-    setCurrentIndex(newIndex);
-    scrollToIndex(newIndex);
-  };
-
   return (
     <div className="mt-4">
       <p className="text-muted-foreground text-xs mb-3">Screenshots</p>
@@ -61,11 +58,14 @@ export function ScreenshotCarousel() {
       <div className="hidden md:grid md:grid-cols-5 gap-2">
         {screenshots.map((screenshot, i) => (
           <div 
-            key={screenshot.id} 
-            className="aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden flex flex-col items-center justify-center p-2"
+            key={i} 
+            className="aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden"
           >
-            <Smartphone className="h-6 w-6 text-muted-foreground/50 mb-2" />
-            <span className="text-xs text-muted-foreground/70 text-center">{screenshot.alt}</span>
+            <img
+              src={screenshot.src}
+              alt={screenshot.alt}
+              className="w-full h-full object-cover"
+            />
           </div>
         ))}
       </div>
@@ -79,13 +79,16 @@ export function ScreenshotCarousel() {
           className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          {screenshots.map((screenshot) => (
+          {screenshots.map((screenshot, i) => (
             <motion.div
-              key={screenshot.id}
-              className="flex-shrink-0 w-[45%] aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden snap-center flex flex-col items-center justify-center p-2"
+              key={i}
+              className="flex-shrink-0 w-[45%] aspect-[9/16] rounded-lg bg-secondary/50 border border-border/30 overflow-hidden snap-center"
             >
-              <Smartphone className="h-6 w-6 text-muted-foreground/50 mb-2" />
-              <span className="text-xs text-muted-foreground/70 text-center">{screenshot.alt}</span>
+              <img
+                src={screenshot.src}
+                alt={screenshot.alt}
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           ))}
         </div>
