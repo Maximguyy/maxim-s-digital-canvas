@@ -106,7 +106,6 @@ const learningsConstraints = [
   "Budgets limités (600€/centre) = créativité nécessaire",
   "Saturation audience locale rapide",
   "Méthode anti-tabac controversée (objections fréquentes)",
-  "Clients peu réceptifs à l'augmentation budget",
 ];
 
 export function AcquisitionSection() {
