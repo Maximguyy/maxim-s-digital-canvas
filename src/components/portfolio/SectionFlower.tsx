@@ -4,7 +4,7 @@ export function SectionFlower() {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       fill="none"
-      viewBox="0 0 25 29"
+      viewBox="0 0 25 28.325"
       width="25"
       className="animate-spin"
       style={{ animationDuration: '7s' }}
