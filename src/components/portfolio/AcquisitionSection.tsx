@@ -58,7 +58,7 @@ const creativeStats = [{
   value: "40",
   label: "variations copies/angles"
 }];
-const optimizationSteps = ["Lancement 2-3 créatives/jour", "24h d'apprentissage algo", "Analyse performance", "Kill si CPA > 30€ | Scale si CPA < 20€"];
+const optimizationSteps = ["2-3 créatives/jour", "Identification des angles/persona/concept avec traction", "Itération des concepts winners", "Analyse des stats publicitaires de la pub à 50€ de spend", "Kill si CPA > 30€ | Scale si CPA < 20€"];
 const winnerFormats = [{
   icon: Video,
   label: "Vidéos avis clients",
