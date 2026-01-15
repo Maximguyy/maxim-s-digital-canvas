@@ -410,22 +410,22 @@ function EcommerceContent() {
         animationDelay: "0.1s"
       } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-3 md:mb-4">
-            <div className="flex items-center -space-x-2 md:-space-x-3">
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
-                <SiStripe className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+            <div className="flex items-center -space-x-2">
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiStripe className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#003087] flex items-center justify-center ring-2 ring-background z-20">
-                <SiPaypal className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#003087] flex items-center justify-center ring-2 ring-background z-20">
+                <SiPaypal className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#96BF48] flex items-center justify-center ring-2 ring-background z-10">
-                <SiShopify className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#96BF48] flex items-center justify-center ring-2 ring-background z-10">
+                <SiShopify className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
             </div>
           </div>
           <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={700000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Chiffre d'affaires généré</div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Chiffre d'affaires généré</div>
         </GlassCard>
 
         {/* Investissement Ads - Clickable */}
@@ -435,18 +435,18 @@ function EcommerceContent() {
           onClick={() => setAdsExpanded(!adsExpanded)}
         >
           <div className="flex items-center justify-between mb-3 md:mb-4">
-            <div className="flex items-center -space-x-2 md:-space-x-3">
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
-                <SiFacebook className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+            <div className="flex items-center -space-x-2">
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
+                <SiFacebook className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-30">
-                <SiInstagram className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiInstagram className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#4285F4] flex items-center justify-center ring-2 ring-background z-20">
-                <SiGoogleads className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#4285F4] flex items-center justify-center ring-2 ring-background z-20">
+                <SiGoogleads className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#E60023] flex items-center justify-center ring-2 ring-background z-10">
-                <SiPinterest className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#E60023] flex items-center justify-center ring-2 ring-background z-10">
+                <SiPinterest className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
             </div>
             <motion.div 
@@ -460,7 +460,7 @@ function EcommerceContent() {
           <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={200000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Investis en publicité</div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Investis en publicité</div>
         </GlassCard>
 
         {/* Commandes traitées */}
@@ -468,14 +468,14 @@ function EcommerceContent() {
         animationDelay: "0.3s"
       } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-3 md:mb-4">
-            <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
-              <Package className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary" />
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <Package className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
             </div>
           </div>
           <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={11000} suffix="+" />
           </div>
-          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Commandes traitées</div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Commandes traitées</div>
         </GlassCard>
 
         {/* Meilleur mois */}
@@ -483,14 +483,14 @@ function EcommerceContent() {
         animationDelay: "0.4s"
       } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-3 md:mb-4">
-            <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
-              <TrendingUp className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary" />
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <TrendingUp className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
             </div>
           </div>
           <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={100000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Meilleur mois (Déc. 2023)</div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Meilleur mois (Déc. 2023)</div>
         </GlassCard>
       </div>
 
