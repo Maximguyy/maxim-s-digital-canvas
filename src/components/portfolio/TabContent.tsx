@@ -813,6 +813,95 @@ function EcommerceContent() {
           </motion.div>
         </div>
       </div>
+
+      {/* Méthodologie Section - Timeline horizontale */}
+      <div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <SectionTitle>Méthodologie</SectionTitle>
+        </motion.div>
+        
+        <div className="relative">
+          {/* Ligne horizontale de connexion */}
+          <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-border" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {/* Étape 1 - Test */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.1 }}
+              className="relative"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
+                  <span className="text-primary font-bold text-xl">1</span>
+                </div>
+                <h4 className="font-semibold text-foreground mb-2">Test</h4>
+                <p className="text-muted-foreground text-sm">
+                  Lancement multi-produits rapide (fail fast approach)
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Étape 2 - Analyse */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.2 }}
+              className="relative"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
+                  <span className="text-primary font-bold text-xl">2</span>
+                </div>
+                <h4 className="font-semibold text-foreground mb-2">Analyse</h4>
+                <p className="text-muted-foreground text-sm">
+                  Identification winners (data-driven)
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Étape 3 - Scale */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.3 }}
+              className="relative"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
+                  <span className="text-primary font-bold text-xl">3</span>
+                </div>
+                <h4 className="font-semibold text-foreground mb-2">Scale</h4>
+                <p className="text-muted-foreground text-sm">
+                  Stock propre + personnalisation produit (optimisation satisfaction client)
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Étape 4 - Optimize */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.4 }}
+              className="relative"
+            >
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
+                  <span className="text-primary font-bold text-xl">4</span>
+                </div>
+                <h4 className="font-semibold text-foreground mb-2">Optimize</h4>
+                <p className="text-muted-foreground text-sm">
+                  Team + Process + A/B testing continu + Mass test ads
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
     </div>;
 }
 
