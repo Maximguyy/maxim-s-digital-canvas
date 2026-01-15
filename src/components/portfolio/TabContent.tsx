@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github } from "lucide-react";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X } from "lucide-react";
 import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
+import { useCountUp } from "@/hooks/useCountUp";
 import cpgeImage from "@/assets/cpge-eucalyptus.jpg";
 import esilvImage from "@/assets/esilv.webp";
 import ucaImage from "@/assets/uca.jpg";
@@ -328,8 +329,84 @@ const ecomSkills = [{
   title: "Automation Marketing",
   items: ["Emailing automatisé", "SMS & WhatsApp automation", "Séquences de relance"]
 }];
+// Boutiques data
+const boutiques = [
+  {
+    year: 2023,
+    shops: [
+      {
+        name: "Shors.fr",
+        emoji: "🏆",
+        ca: 200000,
+        niche: "Fashion streetwear",
+        highlight: "Principale source de CA, scaling agressif (Nov 2023: 8k€ → Déc 2023: +100k€)"
+      }
+    ]
+  },
+  {
+    year: 2024,
+    shops: [
+      {
+        name: "Domozi.com",
+        emoji: "✨",
+        ca: 150000,
+        niche: "Fashion mixte",
+        highlight: "Deuxième plus grosse boutique"
+      },
+      {
+        name: "Loumys.com",
+        emoji: "🎯",
+        ca: 90000,
+        niche: "Fashion mixte (homme/femme)",
+        highlight: null
+      },
+      {
+        name: "Hartic.fr",
+        emoji: "💄",
+        ca: 80000,
+        niche: "Tech beauté féminine (lisseurs, boucleurs, épilateurs)",
+        highlight: "Diversification de niche réussie"
+      }
+    ]
+  },
+  {
+    year: 2025,
+    shops: [
+      {
+        name: "Juliette-Toulouse.com",
+        emoji: "👗",
+        ca: 70000,
+        niche: "Fashion féminine",
+        highlight: "Brand positioning local"
+      }
+    ]
+  }
+];
+
+function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
+  const { formattedCount, ref } = useCountUp({ end, suffix, duration: 2000 });
+  return <div ref={ref}>{formattedCount}</div>;
+}
+
 function EcommerceContent() {
-  return <div className="space-y-8">
+  const [adsExpanded, setAdsExpanded] = useState(false);
+  const [boutiquesVersion, setBoutiquesVersion] = useState<'A' | 'B'>('A');
+  const adsBreakdownRef = useRef<HTMLDivElement>(null);
+
+  const handleAdsClick = () => {
+    const newExpanded = !adsExpanded;
+    setAdsExpanded(newExpanded);
+    if (newExpanded) {
+      setTimeout(() => {
+        adsBreakdownRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }, 100);
+    }
+  };
+
+  return <div className="space-y-12">
       {/* KPI's Title */}
       <motion.div initial={{
       opacity: 0
@@ -342,58 +419,164 @@ function EcommerceContent() {
       </motion.div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {/* Chiffre d'affaires */}
         <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
         animationDelay: "0.1s"
       } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-3 md:mb-4">
-            <div className="flex items-center -space-x-2 md:-space-x-3">
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
-                <SiStripe className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+            <div className="flex items-center -space-x-2">
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiStripe className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#003087] flex items-center justify-center ring-2 ring-background z-20">
-                <SiPaypal className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#003087] flex items-center justify-center ring-2 ring-background z-20">
+                <SiPaypal className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#96BF48] flex items-center justify-center ring-2 ring-background z-10">
-                <SiShopify className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#96BF48] flex items-center justify-center ring-2 ring-background z-10">
+                <SiShopify className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
             </div>
           </div>
-          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
-            700k€
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
+            <CountUpKPI end={700000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-base">Chiffre d'affaires généré</div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Chiffre d'affaires généré</div>
         </GlassCard>
 
-        {/* Investissement Ads */}
-        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
-        animationDelay: "0.2s"
-      } as React.CSSProperties}>
+        {/* Investissement Ads - Clickable */}
+        <GlassCard 
+          className={`p-4 md:p-6 opacity-0 animate-fade-in cursor-pointer transition-all duration-300 hover:border-primary/50 ${adsExpanded ? 'ring-2 ring-primary/30' : ''}`} 
+          style={{ animationDelay: "0.2s" } as React.CSSProperties}
+          onClick={handleAdsClick}
+        >
           <div className="flex items-center justify-between mb-3 md:mb-4">
-            <div className="flex items-center -space-x-2 md:-space-x-3">
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
-                <SiFacebook className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+            <div className="flex items-center -space-x-2">
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
+                <SiFacebook className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-30">
-                <SiInstagram className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiInstagram className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#4285F4] flex items-center justify-center ring-2 ring-background z-20">
-                <SiGoogleads className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#4285F4] flex items-center justify-center ring-2 ring-background z-20">
+                <SiGoogleads className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
-              <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#E60023] flex items-center justify-center ring-2 ring-background z-10">
-                <SiPinterest className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#E60023] flex items-center justify-center ring-2 ring-background z-10">
+                <SiPinterest className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
             </div>
+            <motion.div 
+              animate={{ rotate: adsExpanded ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="p-1.5 rounded-full bg-primary/10 text-primary"
+            >
+              <ChevronDown className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            </motion.div>
           </div>
-          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
-            200k€
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
+            <CountUpKPI end={200000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-base">Investis en publicité</div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Investis en publicité</div>
+        </GlassCard>
+
+        {/* Commandes traitées */}
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
+        animationDelay: "0.3s"
+      } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-3 md:mb-4">
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <Package className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+            </div>
+          </div>
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
+            <CountUpKPI end={11000} suffix="+" />
+          </div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Commandes traitées</div>
+        </GlassCard>
+
+        {/* Meilleur mois */}
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
+        animationDelay: "0.4s"
+      } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-3 md:mb-4">
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <TrendingUp className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+            </div>
+          </div>
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
+            <CountUpKPI end={100000} />
+          </div>
+          <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Meilleur mois (Déc. 2023)</div>
         </GlassCard>
       </div>
 
-      {/* Skills */}
+      {/* Ads Breakdown - Expandable */}
+      <AnimatePresence>
+        {adsExpanded && (
+          <motion.div
+            ref={adsBreakdownRef}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden -mt-8"
+          >
+            <GlassCard className="p-4 md:p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-sm font-semibold text-foreground">Répartition du budget publicitaire</h4>
+                <button 
+                  onClick={() => setAdsExpanded(false)}
+                  className="p-1 rounded-full hover:bg-muted transition-colors"
+                >
+                  <X className="w-4 h-4 text-muted-foreground" />
+                </button>
+              </div>
+              <div className="space-y-3">
+                {/* Meta (Facebook + Instagram) */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center -space-x-2">
+                      <div className="w-8 h-8 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-20">
+                        <SiFacebook className="w-4 h-4 text-white" />
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-10">
+                        <SiInstagram className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                    <span className="text-foreground font-medium text-sm">Meta Ads</span>
+                  </div>
+                  <span className="text-primary font-bold">185 000€</span>
+                </div>
+
+                {/* Pinterest */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#E60023] flex items-center justify-center">
+                      <SiPinterest className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-foreground font-medium text-sm">Pinterest Ads</span>
+                  </div>
+                  <span className="text-primary font-bold">9 000€</span>
+                </div>
+
+                {/* Google */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#4285F4] flex items-center justify-center">
+                      <SiGoogleads className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <span className="text-foreground font-medium text-sm">Google Ads</span>
+                      <p className="text-muted-foreground text-xs">Campagnes de branding uniquement</p>
+                    </div>
+                  </div>
+                  <span className="text-primary font-bold">6 000€</span>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="grid md:grid-cols-2 gap-4">
         {ecomSkills.map(skill => <GlassCard key={skill.title} className="p-4">
             <div className="flex items-center gap-2 mb-3">
@@ -407,6 +590,207 @@ function EcommerceContent() {
                 </li>)}
             </ul>
           </GlassCard>)}
+      </div>
+
+      {/* Boutiques Section */}
+      <div className="mt-12">
+        <SectionTitle>Boutiques</SectionTitle>
+        
+        {/* Info about closed shops */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8 p-4 rounded-xl bg-muted/50 border border-border/50"
+        >
+          <p className="text-muted-foreground text-sm">
+            <span className="text-foreground font-medium">Note :</span> Toutes les boutiques sont fermées. Elles fonctionnaient uniquement via la publicité payante — sans ads, pas de traffic. Il était donc inutile de les maintenir actives.
+          </p>
+        </motion.div>
+
+        {/* Version selector for preview */}
+        <div className="mb-6 flex gap-2 flex-wrap">
+          <Badge 
+            variant={boutiquesVersion === 'A' ? 'default' : 'outline'} 
+            className="cursor-pointer"
+            onClick={() => setBoutiquesVersion('A')}
+          >
+            Version A - Grid moderne
+          </Badge>
+          <Badge 
+            variant={boutiquesVersion === 'B' ? 'default' : 'outline'} 
+            className="cursor-pointer"
+            onClick={() => setBoutiquesVersion('B')}
+          >
+            Version B - Cards horizontales
+          </Badge>
+        </div>
+
+        {/* VERSION A - Grid moderne avec année en badge */}
+        {boutiquesVersion === 'A' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="space-y-6"
+          >
+            {/* All shops in a grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {boutiques.flatMap(yearGroup => 
+                yearGroup.shops.map((shop, index) => (
+                  <motion.div
+                    key={shop.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <GlassCard className="p-5 h-full flex flex-col">
+                      <div className="flex items-start justify-between gap-3 mb-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-3xl">{shop.emoji}</span>
+                          <div>
+                            <h4 className="font-semibold text-foreground">{shop.name}</h4>
+                            <Badge variant="outline" className="text-xs mt-1">
+                              {yearGroup.year}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground text-sm mb-3 flex-1">{shop.niche}</p>
+                      <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                        <span className="text-2xl font-bold text-primary">
+                          {shop.ca.toLocaleString('fr-FR')}€
+                        </span>
+                      </div>
+                      {shop.highlight && (
+                        <p className="text-xs text-muted-foreground mt-3 p-2 rounded-lg bg-primary/5">
+                          {shop.highlight}
+                        </p>
+                      )}
+                    </GlassCard>
+                  </motion.div>
+                ))
+              )}
+              
+              {/* Test shops card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <GlassCard className="p-5 h-full flex flex-col bg-muted/30">
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl">🧪</span>
+                      <div>
+                        <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
+                        <Badge variant="outline" className="text-xs mt-1">
+                          2023-2024
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground text-sm mb-3 flex-1">
+                    Approche test & learn pour validation produits
+                  </p>
+                  <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                    <span className="text-2xl font-bold text-primary">80 000€</span>
+                  </div>
+                </GlassCard>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* VERSION B - Cards horizontales par année */}
+        {boutiquesVersion === 'B' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="space-y-8"
+          >
+            {boutiques.map((yearGroup, yearIndex) => (
+              <motion.div
+                key={yearGroup.year}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: yearIndex * 0.1 }}
+              >
+                {/* Year header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
+                  <span className="text-3xl font-bold text-primary">{yearGroup.year}</span>
+                  <div className="h-px flex-1 bg-gradient-to-l from-primary/50 to-transparent" />
+                </div>
+
+                {/* Horizontal scroll on mobile, grid on desktop */}
+                <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
+                  {yearGroup.shops.map((shop, shopIndex) => (
+                    <motion.div
+                      key={shop.name}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: yearIndex * 0.1 + shopIndex * 0.05 }}
+                      className="min-w-[280px] md:min-w-0"
+                    >
+                      <div className="relative p-5 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm">
+                        {/* Emoji badge top right */}
+                        <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-background border-2 border-primary/20 flex items-center justify-center text-2xl shadow-lg">
+                          {shop.emoji}
+                        </div>
+                        
+                        <h4 className="font-bold text-lg text-foreground mb-1 pr-10">{shop.name}</h4>
+                        <p className="text-muted-foreground text-sm mb-4">{shop.niche}</p>
+                        
+                        <div className="flex items-end justify-between">
+                          <div>
+                            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Chiffre d'affaires</p>
+                            <p className="text-2xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
+                          </div>
+                        </div>
+                        
+                        {shop.highlight && (
+                          <div className="mt-4 pt-3 border-t border-border/30">
+                            <p className="text-xs text-muted-foreground flex items-start gap-2">
+                              <Star className="w-3 h-3 text-primary mt-0.5 flex-shrink-0" />
+                              {shop.highlight}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Autres - Test shops */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px flex-1 bg-gradient-to-r from-muted-foreground/30 to-transparent" />
+                <span className="text-xl font-bold text-muted-foreground">Autres</span>
+                <div className="h-px flex-1 bg-gradient-to-l from-muted-foreground/30 to-transparent" />
+              </div>
+
+              <div className="relative p-5 rounded-2xl border border-border/30 bg-muted/20">
+                <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-background border-2 border-muted flex items-center justify-center text-2xl shadow-lg">
+                  🧪
+                </div>
+                
+                <h4 className="font-bold text-lg text-foreground mb-1 pr-10">6-7 boutiques test</h4>
+                <p className="text-muted-foreground text-sm mb-4">Approche test & learn pour validation produits</p>
+                
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">CA Cumulé</p>
+                  <p className="text-2xl font-bold text-primary">80 000€</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </div>;
 }
@@ -495,21 +879,18 @@ const timeline = [{
   title: "Baccalauréat S",
   subtitle: "Mention Assez Bien • Lycée Masséna",
   location: "Nice",
+  
   current: false,
   image: massenaImage
 }];
 function AcademiqueContent() {
   return <div className="space-y-6">
       {/* Présentation */}
-      <motion.div initial={{
-      opacity: 0,
-      y: 20
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      duration: 0.5
-    }}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <SectionTitle>Parcours</SectionTitle>
       </motion.div>
 
@@ -580,7 +961,9 @@ export function TabContent({
           <DeveloppementContent />
         </TabsContent>
         
-        
+        <TabsContent value="ecommerce" className="mt-0">
+          <EcommerceContent />
+        </TabsContent>
         
         <TabsContent value="acquisition" className="mt-0">
           <AcquisitionContent />
