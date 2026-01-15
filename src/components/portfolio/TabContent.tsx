@@ -389,6 +389,8 @@ function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
 }
 
 function EcommerceContent() {
+  const [adsExpanded, setAdsExpanded] = useState(false);
+
   return <div className="space-y-12">
       {/* KPI's Title */}
       <motion.div initial={{
@@ -426,10 +428,12 @@ function EcommerceContent() {
           <div className="text-muted-foreground text-xs md:text-base">Chiffre d'affaires généré</div>
         </GlassCard>
 
-        {/* Investissement Ads */}
-        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
-        animationDelay: "0.2s"
-      } as React.CSSProperties}>
+        {/* Investissement Ads - Clickable */}
+        <GlassCard 
+          className={`p-4 md:p-6 opacity-0 animate-fade-in cursor-pointer transition-all duration-300 hover:border-primary/50 ${adsExpanded ? 'ring-2 ring-primary/30' : ''}`} 
+          style={{ animationDelay: "0.2s" } as React.CSSProperties}
+          onClick={() => setAdsExpanded(!adsExpanded)}
+        >
           <div className="flex items-center justify-between mb-3 md:mb-4">
             <div className="flex items-center -space-x-2 md:-space-x-3">
               <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
@@ -445,6 +449,13 @@ function EcommerceContent() {
                 <SiPinterest className="w-3.5 h-3.5 md:w-5 md:h-5 text-white" />
               </div>
             </div>
+            <motion.div 
+              animate={{ rotate: adsExpanded ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="p-1.5 rounded-full bg-primary/10 text-primary"
+            >
+              <ChevronDown className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            </motion.div>
           </div>
           <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={200000} />
@@ -483,7 +494,65 @@ function EcommerceContent() {
         </GlassCard>
       </div>
 
-      {/* Skills */}
+      {/* Ads Breakdown - Expandable */}
+      <AnimatePresence>
+        {adsExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <GlassCard className="p-4 md:p-6 mt-4">
+              <h4 className="text-sm font-semibold text-foreground mb-4">Répartition du budget publicitaire</h4>
+              <div className="space-y-3">
+                {/* Meta (Facebook + Instagram) */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center -space-x-2">
+                      <div className="w-8 h-8 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-20">
+                        <SiFacebook className="w-4 h-4 text-white" />
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-10">
+                        <SiInstagram className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                    <span className="text-foreground font-medium text-sm">Meta Ads</span>
+                  </div>
+                  <span className="text-primary font-bold">185 000€</span>
+                </div>
+
+                {/* Pinterest */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#E60023] flex items-center justify-center">
+                      <SiPinterest className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-foreground font-medium text-sm">Pinterest Ads</span>
+                  </div>
+                  <span className="text-primary font-bold">9 000€</span>
+                </div>
+
+                {/* Google */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#4285F4] flex items-center justify-center">
+                      <SiGoogleads className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <span className="text-foreground font-medium text-sm">Google Ads</span>
+                      <p className="text-muted-foreground text-xs">Campagnes de branding uniquement</p>
+                    </div>
+                  </div>
+                  <span className="text-primary font-bold">6 000€</span>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="grid md:grid-cols-2 gap-4">
         {ecomSkills.map(skill => <GlassCard key={skill.title} className="p-4">
             <div className="flex items-center gap-2 mb-3">
