@@ -1161,7 +1161,7 @@ export function TabContent({
             </TabsTrigger>
             <TabsTrigger value="acquisition" className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all">
               <Target className="h-4 w-4" />
-              Acquisition
+              Agence d'acquisition
             </TabsTrigger>
             <TabsTrigger value="academique" className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all">
               <GraduationCap className="h-4 w-4" />
