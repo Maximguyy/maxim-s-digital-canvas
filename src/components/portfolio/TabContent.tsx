@@ -4,7 +4,7 @@ import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings } from "lucide-react";
-import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest } from "@icons-pack/react-simple-icons";
+import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest, SiFastapi, SiRedis, SiWhatsapp, SiDocker, SiHetzner, SiN8n, SiJavascript, SiHtml5 } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
@@ -72,31 +72,64 @@ const devStack = [{
     name: "TypeScript"
   }]
 }, {
-  category: "Backend",
+  category: "Frontend",
+  items: [{
+    icon: SiReact,
+    name: "React"
+  }, {
+    icon: SiJavascript,
+    name: "JavaScript"
+  }, {
+    icon: SiHtml5,
+    name: "HTML/CSS"
+  }]
+}, {
+  category: "Backend & API",
   items: [{
     icon: SiSupabase,
     name: "Supabase"
   }, {
+    icon: SiNodedotjs,
+    name: "Node.js"
+  }, {
+    icon: SiFastapi,
+    name: "FastAPI (webhooks)"
+  }, {
+    icon: SiPython,
+    name: "Python (automations)"
+  }]
+}, {
+  category: "Bases de données",
+  items: [{
     icon: SiPostgresql,
     name: "PostgreSQL"
   }, {
-    icon: SiNodedotjs,
-    name: "Node.js"
+    icon: SiRedis,
+    name: "Redis (cache)"
   }]
 }, {
-  category: "IA & Automatisation",
+  category: "IA & Messaging",
   items: [{
     icon: Bot,
-    name: "Claude Code"
+    name: "Claude API"
   }, {
     icon: Zap,
     name: "Perplexity API"
   }, {
-    icon: Cpu,
-    name: "n8n"
+    icon: SiWhatsapp,
+    name: "WhatsApp Business API"
+  }]
+}, {
+  category: "Infra & Automation",
+  items: [{
+    icon: SiDocker,
+    name: "Docker + Compose"
   }, {
-    icon: SiPython,
-    name: "Python"
+    icon: SiHetzner,
+    name: "VPS Hetzner (~5€/mois)"
+  }, {
+    icon: SiN8n,
+    name: "n8n (workflows)"
   }]
 }, {
   category: "DevOps IA",
