@@ -149,8 +149,7 @@ export function WorkspaceCard({ index }: WorkspaceCardProps) {
                     }}
                     className="w-full flex items-center justify-between p-4 text-left hover:bg-secondary/30 transition-colors"
                   >
-                    <span className="text-sm font-medium text-foreground flex items-center gap-2">
-                      <Terminal className="h-4 w-4 text-primary" />
+                    <span className="text-sm font-medium text-foreground">
                       Stack Technique
                     </span>
                     <motion.div
