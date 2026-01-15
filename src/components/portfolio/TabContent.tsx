@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X } from "lucide-react";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings } from "lucide-react";
 import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
@@ -827,83 +827,86 @@ function EcommerceContent() {
           <SectionTitle>Méthodologie</SectionTitle>
         </motion.div>
         
-        <div className="relative">
-          {/* Ligne horizontale de connexion */}
-          <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-border" />
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {/* Étape 1 - Test */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ delay: 0.1 }}
-              className="relative"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
-                  <span className="text-primary font-bold text-xl">1</span>
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Test</h4>
-                <p className="text-muted-foreground text-sm">
-                  Lancement multi-produits rapide (fail fast approach)
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Étape 1 - Test */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.1 }}
+          >
+            <GlassCard className="p-5 h-full relative overflow-hidden">
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-primary font-bold text-sm">1</span>
               </div>
-            </motion.div>
+              <div className="p-2 rounded-lg bg-primary/10 text-primary w-fit mb-4">
+                <Rocket className="h-5 w-5" />
+              </div>
+              <h4 className="font-semibold text-foreground text-lg mb-2">Test</h4>
+              <p className="text-muted-foreground text-sm">
+                Lancement multi-produits rapide (fail fast approach)
+              </p>
+            </GlassCard>
+          </motion.div>
 
-            {/* Étape 2 - Analyse */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ delay: 0.2 }}
-              className="relative"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
-                  <span className="text-primary font-bold text-xl">2</span>
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Analyse</h4>
-                <p className="text-muted-foreground text-sm">
-                  Identification winners (data-driven)
-                </p>
+          {/* Étape 2 - Analyse */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.2 }}
+          >
+            <GlassCard className="p-5 h-full relative overflow-hidden">
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-primary font-bold text-sm">2</span>
               </div>
-            </motion.div>
+              <div className="p-2 rounded-lg bg-primary/10 text-primary w-fit mb-4">
+                <BarChart3 className="h-5 w-5" />
+              </div>
+              <h4 className="font-semibold text-foreground text-lg mb-2">Analyse</h4>
+              <p className="text-muted-foreground text-sm">
+                Identification winners (data-driven)
+              </p>
+            </GlassCard>
+          </motion.div>
 
-            {/* Étape 3 - Scale */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ delay: 0.3 }}
-              className="relative"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
-                  <span className="text-primary font-bold text-xl">3</span>
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Scale</h4>
-                <p className="text-muted-foreground text-sm">
-                  Stock propre + personnalisation produit (optimisation satisfaction client)
-                </p>
+          {/* Étape 3 - Scale */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.3 }}
+          >
+            <GlassCard className="p-5 h-full relative overflow-hidden">
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-primary font-bold text-sm">3</span>
               </div>
-            </motion.div>
+              <div className="p-2 rounded-lg bg-primary/10 text-primary w-fit mb-4">
+                <TrendingUp className="h-5 w-5" />
+              </div>
+              <h4 className="font-semibold text-foreground text-lg mb-2">Scale</h4>
+              <p className="text-muted-foreground text-sm">
+                Stock propre + personnalisation produit (optimisation satisfaction client)
+              </p>
+            </GlassCard>
+          </motion.div>
 
-            {/* Étape 4 - Optimize */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ delay: 0.4 }}
-              className="relative"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative z-10 bg-background">
-                  <span className="text-primary font-bold text-xl">4</span>
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Optimize</h4>
-                <p className="text-muted-foreground text-sm">
-                  Team + Process + A/B testing continu + Mass test ads
-                </p>
+          {/* Étape 4 - Optimize */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.4 }}
+          >
+            <GlassCard className="p-5 h-full relative overflow-hidden">
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-primary font-bold text-sm">4</span>
               </div>
-            </motion.div>
-          </div>
+              <div className="p-2 rounded-lg bg-primary/10 text-primary w-fit mb-4">
+                <Settings className="h-5 w-5" />
+              </div>
+              <h4 className="font-semibold text-foreground text-lg mb-2">Optimize</h4>
+              <p className="text-muted-foreground text-sm">
+                Team + Process + A/B testing continu + Mass test ads
+              </p>
+            </GlassCard>
+          </motion.div>
         </div>
       </div>
     </div>;
