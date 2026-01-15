@@ -10,6 +10,7 @@ import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
 import { AIPhotoShootCard } from "./AIPhotoShootCard";
 import { WorkspaceCard } from "./WorkspaceCard";
+import { InstagramCoachCard } from "./InstagramCoachCard";
 import { EcomStackSection } from "./EcomStackSection";
 import { AcquisitionSection } from "./AcquisitionSection";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -22,9 +23,9 @@ import massenaImage from "@/assets/massena.jpg";
 const devProjects = [{
   id: "automations",
   title: "Automatisations IA E-commerce",
-  tagline: "Workflows IA pour réponses clients et qualification leads",
-  tags: ["Python", "n8n", "API Mail", "Instagram API"],
-  stats: "3 automatisations • ~10 mails/jour traités",
+  tagline: "Workflows IA pour réponses clients automatiques",
+  tags: ["Gmail API", "Shopify API", "Searates API", "OpenAI API", "n8n"],
+  stats: "2 automatisations • ~10 mails/jour traités",
   content: "",
   subSections: [{
     title: "Réponse auto suivi colis",
@@ -32,10 +33,14 @@ const devProjects = [{
   }, {
     title: "Collecte d'avis intelligente",
     description: "L'IA identifie si le client est satisfait avant d'envoyer le lien d'avis"
-  }, {
-    title: "Qualification leads Instagram",
-    description: "Pour un coach sportif, l'IA qualifie les prospects via DM et envoie le lien de RDV si qualifié"
-  }]
+  }],
+  stack: [
+    { name: "Gmail API", category: "Mail" },
+    { name: "Shopify API", category: "E-commerce" },
+    { name: "Searates API", category: "Tracking" },
+    { name: "OpenAI API", category: "IA" },
+    { name: "n8n", category: "Automation" },
+  ]
 }, {
   id: "shopify-sections",
   title: "Sections Shopify Custom",
@@ -45,7 +50,7 @@ const devProjects = [{
   content: "Création de sections custom pour boutiques Shopify : modules d'upsell, cross-sell, et sections visuelles pour mettre en avant les bénéfices produits."
 }, {
   id: "flow-qualification",
-  title: "Flow 1 : Qualification de leads",
+  title: "Automatisation IA Qualification Leads",
   tagline: "Automatisation WhatsApp IA pour qualification prospects",
   tags: ["WhatsApp Business API", "Claude API", "Python", "n8n"],
   stats: "Conversion : 6% formulaire → RDV",
@@ -59,10 +64,21 @@ const devProjects = [{
   }, {
     title: "Routage intelligent",
     description: "Lead qualifié → Calendly → RDV ✅ | Non qualifié → Nurturing"
-  }]
+  }],
+  stack: [
+    { name: "FastAPI (webhooks)", category: "Backend & API" },
+    { name: "Python (automations)", category: "Backend & API" },
+    { name: "Redis (cache conversations)", category: "Bases de données" },
+    { name: "PostgreSQL (leads persistants)", category: "Bases de données" },
+    { name: "Claude API (qualification)", category: "IA & Messaging" },
+    { name: "WhatsApp Business API", category: "IA & Messaging" },
+    { name: "Docker + Compose", category: "Infra & Automation" },
+    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation" },
+    { name: "n8n (workflows)", category: "Infra & Automation" },
+  ]
 }, {
   id: "flow-avis",
-  title: "Flow 2 : Demande d'avis",
+  title: "Automatisation IA Collecte d'avis",
   tagline: "Collecte automatisée d'avis Google post-RDV",
   tags: ["WhatsApp Business API", "Claude API", "n8n"],
   stats: "Taux réponse : 60%",
@@ -76,7 +92,18 @@ const devProjects = [{
   }, {
     title: "Routage selon réponse",
     description: "Client a repris → Nouvelle séance | Satisfait → Avis Google ⭐"
-  }]
+  }],
+  stack: [
+    { name: "FastAPI (webhooks)", category: "Backend & API" },
+    { name: "Python (automations)", category: "Backend & API" },
+    { name: "Redis (cache conversations)", category: "Bases de données" },
+    { name: "PostgreSQL (leads persistants)", category: "Bases de données" },
+    { name: "Claude API (qualification)", category: "IA & Messaging" },
+    { name: "WhatsApp Business API", category: "IA & Messaging" },
+    { name: "Docker + Compose", category: "Infra & Automation" },
+    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation" },
+    { name: "n8n (workflows)", category: "Infra & Automation" },
+  ]
 }];
 const devStack = [{
   category: "Mobile",
@@ -191,6 +218,10 @@ interface DevProject {
     title: string;
     description: string;
   }[];
+  stack?: {
+    name: string;
+    category: string;
+  }[];
 }
 interface ProjectCardProps {
   project: DevProject;
@@ -204,6 +235,8 @@ function ProjectCard({
   onToggle,
   index
 }: ProjectCardProps) {
+  const [stackExpanded, setStackExpanded] = useState(false);
+
   return <motion.div initial={{
     opacity: 0,
     y: 20
@@ -214,9 +247,9 @@ function ProjectCard({
     delay: index * 0.1,
     duration: 0.4
   }}>
-      <div onClick={onToggle} className="group cursor-pointer border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300 overflow-hidden">
-        {/* Header */}
-        <div className="p-6">
+      <div className="group border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300 overflow-hidden">
+        {/* Header - Clickable */}
+        <div onClick={onToggle} className="cursor-pointer p-6">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-2">
@@ -267,12 +300,12 @@ function ProjectCard({
         }} transition={{
           duration: 0.3
         }} className="overflow-hidden">
-              <div className="px-6 pb-6 pt-2 border-t border-border/30">
-                {project.content && <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+              <div className="px-6 pb-6 pt-2 border-t border-border/30 space-y-4">
+                {project.content && <p className="text-muted-foreground text-sm leading-relaxed">
                     {project.content}
                   </p>}
 
-                {/* Sub-sections for automations project */}
+                {/* Sub-sections */}
                 {project.subSections && <div className="space-y-3">
                     {project.subSections.map((section, idx) => <div key={idx} className="flex gap-3 items-start">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -282,6 +315,49 @@ function ProjectCard({
                         </div>
                       </div>)}
                   </div>}
+
+                {/* Stack - Expandable */}
+                {project.stack && project.stack.length > 0 && (
+                  <div className="border border-border/30 rounded-xl overflow-hidden mt-4">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setStackExpanded(!stackExpanded);
+                      }}
+                      className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
+                    >
+                      <span className="text-sm font-semibold text-foreground">Stack technique</span>
+                      <motion.div
+                        animate={{ rotate: stackExpanded ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {stackExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-4 pb-4 flex flex-wrap gap-2">
+                            {project.stack.map((item) => (
+                              <div
+                                key={item.name}
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
+                              >
+                                <span className="text-sm text-foreground">{item.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
               </div>
             </motion.div>}
         </AnimatePresence>
@@ -363,9 +439,12 @@ function DeveloppementContent() {
 
           {/* Workspace - Special Card */}
           <WorkspaceCard index={2} />
+
+          {/* Instagram Coach - Special Card */}
+          <InstagramCoachCard index={3} />
           
           {/* Other Projects */}
-          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index + 3} />)}
+          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index + 4} />)}
         </div>
       </div>
     </div>;
