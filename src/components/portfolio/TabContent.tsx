@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
@@ -391,6 +391,20 @@ function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
 function EcommerceContent() {
   const [adsExpanded, setAdsExpanded] = useState(false);
   const [boutiquesVersion, setBoutiquesVersion] = useState<'A' | 'B'>('A');
+  const adsBreakdownRef = useRef<HTMLDivElement>(null);
+
+  const handleAdsClick = () => {
+    const newExpanded = !adsExpanded;
+    setAdsExpanded(newExpanded);
+    if (newExpanded) {
+      setTimeout(() => {
+        adsBreakdownRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }, 100);
+    }
+  };
 
   return <div className="space-y-12">
       {/* KPI's Title */}
@@ -433,7 +447,7 @@ function EcommerceContent() {
         <GlassCard 
           className={`p-4 md:p-6 opacity-0 animate-fade-in cursor-pointer transition-all duration-300 hover:border-primary/50 ${adsExpanded ? 'ring-2 ring-primary/30' : ''}`} 
           style={{ animationDelay: "0.2s" } as React.CSSProperties}
-          onClick={() => setAdsExpanded(!adsExpanded)}
+          onClick={handleAdsClick}
         >
           <div className="flex items-center justify-between mb-3 md:mb-4">
             <div className="flex items-center -space-x-2">
@@ -499,13 +513,14 @@ function EcommerceContent() {
       <AnimatePresence>
         {adsExpanded && (
           <motion.div
+            ref={adsBreakdownRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden"
+            className="overflow-hidden -mt-8"
           >
-            <GlassCard className="p-4 md:p-6 mt-4">
+            <GlassCard className="p-4 md:p-6">
               <h4 className="text-sm font-semibold text-foreground mb-4">Répartition du budget publicitaire</h4>
               <div className="space-y-3">
                 {/* Meta (Facebook + Instagram) */}
