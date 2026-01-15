@@ -8,6 +8,10 @@ import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, 
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
+import cpgeImage from "@/assets/cpge-eucalyptus.jpg";
+import esilvImage from "@/assets/esilv.webp";
+import ucaImage from "@/assets/uca.jpg";
+import massenaImage from "@/assets/massena.jpg";
 
 // ==================== DÉVELOPPEMENT ====================
 const devProjects = [{
@@ -465,31 +469,36 @@ function AcquisitionContent() {
 }
 
 // ==================== ACADÉMIQUE ====================
+
 const timeline = [{
   period: "2023 - Présent",
   title: "ESILV Paris",
   subtitle: "École d'ingénieur informatique",
   location: "Paris",
-  current: true
+  current: true,
+  image: esilvImage
 }, {
   period: "2021 - 2023",
   title: "Double Licence Maths/Physique",
   subtitle: "Université Nice Côte d'Azur",
   location: "Nice",
-  current: false
+  current: false,
+  image: ucaImage
 }, {
   period: "2020 - 2021",
   title: "CPGE PTSI",
   subtitle: "Lycée des Eucalyptus",
   location: "Nice",
-  current: false
+  current: false,
+  image: cpgeImage
 }, {
   period: "2020",
   title: "Baccalauréat S",
   subtitle: "Mention Assez Bien • Lycée Masséna",
   location: "Nice",
   note: "Année COVID",
-  current: false
+  current: false,
+  image: massenaImage
 }];
 function AcademiqueContent() {
   return <div className="space-y-6">
@@ -503,9 +512,19 @@ function AcademiqueContent() {
 
       {/* Timeline */}
       <div className="space-y-4">
-        {timeline.map(item => <GlassCard key={item.title} className="p-4">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
+        {timeline.map(item => <GlassCard key={item.title} className="p-4 overflow-hidden">
+            <div className="flex items-stretch gap-4">
+              {/* Image */}
+              <div className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Content */}
+              <div className="flex-1 flex flex-col justify-center">
                 <div className="flex items-center gap-2 text-primary text-sm mb-1">
                   <Calendar className="h-3 w-3" />
                   {item.period}
@@ -513,13 +532,13 @@ function AcademiqueContent() {
                 </div>
                 <h4 className="font-semibold text-foreground">{item.title}</h4>
                 <p className="text-muted-foreground text-sm">{item.subtitle}</p>
-              </div>
-              <div className="flex items-center gap-1 text-muted-foreground text-sm">
-                <MapPin className="h-3 w-3" />
-                {item.location}
+                <div className="flex items-center gap-1 text-muted-foreground text-xs mt-1">
+                  <MapPin className="h-3 w-3" />
+                  {item.location}
+                </div>
+                {item.note && <p className="text-primary/70 text-xs mt-1">• {item.note}</p>}
               </div>
             </div>
-            {item.note && <p className="text-primary/70 text-xs mt-2">• {item.note}</p>}
           </GlassCard>)}
       </div>
     </div>;
