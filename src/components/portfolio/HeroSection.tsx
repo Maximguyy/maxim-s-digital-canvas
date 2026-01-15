@@ -1,6 +1,7 @@
 import profilePhoto from "@/assets/profile-photo.png";
 import { TabContent } from "./TabContent";
 import { useState } from "react";
+import { Mail, Phone } from "lucide-react";
 
 export function HeroSection() {
   const [activeTab, setActiveTab] = useState("developpement");
@@ -29,6 +30,27 @@ export function HeroSection() {
           >
             Maxim Guy, 23 ans
           </h1>
+
+          {/* Contact Info */}
+          <div 
+            className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 mt-3 opacity-0 animate-fade-in"
+            style={{ animationDelay: "0.15s" }}
+          >
+            <a 
+              href="mailto:guymaxim@gmail.com" 
+              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              <span className="text-sm">guymaxim@gmail.com</span>
+            </a>
+            <a 
+              href="tel:+33651767750" 
+              className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+              <span className="text-sm">+33 6 51 76 77 50</span>
+            </a>
+          </div>
         </div>
 
         {/* Tab Content */}
