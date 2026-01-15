@@ -132,10 +132,12 @@ ${formData.message}`;
                   <Textarea id="message" name="message" placeholder="Votre message..." value={formData.message} onChange={handleChange} rows={5} maxLength={2000} className="resize-none" />
                 </div>
 
-                <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
-                  <Send className="h-4 w-4 mr-2" />
-                  Envoyer le message
-                </Button>
+                <div className="flex justify-center">
+                  <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
+                    <Send className="h-4 w-4 mr-2" />
+                    Envoyer le message
+                  </Button>
+                </div>
               </form>
             </GlassCard>
           </div>
