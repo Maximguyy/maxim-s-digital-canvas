@@ -4,7 +4,7 @@ import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github } from "lucide-react";
-import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql } from "@icons-pack/react-simple-icons";
+import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
@@ -313,19 +313,6 @@ function DeveloppementContent() {
 }
 
 // ==================== E-COMMERCE ====================
-const ecomStats = [{
-  value: "700k€",
-  label: "Chiffre d'affaires",
-  icon: TrendingUp
-}, {
-  value: "200k€",
-  label: "Investis en Meta Ads",
-  icon: CreditCard
-}, {
-  value: "2",
-  label: "Employés gérés",
-  icon: Users
-}];
 const ecomSkills = [{
   icon: Globe,
   title: "Création de sites e-commerce",
@@ -343,23 +330,64 @@ const ecomSkills = [{
   title: "Automation Marketing",
   items: ["Emailing automatisé", "SMS & WhatsApp automation", "Séquences de relance"]
 }];
+
 function EcommerceContent() {
   return <div className="space-y-8">
-      {/* Présentation */}
-      <div>
-        <h3 className="text-lg font-semibold text-foreground mb-3">Présentation :</h3>
-        <p className="text-muted-foreground leading-relaxed">
-          +700k€ de chiffre d'affaires généré en e-commerce. Expérience complète de la création à la gestion : acquisition client, supply chain internationale, management d'équipe et automation marketing.
-        </p>
-      </div>
+      {/* KPI's Title */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
+        <SectionTitle>KPI's</SectionTitle>
+      </motion.div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
-        {ecomStats.map(stat => <GlassCard key={stat.label} className="p-4 text-center">
-            <stat.icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-            <div className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
-            <div className="text-muted-foreground text-xs mt-1">{stat.label}</div>
-          </GlassCard>)}
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Chiffre d'affaires */}
+        <GlassCard className="p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center -space-x-3">
+              <div className="w-10 h-10 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiStripe className="w-5 h-5 text-white" />
+              </div>
+              <div className="w-10 h-10 rounded-full bg-[#003087] flex items-center justify-center ring-2 ring-background z-20">
+                <SiPaypal className="w-5 h-5 text-white" />
+              </div>
+              <div className="w-10 h-10 rounded-full bg-[#96BF48] flex items-center justify-center ring-2 ring-background z-10">
+                <SiShopify className="w-5 h-5 text-white" />
+              </div>
+            </div>
+          </div>
+          <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+            700k€
+          </div>
+          <div className="text-muted-foreground">Chiffre d'affaires généré</div>
+        </GlassCard>
+
+        {/* Investissement Ads */}
+        <GlassCard className="p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center -space-x-3">
+              <div className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
+                <SiFacebook className="w-5 h-5 text-white" />
+              </div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiInstagram className="w-5 h-5 text-white" />
+              </div>
+              <div className="w-10 h-10 rounded-full bg-[#4285F4] flex items-center justify-center ring-2 ring-background z-20">
+                <SiGoogleads className="w-5 h-5 text-white" />
+              </div>
+              <div className="w-10 h-10 rounded-full bg-[#E60023] flex items-center justify-center ring-2 ring-background z-10">
+                <SiPinterest className="w-5 h-5 text-white" />
+              </div>
+            </div>
+          </div>
+          <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+            200k€
+          </div>
+          <div className="text-muted-foreground">Investis en publicité</div>
+        </GlassCard>
       </div>
 
       {/* Skills */}
