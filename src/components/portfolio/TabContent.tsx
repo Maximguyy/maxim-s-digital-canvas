@@ -7,19 +7,10 @@ import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditC
 import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
+import { NoorAppCard } from "./NoorAppCard";
 
 // ==================== DÉVELOPPEMENT ====================
 const devProjects = [{
-  id: "noor",
-  title: "Noor App",
-  badge: "Projet phare",
-  tagline: "App mobile type Duolingo pour l'apprentissage du Coran",
-  tags: ["React Native", "Expo", "TypeScript", "Supabase", "IA/Perplexity"],
-  stats: "15 screens • 80k lignes • 100+ contenus IA • 1 mois",
-  content: "Application mobile complète d'apprentissage du Coran avec système de progression gamifié. Intégration de Perplexity API pour générer automatiquement des questions, récupérer des interprétations d'imams, et créer du contenu pédagogique. Stack : React Native 0.81, Expo 54, TypeScript 5.9, Supabase (auth + PostgreSQL), React Native Reanimated, i18next, support iOS/Android/Web.",
-  hasScreenshots: true,
-  githubUrl: "https://github.com/Maximguyy/Noor-App"
-}, {
   id: "workspace",
   title: "Workspace React Native Optimisé",
   tagline: "Configuration Claude Code pour dev mobile autonome",
@@ -128,8 +119,20 @@ const devStack = [{
     name: "Git"
   }]
 }];
+interface DevProject {
+  id: string;
+  title: string;
+  tagline: string;
+  tags: string[];
+  stats: string;
+  content: string;
+  githubUrl?: string;
+  secondaryBadge?: string;
+  subSections?: { title: string; description: string }[];
+}
+
 interface ProjectCardProps {
-  project: typeof devProjects[0];
+  project: DevProject;
   isExpanded: boolean;
   onToggle: () => void;
   index: number;
@@ -157,10 +160,6 @@ function ProjectCard({
             <div className="flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-2">
                 <h4 className="text-lg font-semibold text-foreground">{project.title}</h4>
-                {project.badge && <Badge className="bg-primary/10 text-primary border-0 text-xs">
-                    <Star className="h-3 w-3 mr-1" />
-                    {project.badge}
-                  </Badge>}
                 {project.secondaryBadge && <Badge variant="outline" className="text-xs text-muted-foreground border-muted-foreground/30">
                     <AlertTriangle className="h-3 w-3 mr-1" />
                     {project.secondaryBadge}
@@ -230,9 +229,6 @@ function ProjectCard({
                         </div>
                       </div>)}
                   </div>}
-
-                {/* Screenshots */}
-                {project.hasScreenshots && <ScreenshotCarousel />}
               </div>
             </motion.div>}
         </AnimatePresence>
@@ -298,7 +294,11 @@ function DeveloppementContent() {
           <SectionTitle>Projets</SectionTitle>
         </motion.div>
         <div className="space-y-4">
-          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index} />)}
+          {/* Noor App - Special Card */}
+          <NoorAppCard index={0} />
+          
+          {/* Other Projects */}
+          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index + 1} />)}
         </div>
       </div>
     </div>;
