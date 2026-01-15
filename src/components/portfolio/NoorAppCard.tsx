@@ -71,6 +71,7 @@ interface NoorAppCardProps {
 }
 
 export function NoorAppCard({ index }: NoorAppCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isStackExpanded, setIsStackExpanded] = useState(false);
   const [isFeaturesExpanded, setIsFeaturesExpanded] = useState(false);
 
@@ -81,8 +82,11 @@ export function NoorAppCard({ index }: NoorAppCardProps) {
       transition={{ delay: index * 0.1, duration: 0.4 }}
     >
       <div className="border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm overflow-hidden">
-        {/* Header */}
-        <div className="p-6">
+        {/* Header - Clickable to expand/collapse */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full p-6 text-left hover:bg-secondary/30 transition-colors"
+        >
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-2">
@@ -90,14 +94,24 @@ export function NoorAppCard({ index }: NoorAppCardProps) {
               </div>
               <p className="text-muted-foreground text-sm">App mobile type Duolingo pour l'apprentissage du Coran</p>
             </div>
-            <a
-              href="https://github.com/Maximguyy/Noor-App"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
-            >
-              <Github className="h-4 w-4" />
-            </a>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://github.com/Maximguyy/Noor-App"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="p-2 rounded-full bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+              </a>
+              <motion.div
+                animate={{ rotate: isExpanded ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+                className="p-2"
+              >
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              </motion.div>
+            </div>
           </div>
 
           {/* Tags */}
@@ -111,115 +125,133 @@ export function NoorAppCard({ index }: NoorAppCardProps) {
 
           {/* Stats */}
           <p className="text-primary text-sm font-medium">15 screens • 80k lignes • 100+ contenus IA • 1 mois</p>
-        </div>
+        </button>
 
-        {/* Content - Always visible */}
-        <div className="px-6 pb-6 space-y-6">
-          {/* Présentation */}
-          <div>
-            <h5 className="text-sm font-semibold text-foreground mb-2">Présentation</h5>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Application mobile complète d'apprentissage du Coran avec système de progression gamifié. 
-              Intégration de Perplexity API pour générer automatiquement des questions, récupérer des 
-              interprétations d'imams, et créer du contenu pédagogique.
-            </p>
-          </div>
-
-          {/* Stack - Expandable */}
-          <div className="border border-border/30 rounded-xl overflow-hidden">
-            <button
-              onClick={() => setIsStackExpanded(!isStackExpanded)}
-              className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
+        {/* Expandable Content */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
             >
-              <span className="text-sm font-semibold text-foreground">Stack technique</span>
-              <motion.div
-                animate={{ rotate: isStackExpanded ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronDown className="h-4 w-4 text-muted-foreground" />
-              </motion.div>
-            </button>
-            <AnimatePresence>
-              {isStackExpanded && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-4 pb-4 flex flex-wrap gap-3">
-                    {noorStack.map((item) => {
-                      const IconComponent = item.icon;
-                      return (
-                        <div
-                          key={item.name}
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
-                        >
-                          <IconComponent className="h-4 w-4 text-primary" />
-                          <span className="text-sm text-foreground">{item.name}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+              <div className="px-6 pb-6 space-y-6">
+                {/* Présentation */}
+                <div>
+                  <h5 className="text-sm font-semibold text-foreground mb-2">Présentation</h5>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Application mobile complète d'apprentissage du Coran avec système de progression gamifié. 
+                    Intégration de Perplexity API pour générer automatiquement des questions, récupérer des 
+                    interprétations d'imams, et créer du contenu pédagogique.
+                  </p>
+                </div>
 
-          {/* Features - Expandable */}
-          <div className="border border-border/30 rounded-xl overflow-hidden">
-            <button
-              onClick={() => setIsFeaturesExpanded(!isFeaturesExpanded)}
-              className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
-            >
-              <span className="text-sm font-semibold text-foreground">Features</span>
-              <motion.div
-                animate={{ rotate: isFeaturesExpanded ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronDown className="h-4 w-4 text-muted-foreground" />
-              </motion.div>
-            </button>
-            <AnimatePresence>
-              {isFeaturesExpanded && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-4 pb-4 grid gap-3">
-                    {noorFeatures.map((feature) => {
-                      const IconComponent = feature.icon;
-                      return (
-                        <div
-                          key={feature.title}
-                          className="flex items-start gap-3 p-3 rounded-lg bg-secondary/30"
-                        >
-                          <div className="p-2 rounded-lg bg-primary/10 text-primary flex-shrink-0">
-                            <IconComponent className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <h6 className="text-sm font-medium text-foreground">{feature.title}</h6>
-                            <p className="text-xs text-muted-foreground mt-1">{feature.description}</p>
-                          </div>
+                {/* Stack - Expandable */}
+                <div className="border border-border/30 rounded-xl overflow-hidden">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsStackExpanded(!isStackExpanded);
+                    }}
+                    className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
+                  >
+                    <span className="text-sm font-semibold text-foreground">Stack technique</span>
+                    <motion.div
+                      animate={{ rotate: isStackExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                    </motion.div>
+                  </button>
+                  <AnimatePresence>
+                    {isStackExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 pb-4 flex flex-wrap gap-3">
+                          {noorStack.map((item) => {
+                            const IconComponent = item.icon;
+                            return (
+                              <div
+                                key={item.name}
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
+                              >
+                                <IconComponent className="h-4 w-4 text-primary" />
+                                <span className="text-sm text-foreground">{item.name}</span>
+                              </div>
+                            );
+                          })}
                         </div>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
-          {/* Screenshots - Always visible */}
-          <div>
-            <h5 className="text-sm font-semibold text-foreground mb-4">Screenshots</h5>
-            <ScreenshotCarousel />
-          </div>
-        </div>
+                {/* Features - Expandable */}
+                <div className="border border-border/30 rounded-xl overflow-hidden">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsFeaturesExpanded(!isFeaturesExpanded);
+                    }}
+                    className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
+                  >
+                    <span className="text-sm font-semibold text-foreground">Features</span>
+                    <motion.div
+                      animate={{ rotate: isFeaturesExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                    </motion.div>
+                  </button>
+                  <AnimatePresence>
+                    {isFeaturesExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 pb-4 grid gap-3">
+                          {noorFeatures.map((feature) => {
+                            const IconComponent = feature.icon;
+                            return (
+                              <div
+                                key={feature.title}
+                                className="flex items-start gap-3 p-3 rounded-lg bg-secondary/30"
+                              >
+                                <div className="p-2 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                                  <IconComponent className="h-4 w-4" />
+                                </div>
+                                <div>
+                                  <h6 className="text-sm font-medium text-foreground">{feature.title}</h6>
+                                  <p className="text-xs text-muted-foreground mt-1">{feature.description}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Screenshots - Always visible when expanded */}
+                <div>
+                  <h5 className="text-sm font-semibold text-foreground mb-4">Screenshots</h5>
+                  <ScreenshotCarousel />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );
