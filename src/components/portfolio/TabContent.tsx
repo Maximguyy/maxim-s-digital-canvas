@@ -290,7 +290,7 @@ function ProjectCard({
     delay: index * 0.1,
     duration: 0.4
   }}>
-      <div className="group border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300 overflow-hidden">
+      <div className="group border border-border rounded-2xl bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 overflow-hidden">
         {/* Header - Clickable */}
         <div onClick={onToggle} className="cursor-pointer p-6">
           <div className="flex items-start justify-between gap-4 mb-4">
@@ -446,7 +446,7 @@ function DeveloppementContent() {
           y: 0
         }} transition={{
           delay: 0.2 + catIndex * 0.1
-        }} className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] p-4 rounded-xl border border-border/50 bg-card/30">
+        }} className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] p-4 rounded-xl border border-border bg-card/30">
               <h4 className="text-xs uppercase tracking-wider text-primary mb-3 font-medium">
                 {category.category}
               </h4>
@@ -1234,7 +1234,7 @@ export function TabContent({
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
         <div className="overflow-x-auto mb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          <TabsList className="inline-flex w-max min-w-full h-auto p-1.5 bg-background/80 border border-border/50 backdrop-blur-sm gap-2 rounded-xl">
+          <TabsList className="inline-flex w-max min-w-full h-auto p-1.5 bg-background/80 border border-border backdrop-blur-sm gap-2 rounded-xl">
             <TabsTrigger value="developpement" className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all">
               <Code className="h-4 w-4" />
               Développement

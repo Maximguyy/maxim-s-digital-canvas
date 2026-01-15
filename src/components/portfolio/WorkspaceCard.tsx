@@ -53,7 +53,7 @@ export function WorkspaceCard({ index }: WorkspaceCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
     >
-      <div className="border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300 overflow-hidden">
+      <div className="border border-border rounded-2xl bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 overflow-hidden">
         {/* Header - Clickable */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
