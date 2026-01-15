@@ -699,6 +699,120 @@ function EcommerceContent() {
 
       {/* Stack E-commerce Section */}
       <EcomStackSection />
+
+      {/* Expertise Section - 3 Pillars */}
+      <div>
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ delay: 0.2 }}
+        >
+          <SectionTitle>Expertise</SectionTitle>
+        </motion.div>
+        <div className="grid md:grid-cols-3 gap-4">
+          {/* Acquisition */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.2 }}
+          >
+            <GlassCard className="p-5 h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                  <Target className="h-5 w-5" />
+                </div>
+                <h4 className="font-semibold text-foreground text-lg">Acquisition</h4>
+              </div>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Meta Ads (FB/IG)
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Pinterest & Google Ads
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Creative testing massif
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  ROAS optimization
+                </li>
+              </ul>
+            </GlassCard>
+          </motion.div>
+
+          {/* Conversion */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.3 }}
+          >
+            <GlassCard className="p-5 h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                  <TrendingUp className="h-5 w-5" />
+                </div>
+                <h4 className="font-semibold text-foreground text-lg">Conversion</h4>
+              </div>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Shopify custom (Liquid/JS)
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Landing pages optimisées
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Email & SMS automation
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Upsell/Cross-sell strategies
+                </li>
+              </ul>
+            </GlassCard>
+          </motion.div>
+
+          {/* Operations */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.4 }}
+          >
+            <GlassCard className="p-5 h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                  <Package className="h-5 w-5" />
+                </div>
+                <h4 className="font-semibold text-foreground text-lg">Operations</h4>
+              </div>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Dropshipping → Stock propre
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Supply chain (Chine/Europe)
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Analytics (Triple Whale, True Profit)
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Team building & SOPs
+                </li>
+              </ul>
+            </GlassCard>
+          </motion.div>
+        </div>
+      </div>
     </div>;
 }
 
