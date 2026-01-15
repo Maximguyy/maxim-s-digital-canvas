@@ -62,50 +62,76 @@ export function EcommerceSection() {
       </motion.div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
         {/* Chiffre d'affaires */}
-        <GlassCard className="p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" } as React.CSSProperties}>
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center -space-x-3">
-              <div className="w-10 h-10 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
-                <SiStripe className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiStripe className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <div className="w-10 h-10 rounded-full bg-[#003087] flex items-center justify-center ring-2 ring-background z-20">
-                <SiPaypal className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#003087] flex items-center justify-center ring-2 ring-background z-20">
+                <SiPaypal className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <div className="w-10 h-10 rounded-full bg-[#96BF48] flex items-center justify-center ring-2 ring-background z-10">
-                <SiShopify className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#96BF48] flex items-center justify-center ring-2 ring-background z-10">
+                <SiShopify className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
             </div>
           </div>
-          <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+          <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
             700k€
           </div>
-          <div className="text-muted-foreground">Chiffre d'affaires généré</div>
+          <div className="text-sm md:text-base text-muted-foreground">Chiffre d'affaires généré</div>
         </GlassCard>
 
         {/* Investissement Ads */}
-        <GlassCard className="p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" } as React.CSSProperties}>
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center -space-x-3">
-              <div className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
-                <SiFacebook className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
+                <SiFacebook className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-30">
-                <SiInstagram className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center ring-2 ring-background z-30">
+                <SiInstagram className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <div className="w-10 h-10 rounded-full bg-[#4285F4] flex items-center justify-center ring-2 ring-background z-20">
-                <SiGoogleads className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#4285F4] flex items-center justify-center ring-2 ring-background z-20">
+                <SiGoogleads className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
-              <div className="w-10 h-10 rounded-full bg-[#E60023] flex items-center justify-center ring-2 ring-background z-10">
-                <SiPinterest className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#E60023] flex items-center justify-center ring-2 ring-background z-10">
+                <SiPinterest className="w-4 h-4 md:w-5 md:h-5 text-white" />
               </div>
             </div>
           </div>
-          <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+          <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
             200k€
           </div>
-          <div className="text-muted-foreground">Investis en publicité</div>
+          <div className="text-sm md:text-base text-muted-foreground">Investis en publicité</div>
+        </GlassCard>
+
+        {/* Commandes traitées */}
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
+              <Package className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            </div>
+          </div>
+          <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
+            11,000+
+          </div>
+          <div className="text-sm md:text-base text-muted-foreground">Commandes traitées</div>
+        </GlassCard>
+
+        {/* Meilleur mois */}
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
+              <TrendingUp className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            </div>
+          </div>
+          <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
+            100k€
+          </div>
+          <div className="text-sm md:text-base text-muted-foreground">Meilleur mois (Décembre 2023)</div>
         </GlassCard>
       </div>
 
