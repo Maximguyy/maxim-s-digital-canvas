@@ -6,9 +6,10 @@ interface GlassCardProps {
   className?: string;
   hover?: boolean;
   style?: CSSProperties;
+  onClick?: () => void;
 }
 
-export function GlassCard({ children, className, hover = true, style }: GlassCardProps) {
+export function GlassCard({ children, className, hover = true, style, onClick }: GlassCardProps) {
   return (
     <div
       className={cn(
@@ -18,6 +19,7 @@ export function GlassCard({ children, className, hover = true, style }: GlassCar
         className
       )}
       style={style}
+      onClick={onClick}
     >
       {children}
     </div>
