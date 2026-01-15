@@ -1,11 +1,13 @@
 import profilePhoto from "@/assets/profile-photo.png";
 import { TabContent } from "./TabContent";
-import { useState } from "react";
 import { Mail, Phone } from "lucide-react";
 
-export function HeroSection() {
-  const [activeTab, setActiveTab] = useState("developpement");
+interface HeroSectionProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
 
+export function HeroSection({ activeTab, onTabChange }: HeroSectionProps) {
   return (
     <section className="min-h-screen flex flex-col pt-20 pb-12">
       <div className="container mx-auto px-4">
@@ -58,7 +60,7 @@ export function HeroSection() {
           className="max-w-4xl mx-auto opacity-0 animate-fade-in"
           style={{ animationDelay: "0.2s" }}
         >
-          <TabContent activeTab={activeTab} onTabChange={setActiveTab} />
+          <TabContent activeTab={activeTab} onTabChange={onTabChange} />
         </div>
       </div>
     </section>
