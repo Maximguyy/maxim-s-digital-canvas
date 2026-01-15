@@ -9,11 +9,13 @@ import { SiPython, SiFastapi, SiRedis, SiPostgresql, SiDocker, SiWhatsapp } from
 function CountUpKPI({
   end,
   suffix = "",
-  prefix = ""
+  prefix = "",
+  decimals = 0
 }: {
   end: number;
   suffix?: string;
   prefix?: string;
+  decimals?: number;
 }) {
   const {
     formattedCount,
@@ -22,7 +24,8 @@ function CountUpKPI({
     end,
     suffix,
     prefix,
-    duration: 2000
+    duration: 2000,
+    decimals
   });
   return <div ref={ref}>{formattedCount}</div>;
 }
@@ -151,7 +154,7 @@ export function AcquisitionSection() {
           animationDelay: `${0.1 * index}s`
         } as React.CSSProperties}>
               <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
-                {kpi.isDecimal ? <span>{kpi.value}{kpi.suffix}</span> : <CountUpKPI end={kpi.value} suffix={kpi.suffix} />}
+                {kpi.isDecimal ? <CountUpKPI end={kpi.value} suffix={kpi.suffix} decimals={1} /> : <CountUpKPI end={kpi.value} suffix={kpi.suffix} />}
               </div>
               <div className="text-muted-foreground text-sm">{kpi.label}</div>
             </GlassCard>)}
