@@ -437,7 +437,7 @@ function DeveloppementContent() {
       }}>
           <SectionTitle>Stack</SectionTitle>
         </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           {devStack.map((category, catIndex) => <motion.div key={category.category} initial={{
           opacity: 0,
           y: 20
@@ -446,7 +446,7 @@ function DeveloppementContent() {
           y: 0
         }} transition={{
           delay: 0.2 + catIndex * 0.1
-        }} className="p-4 rounded-xl border border-border/50 bg-card/30">
+        }} className="w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] p-4 rounded-xl border border-border/50 bg-card/30">
               <h4 className="text-xs uppercase tracking-wider text-primary mb-3 font-medium">
                 {category.category}
               </h4>
