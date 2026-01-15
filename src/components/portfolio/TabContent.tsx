@@ -502,10 +502,13 @@ const timeline = [{
 function AcademiqueContent() {
   return <div className="space-y-6">
       {/* Présentation */}
-      <div>
-        <h3 className="text-lg font-semibold text-foreground mb-3">Parcours</h3>
-        
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <SectionTitle>Parcours</SectionTitle>
+      </motion.div>
 
       {/* Timeline */}
       <div className="space-y-4">
