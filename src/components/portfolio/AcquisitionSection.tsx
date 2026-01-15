@@ -4,7 +4,7 @@ import { GlassCard } from "./GlassCard";
 import { SectionTitle } from "./SectionTitle";
 import { Badge } from "@/components/ui/badge";
 import { useCountUp } from "@/hooks/useCountUp";
-import { Target, Zap, Bot, TrendingUp, ArrowDown, CheckCircle2, XCircle, Star, AlertTriangle, Video, Film, BarChart3, Server, Database, MessageSquare, HardDrive, ChevronDown } from "lucide-react";
+import { Target, Zap, Bot, TrendingUp, ArrowDown, CheckCircle2, XCircle, Star, AlertTriangle, Video, Film, BarChart3, Server, Database, MessageSquare, HardDrive, ChevronDown, RefreshCw } from "lucide-react";
 import { SiPython, SiFastapi, SiRedis, SiPostgresql, SiDocker, SiWhatsapp } from "@icons-pack/react-simple-icons";
 function CountUpKPI({
   end,
@@ -346,6 +346,7 @@ export function AcquisitionSection() {
                       <div className="p-2 rounded bg-background/50 text-center text-foreground">Client a repris ?</div>
                       <div className="grid grid-cols-2 gap-2 mt-2">
                         <div className="p-2 rounded bg-secondary/50 text-center">
+                          <RefreshCw className="h-4 w-4 text-muted-foreground mx-auto mb-1" />
                           <span className="text-xs text-muted-foreground">OUI → Nouvelle séance</span>
                         </div>
                         <div className="p-2 rounded bg-primary/10 text-center">
