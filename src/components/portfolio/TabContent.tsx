@@ -738,7 +738,7 @@ function EcommerceContent() {
                 </li>
                 <li className="flex items-center gap-2 text-sm text-foreground">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  ROAS optimization
+                  ROAS optimization at scale
                 </li>
               </ul>
             </GlassCard>
