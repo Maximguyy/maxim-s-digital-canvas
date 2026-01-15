@@ -10,10 +10,10 @@ interface NavigationProps {
 }
 
 const tabs = [
-  { id: "developpement", label: "Développement", icon: Code },
-  { id: "ecommerce", label: "Ecommerce", icon: TrendingUp },
-  { id: "acquisition", label: "Agence d'acquisition", icon: Target },
-  { id: "academique", label: "Parcours académique", icon: GraduationCap },
+  { id: "developpement", label: "Développement", shortLabel: "Dev", icon: Code },
+  { id: "ecommerce", label: "Ecommerce", shortLabel: "Ecom", icon: TrendingUp },
+  { id: "acquisition", label: "Agence d'acquisition", shortLabel: "Acqui", icon: Target },
+  { id: "academique", label: "Parcours académique", shortLabel: "Scolaire", icon: GraduationCap },
 ];
 
 export function Navigation({ activeTab, onTabChange }: NavigationProps) {
@@ -64,6 +64,7 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
                     onClick={() => handleTabChange(tab.id)}
                   >
                     <Icon className="h-4 w-4" />
+                    <span className="hidden lg:hidden md:inline">{tab.shortLabel}</span>
                     <span className="hidden lg:inline">{tab.label}</span>
                   </Button>
                 );
