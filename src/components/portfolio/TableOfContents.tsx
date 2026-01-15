@@ -44,9 +44,9 @@ export function TableOfContents({ activeTab }: TableOfContentsProps) {
   if (items.length === 0) return null;
 
   return (
-    <div className="hidden md:block">
+    <div className="hidden md:flex justify-center">
       <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        <div className="inline-flex w-max min-w-full h-auto p-1.5 bg-background/80 border border-border backdrop-blur-sm gap-2 rounded-xl">
+        <div className="inline-flex h-auto p-1.5 bg-background/80 border border-border backdrop-blur-sm gap-2 rounded-xl">
           {items.map((item) => (
             <button
               key={item.id}
