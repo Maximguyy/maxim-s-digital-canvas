@@ -525,17 +525,19 @@ function AcademiqueContent() {
               
               {/* Content */}
               <div className="flex-1 flex flex-col justify-center">
-                <div className="flex items-center gap-2 text-primary text-sm mb-1">
-                  <Calendar className="h-3 w-3" />
-                  {item.period}
-                  {item.current && <Badge variant="default" className="text-xs ml-2">En cours</Badge>}
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2 text-primary text-sm">
+                    <Calendar className="h-3 w-3" />
+                    {item.period}
+                    {item.current && <Badge variant="default" className="text-xs ml-2">En cours</Badge>}
+                  </div>
+                  <div className="flex items-center gap-1 text-muted-foreground text-xs">
+                    <MapPin className="h-3 w-3" />
+                    {item.location}
+                  </div>
                 </div>
                 <h4 className="font-semibold text-foreground">{item.title}</h4>
                 <p className="text-muted-foreground text-sm">{item.subtitle}</p>
-                <div className="flex items-center gap-1 text-muted-foreground text-xs mt-1">
-                  <MapPin className="h-3 w-3" />
-                  {item.location}
-                </div>
                 {item.note && <p className="text-primary/70 text-xs mt-1">• {item.note}</p>}
               </div>
             </div>
