@@ -58,6 +58,40 @@ const devProjects = [{
   tags: ["Liquid", "HTML/CSS", "JavaScript"],
   stats: "",
   content: "Création de sections custom pour boutiques Shopify : modules d'upsell, cross-sell, et sections visuelles pour mettre en avant les bénéfices produits."
+}, {
+  id: "flow-qualification",
+  title: "Flow 1 : Qualification de leads",
+  tagline: "Automatisation WhatsApp IA pour qualification prospects",
+  tags: ["WhatsApp Business API", "Claude API", "Python", "n8n"],
+  stats: "Conversion : 6% formulaire → RDV",
+  content: "",
+  subSections: [{
+    title: "Lead Meta → WhatsApp IA",
+    description: "Réception automatique des leads Meta Ads et engagement via WhatsApp"
+  }, {
+    title: "Questions qualifiantes",
+    description: "Durée tabac, rythme, âge, disponibilité - qualification automatique par l'IA"
+  }, {
+    title: "Routage intelligent",
+    description: "Lead qualifié → Calendly → RDV ✅ | Non qualifié → Nurturing"
+  }]
+}, {
+  id: "flow-avis",
+  title: "Flow 2 : Demande d'avis",
+  tagline: "Collecte automatisée d'avis Google post-RDV",
+  tags: ["WhatsApp Business API", "Claude API", "n8n"],
+  stats: "Taux réponse : 60%",
+  content: "",
+  subSections: [{
+    title: "RDV réalisé → Attente 7 jours",
+    description: "Déclenchement automatique après délai de suivi"
+  }, {
+    title: "Message WhatsApp IA",
+    description: "\"Comment va l'arrêt ?\" - Évaluation de la satisfaction client"
+  }, {
+    title: "Routage selon réponse",
+    description: "Client a repris → Nouvelle séance | Satisfait → Avis Google ⭐"
+  }]
 }];
 const devStack = [{
   category: "Mobile",
