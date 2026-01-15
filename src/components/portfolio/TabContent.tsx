@@ -9,6 +9,7 @@ import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
 import { EcomStackSection } from "./EcomStackSection";
+import { AcquisitionSection } from "./AcquisitionSection";
 import { useCountUp } from "@/hooks/useCountUp";
 import cpgeImage from "@/assets/cpge-eucalyptus.jpg";
 import esilvImage from "@/assets/esilv.webp";
@@ -913,60 +914,7 @@ function EcommerceContent() {
 }
 
 // ==================== ACQUISITION ====================
-const acquisitionHighlights = [{
-  icon: Target,
-  title: "Publicité Meta",
-  description: "Création et optimisation de campagnes Facebook & Instagram pour l'acquisition de nouveaux clients."
-}, {
-  icon: Bot,
-  title: "Automatisation IA",
-  description: "Développement de workflows d'automatisation avec n8n, puis migration vers Python pour plus de performance."
-}, {
-  icon: Zap,
-  title: "Suivi client",
-  description: "Automatisation du suivi par SMS, upsell email et relance de leads potentiels."
-}];
-function AcquisitionContent() {
-  return <div className="space-y-8">
-      {/* Présentation */}
-      <div>
-        <h3 className="text-lg font-semibold text-foreground mb-3">Présentation :</h3>
-        <p className="text-muted-foreground leading-relaxed">
-          6 mois en agence d'acquisition & automatisation IA, accompagnant 3 clients. Transition de n8n vers Python custom pour des gains en rapidité, efficacité, personnalisation et coût.
-        </p>
-      </div>
-
-      {/* Highlights */}
-      <div className="grid md:grid-cols-3 gap-4">
-        {acquisitionHighlights.map(item => <GlassCard key={item.title} className="p-4">
-            <div className="p-2 rounded-lg bg-primary/10 text-primary w-fit mb-3">
-              <item.icon className="h-5 w-5" />
-            </div>
-            <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
-            <p className="text-muted-foreground text-sm">{item.description}</p>
-          </GlassCard>)}
-      </div>
-
-      {/* Evolution */}
-      <GlassCard className="p-5">
-        <h4 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-primary" />
-          Évolution technique
-        </h4>
-        <div className="flex items-center gap-4">
-          <div className="flex-1 p-4 rounded-lg bg-secondary/50">
-            <p className="font-medium text-foreground text-sm mb-2">n8n</p>
-            <p className="text-muted-foreground text-xs">Workflows visuels, setup rapide</p>
-          </div>
-          <ArrowRight className="h-5 w-5 text-primary flex-shrink-0" />
-          <div className="flex-1 p-4 rounded-lg bg-primary/10 border border-primary/20">
-            <p className="font-medium text-primary text-sm mb-2">Python Custom</p>
-            <p className="text-foreground text-xs">Rapidité, coûts réduits, personnalisation totale</p>
-          </div>
-        </div>
-      </GlassCard>
-    </div>;
-}
+// Now using imported AcquisitionSection component
 
 // ==================== ACADÉMIQUE ====================
 
@@ -1083,7 +1031,7 @@ export function TabContent({
         </TabsContent>
         
         <TabsContent value="acquisition" className="mt-0">
-          <AcquisitionContent />
+          <AcquisitionSection />
         </TabsContent>
         
         <TabsContent value="academique" className="mt-0">
