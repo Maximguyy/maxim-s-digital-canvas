@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { ChevronDown, Github, Smartphone, Bell, BookOpen, MessageSquare, Gamepad2, PenLine, Mic, BookMarked, HelpCircle, Database } from "lucide-react";
-import { SiReact, SiExpo, SiTypescript, SiSupabase, SiPostgresql } from "@icons-pack/react-simple-icons";
+import { ChevronDown, Github, Smartphone, Bell, BookOpen, MessageSquare, Gamepad2, PenLine, Mic, BookMarked, HelpCircle, Database, Navigation, Palette, Sparkles, Globe, Cog } from "lucide-react";
+import { SiReact, SiExpo, SiTypescript, SiSupabase, SiPostgresql, SiI18next } from "@icons-pack/react-simple-icons";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 
 const noorStack = [
-  { icon: SiReact, name: "React Native 0.81" },
-  { icon: SiExpo, name: "Expo 54" },
-  { icon: SiTypescript, name: "TypeScript 5.9" },
-  { icon: SiSupabase, name: "Supabase Auth" },
-  { icon: SiPostgresql, name: "PostgreSQL" },
+  { icon: SiReact, name: "React Native 0.81", category: "Framework" },
+  { icon: SiExpo, name: "Expo 54", category: "Framework" },
+  { icon: SiTypescript, name: "TypeScript 5.9", category: "Framework" },
+  { icon: Navigation, name: "Expo Router", category: "Navigation" },
+  { icon: SiSupabase, name: "Supabase (Auth + DB)", category: "Backend" },
+  { icon: SiPostgresql, name: "PostgreSQL", category: "Backend" },
+  { icon: Palette, name: "Unistyles", category: "UI" },
+  { icon: Sparkles, name: "Reanimated + Lottie", category: "Animations" },
+  { icon: SiI18next, name: "i18next", category: "i18n" },
+  { icon: Cog, name: "Expo SDK (AV, Haptics, SecureStore)", category: "Features" },
 ];
 
 const noorFeatures = [
