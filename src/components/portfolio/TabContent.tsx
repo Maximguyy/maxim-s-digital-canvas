@@ -13,6 +13,7 @@ import { WorkspaceCard } from "./WorkspaceCard";
 import { InstagramCoachCard } from "./InstagramCoachCard";
 import { EcomStackSection } from "./EcomStackSection";
 import { AcquisitionSection } from "./AcquisitionSection";
+import { TableOfContents } from "./TableOfContents";
 import { useCountUp } from "@/hooks/useCountUp";
 import cpgeImage from "@/assets/cpge-eucalyptus.jpg";
 import esilvImage from "@/assets/esilv.webp";
@@ -427,7 +428,7 @@ function DeveloppementContent() {
       </motion.div>
 
       {/* Stack Section */}
-      <div>
+      <div id="dev-stack">
         <motion.div initial={{
         opacity: 0
       }} animate={{
@@ -464,7 +465,7 @@ function DeveloppementContent() {
       </div>
 
       {/* Projects Section */}
-      <div>
+      <div id="dev-projets">
         <motion.div initial={{
         opacity: 0
       }} animate={{
@@ -601,15 +602,17 @@ function EcommerceContent() {
       </motion.div>
 
       {/* KPI's Title */}
-      <motion.div initial={{
-      opacity: 0
-    }} animate={{
-      opacity: 1
-    }} transition={{
-      delay: 0.1
-    }}>
-        <SectionTitle>KPI's</SectionTitle>
-      </motion.div>
+      <div id="ecom-kpis">
+        <motion.div initial={{
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} transition={{
+        delay: 0.1
+      }}>
+          <SectionTitle>KPI's</SectionTitle>
+        </motion.div>
+      </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -769,7 +772,7 @@ function EcommerceContent() {
 
 
       {/* Boutiques Section */}
-      <div className="mt-12">
+      <div id="ecom-boutiques" className="mt-12">
         <SectionTitle>Boutiques</SectionTitle>
         
         {/* Info about closed shops */}
@@ -895,10 +898,12 @@ function EcommerceContent() {
       </div>
 
       {/* Stack E-commerce Section */}
-      <EcomStackSection />
+      <div id="ecom-stack">
+        <EcomStackSection />
+      </div>
 
       {/* Expertise Section - 3 Pillars */}
-      <div>
+      <div id="ecom-expertise">
         <motion.div initial={{
         opacity: 0
       }} animate={{
@@ -1030,7 +1035,7 @@ function EcommerceContent() {
       </div>
 
       {/* Méthodologie Section - Timeline horizontale */}
-      <div>
+      <div id="ecom-methodologie">
         <motion.div initial={{
         opacity: 0,
         y: 20
@@ -1179,17 +1184,19 @@ const timeline = [{
 function AcademiqueContent() {
   return <div className="space-y-6">
       {/* Présentation */}
-      <motion.div initial={{
-      opacity: 0,
-      y: 20
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      duration: 0.5
-    }}>
-        <SectionTitle>Parcours</SectionTitle>
-      </motion.div>
+      <div id="academique-timeline">
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.5
+      }}>
+          <SectionTitle>Parcours</SectionTitle>
+        </motion.div>
+      </div>
 
       {/* Timeline */}
       <div className="space-y-4">
@@ -1233,7 +1240,8 @@ export function TabContent({
   return <div className="w-full">
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-        <div className="overflow-x-auto mb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {/* Mobile: Main Tabs */}
+        <div className="md:hidden overflow-x-auto mb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <TabsList className="inline-flex w-max min-w-full h-auto p-1.5 bg-background/80 border border-border backdrop-blur-sm gap-2 rounded-xl">
             <TabsTrigger value="developpement" className="bg-secondary/60 hover:bg-secondary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground py-2.5 px-4 text-xs md:text-sm flex items-center gap-2 whitespace-nowrap rounded-lg transition-all">
               <Code className="h-4 w-4" />
@@ -1252,6 +1260,11 @@ export function TabContent({
               Parcours académique
             </TabsTrigger>
           </TabsList>
+        </div>
+
+        {/* Desktop/Tablet: Table of Contents */}
+        <div className="mb-8">
+          <TableOfContents activeTab={activeTab} />
         </div>
 
         <TabsContent value="developpement" className="mt-0">

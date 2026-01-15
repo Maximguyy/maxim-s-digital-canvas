@@ -38,18 +38,40 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
       <div className="max-w-4xl mx-auto">
         <div className="bg-background/80 backdrop-blur-sm border border-border rounded-xl">
           <div className="flex h-14 items-center justify-between px-4">
-            {/* Menu Button (Mobile) */}
+            {/* Menu Button (Mobile only) */}
             <Button
               variant="ghost"
               size="icon"
-              className="md:opacity-0 md:pointer-events-none"
+              className="md:hidden"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
 
-            {/* Center - Empty for balance on mobile */}
-            <div className="flex-1" />
+            {/* Desktop Navigation - Tabs */}
+            <div className="hidden md:flex items-center gap-1">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                return (
+                  <Button
+                    key={tab.id}
+                    variant="ghost"
+                    size="sm"
+                    className={cn(
+                      "gap-2 text-muted-foreground hover:text-foreground",
+                      activeTab === tab.id && "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+                    )}
+                    onClick={() => handleTabChange(tab.id)}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span className="hidden lg:inline">{tab.label}</span>
+                  </Button>
+                );
+              })}
+            </div>
+
+            {/* Center spacer for mobile */}
+            <div className="flex-1 md:hidden" />
 
             {/* Right side - Theme toggle, GitHub & Contact */}
             <div className="flex items-center gap-2">

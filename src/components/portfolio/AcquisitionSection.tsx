@@ -136,7 +136,7 @@ export function AcquisitionSection() {
       </motion.div>
 
       {/* Section 1: KPI's */}
-      <div>
+      <div id="acquisition-kpis">
         <motion.div initial={{
         opacity: 0
       }} animate={{
@@ -159,7 +159,7 @@ export function AcquisitionSection() {
       </div>
 
       {/* Section 2: Publicité Meta Ads */}
-      <div>
+      <div id="acquisition-meta-ads">
         <motion.div initial={{
         opacity: 0
       }} animate={{
@@ -232,7 +232,7 @@ export function AcquisitionSection() {
       </div>
 
       {/* Section 3: Automatisations IA */}
-      <div>
+      <div id="acquisition-automatisations">
         <motion.div initial={{
         opacity: 0
       }} animate={{
@@ -366,7 +366,7 @@ export function AcquisitionSection() {
       </div>
 
       {/* Section 4: Learnings */}
-      <div>
+      <div id="acquisition-learnings">
         <motion.div initial={{
         opacity: 0
       }} animate={{
