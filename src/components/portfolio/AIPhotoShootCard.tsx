@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { ChevronDown, Github, Camera, Wand2, Image } from "lucide-react";
-import { SiPython, SiNodedotjs, SiN8n, SiTelegram, SiShopify } from "@icons-pack/react-simple-icons";
+import { SiRemix, SiReact, SiTypescript, SiShopify, SiPrisma, SiSqlite } from "@icons-pack/react-simple-icons";
 
 import aiPhoto1 from "@/assets/ai-photo-1.png";
 import aiPhoto2 from "@/assets/ai-photo-2.png";
@@ -10,11 +10,13 @@ import aiPhoto3 from "@/assets/ai-photo-3.png";
 import aiPhoto4 from "@/assets/ai-photo-4.png";
 
 const aiPhotoStack = [
-  { icon: SiPython, name: "Python" },
-  { icon: SiNodedotjs, name: "Node.js" },
-  { icon: SiTelegram, name: "Telegram API" },
-  { icon: Wand2, name: "IA Générative" },
-  { icon: SiShopify, name: "Shopify/Liquid" },
+  { icon: SiRemix, name: "Remix 2.16", category: "Framework" },
+  { icon: SiReact, name: "React 18", category: "Framework" },
+  { icon: SiTypescript, name: "TypeScript 5.2", category: "Framework" },
+  { icon: SiShopify, name: "Shopify App SDK + Polaris", category: "Shopify" },
+  { icon: SiPrisma, name: "Prisma ORM", category: "Database" },
+  { icon: SiSqlite, name: "SQLite", category: "Database" },
+  { icon: Wand2, name: "Fashn Tryon IA + Nano Banana", category: "IA" },
 ];
 
 const screenshots = [aiPhoto1, aiPhoto2, aiPhoto3, aiPhoto4];
@@ -71,7 +73,7 @@ export function AIPhotoShootCard({ index }: AIPhotoShootCardProps) {
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-4">
-            {["Python", "Node.js", "Telegram API", "IA Générative", "Shopify/Liquid"].map(tag => (
+            {["Remix", "React", "Shopify SDK", "Prisma", "Fashn IA"].map(tag => (
               <Badge key={tag} variant="secondary" className="text-xs font-normal rounded-full">
                 {tag}
               </Badge>
