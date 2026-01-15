@@ -422,10 +422,10 @@ function EcommerceContent() {
               </div>
             </div>
           </div>
-          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={700000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-base">Chiffre d'affaires généré</div>
+          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Chiffre d'affaires généré</div>
         </GlassCard>
 
         {/* Investissement Ads - Clickable */}
@@ -457,10 +457,10 @@ function EcommerceContent() {
               <ChevronDown className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </motion.div>
           </div>
-          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={200000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-base">Investis en publicité</div>
+          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Investis en publicité</div>
         </GlassCard>
 
         {/* Commandes traitées */}
@@ -472,10 +472,10 @@ function EcommerceContent() {
               <Package className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary" />
             </div>
           </div>
-          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={11000} suffix="+" />
           </div>
-          <div className="text-muted-foreground text-xs md:text-base">Commandes traitées</div>
+          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Commandes traitées</div>
         </GlassCard>
 
         {/* Meilleur mois */}
@@ -487,10 +487,10 @@ function EcommerceContent() {
               <TrendingUp className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary" />
             </div>
           </div>
-          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
+          <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
             <CountUpKPI end={100000} />
           </div>
-          <div className="text-muted-foreground text-xs md:text-base">Meilleur mois (Décembre 2023)</div>
+          <div className="text-muted-foreground text-xs md:text-sm whitespace-nowrap">Meilleur mois (Déc. 2023)</div>
         </GlassCard>
       </div>
 
