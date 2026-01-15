@@ -47,7 +47,13 @@ const devProjects = [{
   tagline: "Développement front Shopify personnalisé",
   tags: ["Liquid", "HTML/CSS", "JavaScript"],
   stats: "",
-  content: "Création de sections custom pour boutiques Shopify : modules d'upsell, cross-sell, et sections visuelles pour mettre en avant les bénéfices produits."
+  content: "Création de sections custom pour boutiques Shopify : modules d'upsell, cross-sell, et sections visuelles pour mettre en avant les bénéfices produits.",
+  stack: [
+    { name: "Liquid", category: "Templating", icon: Code },
+    { name: "HTML/CSS", category: "Frontend", icon: SiHtml5 },
+    { name: "JavaScript", category: "Frontend", icon: SiJavascript },
+    { name: "Shopify", category: "E-commerce", icon: SiShopify },
+  ]
 }, {
   id: "flow-qualification",
   title: "Automatisation IA Qualification Leads",
