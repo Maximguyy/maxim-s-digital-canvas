@@ -9,6 +9,7 @@ import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
 import { AIPhotoShootCard } from "./AIPhotoShootCard";
+import { WorkspaceCard } from "./WorkspaceCard";
 import { EcomStackSection } from "./EcomStackSection";
 import { AcquisitionSection } from "./AcquisitionSection";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -19,14 +20,6 @@ import massenaImage from "@/assets/massena.jpg";
 
 // ==================== DÉVELOPPEMENT ====================
 const devProjects = [{
-  id: "workspace",
-  title: "Workspace React Native Optimisé",
-  tagline: "Configuration Claude Code pour dev mobile autonome",
-  tags: ["MCP Servers", "Claude Code", "ADB", "Maestro", "Automatisation"],
-  stats: "20k lignes • 6 serveurs MCP",
-  content: "Environnement de développement configuré pour maximiser l'autonomie de Claude Code. Serveurs MCP intégrés : Figma, Supabase, ADB, Maestro, Mobile MCP, Sequential Thinking. Scripts permettant à l'IA de visualiser l'émulateur via screenshots automatiques et d'itérer jusqu'au résultat souhaité sans intervention humaine.",
-  githubUrl: "https://github.com/Maximguyy/RN-Workspace"
-}, {
   id: "automations",
   title: "Automatisations IA E-commerce",
   tagline: "Workflows IA pour réponses clients et qualification leads",
@@ -367,9 +360,12 @@ function DeveloppementContent() {
           
           {/* AI Photo Shoot - Special Card */}
           <AIPhotoShootCard index={1} />
+
+          {/* Workspace - Special Card */}
+          <WorkspaceCard index={2} />
           
           {/* Other Projects */}
-          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index + 2} />)}
+          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index + 3} />)}
         </div>
       </div>
     </div>;
