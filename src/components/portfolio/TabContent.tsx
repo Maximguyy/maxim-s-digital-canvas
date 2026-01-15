@@ -503,7 +503,7 @@ function AcademiqueContent() {
   return <div className="space-y-6">
       {/* Présentation */}
       <div>
-        <h3 className="text-lg font-semibold text-foreground mb-3">Parcours :</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-3">Parcours</h3>
         
       </div>
 
