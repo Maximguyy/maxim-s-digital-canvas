@@ -10,9 +10,9 @@ interface NavigationProps {
 }
 
 const tabs = [
-  { id: "developpement", label: "Développement", shortLabel: "Dev", icon: Code },
-  { id: "ecommerce", label: "Ecommerce", shortLabel: "Ecom", icon: TrendingUp },
-  { id: "acquisition", label: "Agence d'acquisition", shortLabel: "Acqui", icon: Target },
+  { id: "developpement", label: "Développement", shortLabel: "Développement", icon: Code },
+  { id: "ecommerce", label: "Ecommerce", shortLabel: "Ecommerce", icon: TrendingUp },
+  { id: "acquisition", label: "Agence d'acquisition", shortLabel: "Acquisition", icon: Target },
   { id: "academique", label: "Parcours académique", shortLabel: "Scolaire", icon: GraduationCap },
 ];
 
