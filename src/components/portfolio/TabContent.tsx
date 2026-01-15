@@ -512,15 +512,15 @@ function AcademiqueContent() {
 
       {/* Timeline */}
       <div className="space-y-4">
-        {timeline.map(item => <GlassCard key={item.title} className="p-4 overflow-hidden">
-            <div className="flex items-stretch gap-4">
+        {timeline.map(item => <GlassCard key={item.title} className="overflow-hidden">
+            <div className="flex items-stretch">
               {/* Image */}
-              <div className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 rounded-lg overflow-hidden">
+              <div className="w-24 md:w-32 flex-shrink-0">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
               </div>
               
               {/* Content */}
-              <div className="flex-1 flex flex-col justify-center">
+              <div className="flex-1 flex flex-col justify-center p-4">
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2 text-primary text-sm">
                     <Calendar className="h-3 w-3" />
