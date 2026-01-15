@@ -255,7 +255,15 @@ function DeveloppementContent() {
 
       {/* Stack Section */}
       <div>
-        
+        <motion.div initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} transition={{
+          delay: 0.2
+        }}>
+          <SectionTitle>Stack</SectionTitle>
+        </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {devStack.map((category, catIndex) => <motion.div key={category.category} initial={{
           opacity: 0,
