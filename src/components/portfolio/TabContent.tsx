@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings } from "lucide-react";
-import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest } from "@icons-pack/react-simple-icons";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings, Server, Database, MessageSquare, Container } from "lucide-react";
+import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest, SiFastapi, SiRedis, SiDocker, SiWhatsapp, SiHetzner } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
@@ -60,70 +60,43 @@ const devProjects = [{
   content: "Création de sections custom pour boutiques Shopify : modules d'upsell, cross-sell, et sections visuelles pour mettre en avant les bénéfices produits."
 }];
 const devStack = [{
-  category: "Mobile",
+  category: "Backend & API",
   items: [{
-    icon: SiReact,
-    name: "React Native"
-  }, {
-    icon: SiExpo,
-    name: "Expo"
-  }, {
-    icon: SiTypescript,
-    name: "TypeScript"
-  }]
-}, {
-  category: "Backend",
-  items: [{
-    icon: SiSupabase,
-    name: "Supabase"
-  }, {
-    icon: SiPostgresql,
-    name: "PostgreSQL"
-  }, {
-    icon: SiNodedotjs,
-    name: "Node.js"
-  }]
-}, {
-  category: "IA & Automatisation",
-  items: [{
-    icon: Bot,
-    name: "Claude Code"
-  }, {
-    icon: Zap,
-    name: "Perplexity API"
-  }, {
-    icon: Cpu,
-    name: "n8n"
+    icon: SiFastapi,
+    name: "FastAPI (webhooks)"
   }, {
     icon: SiPython,
-    name: "Python"
+    name: "Python (automations)"
   }]
 }, {
-  category: "DevOps IA",
+  category: "Bases de données",
   items: [{
-    icon: Code,
-    name: "MCP Servers"
+    icon: SiRedis,
+    name: "Redis (cache conversations)"
+  }, {
+    icon: SiPostgresql,
+    name: "PostgreSQL (leads persistants)"
   }]
 }, {
-  category: "E-commerce",
+  category: "IA & Messaging",
   items: [{
-    icon: SiShopify,
-    name: "Shopify"
+    icon: Bot,
+    name: "Claude API (qualification)"
   }, {
-    icon: Code,
-    name: "Liquid"
-  }, {
-    icon: SiGraphql,
-    name: "GraphQL"
+    icon: SiWhatsapp,
+    name: "WhatsApp Business API"
   }]
 }, {
-  category: "Autres",
+  category: "Infra & Automation",
   items: [{
-    icon: Code,
-    name: "SQL"
+    icon: SiDocker,
+    name: "Docker + Compose"
   }, {
-    icon: SiGit,
-    name: "Git"
+    icon: SiHetzner,
+    name: "VPS Hetzner (~5€/mois)"
+  }, {
+    icon: Cpu,
+    name: "n8n (workflows)"
   }]
 }];
 interface DevProject {
