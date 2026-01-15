@@ -577,20 +577,6 @@ function EcommerceContent() {
         )}
       </AnimatePresence>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        {ecomSkills.map(skill => <GlassCard key={skill.title} className="p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <skill.icon className="h-4 w-4 text-primary" />
-              <h4 className="font-semibold text-foreground text-sm">{skill.title}</h4>
-            </div>
-            <ul className="space-y-1">
-              {skill.items.map(item => <li key={item} className="text-muted-foreground text-sm flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-primary/50" />
-                  {item}
-                </li>)}
-            </ul>
-          </GlassCard>)}
-      </div>
 
       {/* Boutiques Section */}
       <div className="mt-12">
