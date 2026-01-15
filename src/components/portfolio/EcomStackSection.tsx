@@ -10,7 +10,7 @@ import {
   SiJavascript,
   SiHtml5
 } from "@icons-pack/react-simple-icons";
-import { MessageSquare, Package, BarChart3, TrendingUp, Send, Mail } from "lucide-react";
+import { MessageSquare, Package, BarChart3, TrendingUp, Send, Mail, Users } from "lucide-react";
 
 const ecomStack = [
   {
@@ -51,6 +51,7 @@ const ecomStack = [
     category: "Fulfillment",
     items: [
       { icon: Package, name: "Infinite Fulfillment" },
+      { icon: Users, name: "Chinese Suppliers" },
     ],
   },
   {
