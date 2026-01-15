@@ -36,7 +36,7 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-xl">
+        <div className="bg-background/80 backdrop-blur-sm border border-border rounded-xl">
           <div className="flex h-14 items-center justify-between px-4">
             {/* Menu Button (Mobile) */}
             <Button

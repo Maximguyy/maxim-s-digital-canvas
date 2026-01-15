@@ -17,7 +17,7 @@ export function HeroSection({ activeTab, onTabChange }: HeroSectionProps) {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/5 blur-3xl" />
           
           {/* Profile Photo */}
-          <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden mb-6 animate-fade-in ring-4 ring-border/50">
+          <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden mb-6 animate-fade-in ring-4 ring-border">
             <img 
               src={profilePhoto} 
               alt="Maxim Guy" 

@@ -25,7 +25,7 @@ export function InstagramCoachCard({ index }: InstagramCoachCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
     >
-      <div className="border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm overflow-hidden">
+      <div className="border border-border rounded-2xl bg-card/50 backdrop-blur-sm overflow-hidden">
         {/* Header - Clickable to expand/collapse */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}

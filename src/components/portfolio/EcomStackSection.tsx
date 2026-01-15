@@ -79,7 +79,7 @@ export function EcomStackSection() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ delay: 0.2 + catIndex * 0.1 }} 
-            className="p-4 rounded-xl border border-border/50 bg-card/30"
+            className="p-4 rounded-xl border border-border bg-card/30"
           >
             <h4 className="text-xs uppercase tracking-wider text-primary mb-3 font-medium">
               {category.category}
