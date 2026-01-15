@@ -385,7 +385,7 @@ function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
 
 function EcommerceContent() {
   const [adsExpanded, setAdsExpanded] = useState(false);
-  const [boutiquesVersion, setBoutiquesVersion] = useState<'A' | 'B' | 'C' | 'D'>('A');
+  // Removed version selector - now responsive: table on desktop, list on mobile
   const adsBreakdownRef = useRef<HTMLDivElement>(null);
 
   const handleAdsClick = () => {
@@ -589,245 +589,111 @@ function EcommerceContent() {
           </p>
         </motion.div>
 
-        {/* Version selector for preview */}
-        <div className="mb-6 flex gap-2 flex-wrap">
-          <Badge 
-            variant={boutiquesVersion === 'A' ? 'default' : 'outline'} 
-            className="cursor-pointer"
-            onClick={() => setBoutiquesVersion('A')}
-          >
-            A - Gradient
-          </Badge>
-          <Badge 
-            variant={boutiquesVersion === 'B' ? 'default' : 'outline'} 
-            className="cursor-pointer"
-            onClick={() => setBoutiquesVersion('B')}
-          >
-            B - Liste
-          </Badge>
-          <Badge 
-            variant={boutiquesVersion === 'C' ? 'default' : 'outline'} 
-            className="cursor-pointer"
-            onClick={() => setBoutiquesVersion('C')}
-          >
-            C - Classement
-          </Badge>
-          <Badge 
-            variant={boutiquesVersion === 'D' ? 'default' : 'outline'} 
-            className="cursor-pointer"
-            onClick={() => setBoutiquesVersion('D')}
-          >
-            D - Tableau
-          </Badge>
-        </div>
-
-        {/* VERSION A - Cards avec accent gradient */}
-        {boutiquesVersion === 'A' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            {boutiques.flatMap(yearGroup => 
-              yearGroup.shops.map((shop, index) => (
-                <motion.div
-                  key={shop.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <div className="relative overflow-hidden rounded-2xl bg-card border border-border/50 p-5 h-full">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/30" />
-                    <div className="flex items-center justify-between mb-3">
-                      <Badge variant="secondary" className="text-xs font-medium">{yearGroup.year}</Badge>
+        {/* Mobile: Liste - Desktop: Tableau */}
+        
+        {/* VERSION MOBILE - Liste */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="md:hidden space-y-3"
+        >
+          {boutiques.flatMap(yearGroup => 
+            yearGroup.shops.map((shop, index) => (
+              <motion.div
+                key={shop.name}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border dark:border-border/50 border-l-4 border-l-primary hover:bg-card/80 transition-colors">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h4 className="font-semibold text-foreground truncate">{shop.name}</h4>
+                      <Badge variant="outline" className="text-xs shrink-0">{yearGroup.year}</Badge>
                     </div>
-                    <h4 className="font-bold text-lg text-foreground mb-1">{shop.name}</h4>
-                    <p className="text-muted-foreground text-sm mb-4">{shop.niche}</p>
-                    <p className="text-2xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
-                    {shop.highlight && (
-                      <p className="text-xs text-muted-foreground mt-3 pt-3 border-t border-border/30">{shop.highlight}</p>
-                    )}
-                  </div>
-                </motion.div>
-              ))
-            )}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="relative overflow-hidden rounded-2xl bg-muted/30 border border-border/30 p-5 h-full">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-muted-foreground/50 to-muted-foreground/20" />
-                <Badge variant="outline" className="text-xs mb-3">2023-2024</Badge>
-                <h4 className="font-bold text-lg text-foreground mb-1">6-7 boutiques test</h4>
-                <p className="text-muted-foreground text-sm mb-4">Test & learn</p>
-                <p className="text-2xl font-bold text-primary">80 000€</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-
-        {/* VERSION B - Liste épurée avec bordure gauche */}
-        {boutiquesVersion === 'B' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="space-y-3"
-          >
-            {boutiques.flatMap(yearGroup => 
-              yearGroup.shops.map((shop, index) => (
-                <motion.div
-                  key={shop.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border-l-4 border-l-primary hover:bg-card/80 transition-colors">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-foreground truncate">{shop.name}</h4>
-                        <Badge variant="outline" className="text-xs shrink-0">{yearGroup.year}</Badge>
-                      </div>
-                      <p className="text-muted-foreground text-sm truncate">{shop.niche}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))
-            )}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 border-l-4 border-l-muted-foreground/50">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
-                    <Badge variant="outline" className="text-xs">2023-2024</Badge>
-                  </div>
-                  <p className="text-muted-foreground text-sm">Test & learn</p>
-                </div>
-                <p className="text-xl font-bold text-primary">80 000€</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-
-        {/* VERSION C - Cards compactes avec numéro de rang */}
-        {boutiquesVersion === 'C' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="space-y-4"
-          >
-            {boutiques.flatMap(yearGroup => yearGroup.shops).sort((a, b) => b.ca - a.ca).map((shop, index) => {
-              const yearGroup = boutiques.find(y => y.shops.includes(shop));
-              return (
-                <motion.div
-                  key={shop.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.08 }}
-                >
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-card border border-border/50">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <span className="text-lg font-bold text-primary">#{index + 1}</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-foreground">{shop.name}</h4>
-                      <p className="text-muted-foreground text-sm truncate">{shop.niche}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
-                      <p className="text-xs text-muted-foreground">{yearGroup?.year}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-muted/30 border border-border/30">
-                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center shrink-0">
-                  <span className="text-lg font-bold text-muted-foreground">+</span>
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-bold text-foreground">6-7 boutiques test</h4>
-                  <p className="text-muted-foreground text-sm">Test & learn</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-xl font-bold text-primary">80 000€</p>
-                  <p className="text-xs text-muted-foreground">2023-2024</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-
-        {/* VERSION D - Tableau minimaliste */}
-        {boutiquesVersion === 'D' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="rounded-2xl border border-border/50 overflow-hidden"
-          >
-            <div className="bg-muted/30 px-4 py-3 border-b border-border/50 grid grid-cols-12 gap-4 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-              <div className="col-span-4">Boutique</div>
-              <div className="col-span-4">Niche</div>
-              <div className="col-span-2 text-center">Année</div>
-              <div className="col-span-2 text-right">CA</div>
-            </div>
-            {boutiques.flatMap(yearGroup => 
-              yearGroup.shops.map((shop, index) => (
-                <motion.div
-                  key={shop.name}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="px-4 py-4 border-b border-border/30 grid grid-cols-12 gap-4 items-center hover:bg-muted/20 transition-colors"
-                >
-                  <div className="col-span-4">
-                    <h4 className="font-semibold text-foreground">{shop.name}</h4>
-                  </div>
-                  <div className="col-span-4">
                     <p className="text-muted-foreground text-sm truncate">{shop.niche}</p>
                   </div>
-                  <div className="col-span-2 text-center">
-                    <Badge variant="outline" className="text-xs">{yearGroup.year}</Badge>
+                  <div className="text-right shrink-0">
+                    <p className="text-xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
                   </div>
-                  <div className="col-span-2 text-right">
-                    <p className="font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
-                  </div>
-                </motion.div>
-              ))
-            )}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="px-4 py-4 grid grid-cols-12 gap-4 items-center bg-muted/10"
-            >
-              <div className="col-span-4">
-                <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
-              </div>
-              <div className="col-span-4">
+                </div>
+              </motion.div>
+            ))
+          )}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 border border-border dark:border-border/50 border-l-4 border-l-muted-foreground/50">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
+                  <Badge variant="outline" className="text-xs">2023-2024</Badge>
+                </div>
                 <p className="text-muted-foreground text-sm">Test & learn</p>
               </div>
-              <div className="col-span-2 text-center">
-                <Badge variant="outline" className="text-xs">2023-24</Badge>
-              </div>
-              <div className="col-span-2 text-right">
-                <p className="font-bold text-primary">80 000€</p>
-              </div>
-            </motion.div>
+              <p className="text-xl font-bold text-primary">80 000€</p>
+            </div>
           </motion.div>
-        )}
+        </motion.div>
+
+        {/* VERSION DESKTOP - Tableau */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="hidden md:block rounded-2xl border border-border dark:border-border/50 overflow-hidden"
+        >
+          <div className="bg-muted/30 px-4 py-3 border-b border-border dark:border-border/50 grid grid-cols-12 gap-4 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            <div className="col-span-4">Boutique</div>
+            <div className="col-span-4">Niche</div>
+            <div className="col-span-2 text-center">Année</div>
+            <div className="col-span-2 text-right">CA</div>
+          </div>
+          {boutiques.flatMap(yearGroup => 
+            yearGroup.shops.map((shop, index) => (
+              <motion.div
+                key={shop.name}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: index * 0.05 }}
+                className="px-4 py-4 border-b border-border dark:border-border/30 grid grid-cols-12 gap-4 items-center hover:bg-muted/20 transition-colors"
+              >
+                <div className="col-span-4">
+                  <h4 className="font-semibold text-foreground">{shop.name}</h4>
+                </div>
+                <div className="col-span-4">
+                  <p className="text-muted-foreground text-sm truncate">{shop.niche}</p>
+                </div>
+                <div className="col-span-2 text-center">
+                  <Badge variant="outline" className="text-xs">{yearGroup.year}</Badge>
+                </div>
+                <div className="col-span-2 text-right">
+                  <p className="font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
+                </div>
+              </motion.div>
+            ))
+          )}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="px-4 py-4 grid grid-cols-12 gap-4 items-center bg-muted/10"
+          >
+            <div className="col-span-4">
+              <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
+            </div>
+            <div className="col-span-4">
+              <p className="text-muted-foreground text-sm">Test & learn</p>
+            </div>
+            <div className="col-span-2 text-center">
+              <Badge variant="outline" className="text-xs">2023-24</Badge>
+            </div>
+            <div className="col-span-2 text-right">
+              <p className="font-bold text-primary">80 000€</p>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>;
 }
