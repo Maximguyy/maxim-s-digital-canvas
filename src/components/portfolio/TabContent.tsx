@@ -34,13 +34,27 @@ const devProjects = [{
     title: "Collecte d'avis intelligente",
     description: "L'IA identifie si le client est satisfait avant d'envoyer le lien d'avis"
   }],
-  stack: [
-    { name: "Gmail API", category: "Mail", icon: SiGmail },
-    { name: "Shopify API", category: "E-commerce", icon: SiShopify },
-    { name: "Searates API", category: "Tracking", icon: Ship },
-    { name: "OpenAI API", category: "IA", icon: SiOpenai },
-    { name: "n8n", category: "Automation", icon: SiN8n },
-  ]
+  stack: [{
+    name: "Gmail API",
+    category: "Mail",
+    icon: SiGmail
+  }, {
+    name: "Shopify API",
+    category: "E-commerce",
+    icon: SiShopify
+  }, {
+    name: "Searates API",
+    category: "Tracking",
+    icon: Ship
+  }, {
+    name: "OpenAI API",
+    category: "IA",
+    icon: SiOpenai
+  }, {
+    name: "n8n",
+    category: "Automation",
+    icon: SiN8n
+  }]
 }, {
   id: "shopify-sections",
   title: "Sections Shopify Custom",
@@ -48,12 +62,23 @@ const devProjects = [{
   tags: ["Liquid", "HTML/CSS", "JavaScript"],
   stats: "",
   content: "Création de sections custom pour boutiques Shopify : modules d'upsell, cross-sell, et sections visuelles pour mettre en avant les bénéfices produits.",
-  stack: [
-    { name: "Liquid", category: "Templating", icon: Code },
-    { name: "HTML/CSS", category: "Frontend", icon: SiHtml5 },
-    { name: "JavaScript", category: "Frontend", icon: SiJavascript },
-    { name: "Shopify", category: "E-commerce", icon: SiShopify },
-  ]
+  stack: [{
+    name: "Liquid",
+    category: "Templating",
+    icon: Code
+  }, {
+    name: "HTML/CSS",
+    category: "Frontend",
+    icon: SiHtml5
+  }, {
+    name: "JavaScript",
+    category: "Frontend",
+    icon: SiJavascript
+  }, {
+    name: "Shopify",
+    category: "E-commerce",
+    icon: SiShopify
+  }]
 }, {
   id: "flow-qualification",
   title: "Automatisation IA Qualification Leads",
@@ -71,17 +96,43 @@ const devProjects = [{
     title: "Routage intelligent",
     description: "Lead qualifié → Calendly → RDV ✅ | Non qualifié → Nurturing"
   }],
-  stack: [
-    { name: "FastAPI (webhooks)", category: "Backend & API", icon: SiFastapi },
-    { name: "Python (automations)", category: "Backend & API", icon: SiPython },
-    { name: "Redis (cache conversations)", category: "Bases de données", icon: SiRedis },
-    { name: "PostgreSQL (leads persistants)", category: "Bases de données", icon: SiPostgresql },
-    { name: "Claude API (qualification)", category: "IA & Messaging", icon: Bot },
-    { name: "WhatsApp Business API", category: "IA & Messaging", icon: SiWhatsapp },
-    { name: "Docker + Compose", category: "Infra & Automation", icon: SiDocker },
-    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation", icon: SiHetzner },
-    { name: "n8n (workflows)", category: "Infra & Automation", icon: SiN8n },
-  ]
+  stack: [{
+    name: "FastAPI (webhooks)",
+    category: "Backend & API",
+    icon: SiFastapi
+  }, {
+    name: "Python (automations)",
+    category: "Backend & API",
+    icon: SiPython
+  }, {
+    name: "Redis (cache conversations)",
+    category: "Bases de données",
+    icon: SiRedis
+  }, {
+    name: "PostgreSQL (leads persistants)",
+    category: "Bases de données",
+    icon: SiPostgresql
+  }, {
+    name: "Claude API (qualification)",
+    category: "IA & Messaging",
+    icon: Bot
+  }, {
+    name: "WhatsApp Business API",
+    category: "IA & Messaging",
+    icon: SiWhatsapp
+  }, {
+    name: "Docker + Compose",
+    category: "Infra & Automation",
+    icon: SiDocker
+  }, {
+    name: "VPS Hetzner (~5€/mois)",
+    category: "Infra & Automation",
+    icon: SiHetzner
+  }, {
+    name: "n8n (workflows)",
+    category: "Infra & Automation",
+    icon: SiN8n
+  }]
 }, {
   id: "flow-avis",
   title: "Automatisation IA Collecte d'avis",
@@ -99,17 +150,43 @@ const devProjects = [{
     title: "Routage selon réponse",
     description: "Client a repris → Nouvelle séance | Satisfait → Avis Google ⭐"
   }],
-  stack: [
-    { name: "FastAPI (webhooks)", category: "Backend & API", icon: SiFastapi },
-    { name: "Python (automations)", category: "Backend & API", icon: SiPython },
-    { name: "Redis (cache conversations)", category: "Bases de données", icon: SiRedis },
-    { name: "PostgreSQL (leads persistants)", category: "Bases de données", icon: SiPostgresql },
-    { name: "Claude API (qualification)", category: "IA & Messaging", icon: Bot },
-    { name: "WhatsApp Business API", category: "IA & Messaging", icon: SiWhatsapp },
-    { name: "Docker + Compose", category: "Infra & Automation", icon: SiDocker },
-    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation", icon: SiHetzner },
-    { name: "n8n (workflows)", category: "Infra & Automation", icon: SiN8n },
-  ]
+  stack: [{
+    name: "FastAPI (webhooks)",
+    category: "Backend & API",
+    icon: SiFastapi
+  }, {
+    name: "Python (automations)",
+    category: "Backend & API",
+    icon: SiPython
+  }, {
+    name: "Redis (cache conversations)",
+    category: "Bases de données",
+    icon: SiRedis
+  }, {
+    name: "PostgreSQL (leads persistants)",
+    category: "Bases de données",
+    icon: SiPostgresql
+  }, {
+    name: "Claude API (qualification)",
+    category: "IA & Messaging",
+    icon: Bot
+  }, {
+    name: "WhatsApp Business API",
+    category: "IA & Messaging",
+    icon: SiWhatsapp
+  }, {
+    name: "Docker + Compose",
+    category: "Infra & Automation",
+    icon: SiDocker
+  }, {
+    name: "VPS Hetzner (~5€/mois)",
+    category: "Infra & Automation",
+    icon: SiHetzner
+  }, {
+    name: "n8n (workflows)",
+    category: "Infra & Automation",
+    icon: SiN8n
+  }]
 }];
 const devStack = [{
   category: "Mobile",
@@ -243,7 +320,6 @@ function ProjectCard({
   index
 }: ProjectCardProps) {
   const [stackExpanded, setStackExpanded] = useState(false);
-
   return <motion.div initial={{
     opacity: 0,
     y: 20
@@ -324,51 +400,45 @@ function ProjectCard({
                   </div>}
 
                 {/* Stack - Expandable */}
-                {project.stack && project.stack.length > 0 && (
-                  <div className="border border-border/30 rounded-xl overflow-hidden mt-4">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setStackExpanded(!stackExpanded);
-                      }}
-                      className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
-                    >
+                {project.stack && project.stack.length > 0 && <div className="border border-border/30 rounded-xl overflow-hidden mt-4">
+                    <button onClick={e => {
+                e.stopPropagation();
+                setStackExpanded(!stackExpanded);
+              }} className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors">
                       <span className="text-sm font-semibold text-foreground">Stack technique</span>
-                      <motion.div
-                        animate={{ rotate: stackExpanded ? 180 : 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
+                      <motion.div animate={{
+                  rotate: stackExpanded ? 180 : 0
+                }} transition={{
+                  duration: 0.2
+                }}>
                         <ChevronDown className="h-4 w-4 text-muted-foreground" />
                       </motion.div>
                     </button>
                     <AnimatePresence>
-                      {stackExpanded && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
+                      {stackExpanded && <motion.div initial={{
+                  height: 0,
+                  opacity: 0
+                }} animate={{
+                  height: "auto",
+                  opacity: 1
+                }} exit={{
+                  height: 0,
+                  opacity: 0
+                }} transition={{
+                  duration: 0.3
+                }} className="overflow-hidden">
                           <div className="px-4 pb-4 flex flex-wrap gap-2">
-                            {project.stack.map((item) => {
-                              const IconComponent = item.icon;
-                              return (
-                                <div
-                                  key={item.name}
-                                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
-                                >
+                            {project.stack.map(item => {
+                      const IconComponent = item.icon;
+                      return <div key={item.name} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50">
                                   {IconComponent && <IconComponent className="h-4 w-4 text-primary" />}
                                   <span className="text-sm text-foreground">{item.name}</span>
-                                </div>
-                              );
-                            })}
+                                </div>;
+                    })}
                           </div>
-                        </motion.div>
-                      )}
+                        </motion.div>}
                     </AnimatePresence>
-                  </div>
-                )}
+                  </div>}
               </div>
             </motion.div>}
         </AnimatePresence>
@@ -483,77 +553,74 @@ const ecomSkills = [{
   items: ["Emailing automatisé", "SMS & WhatsApp automation", "Séquences de relance"]
 }];
 // Boutiques data
-const boutiques = [
-  {
-    year: 2023,
-    shops: [
-      {
-        name: "Shors.fr",
-        ca: 200000,
-        niche: "Fashion streetwear",
-        highlight: "Principale source de CA, scaling agressif (Nov 2023: 8k€ → Déc 2023: +100k€)"
-      }
-    ]
-  },
-  {
-    year: 2024,
-    shops: [
-      {
-        name: "Domozi.com",
-        ca: 150000,
-        niche: "Fashion mixte",
-        highlight: "Deuxième plus grosse boutique"
-      },
-      {
-        name: "Loumys.com",
-        ca: 90000,
-        niche: "Fashion mixte (homme/femme)",
-        highlight: null
-      },
-      {
-        name: "Hartic.fr",
-        ca: 80000,
-        niche: "Tech beauté féminine (lisseurs, boucleurs, épilateurs)",
-        highlight: "Diversification de niche réussie"
-      }
-    ]
-  },
-  {
-    year: 2025,
-    shops: [
-      {
-        name: "Juliette-Toulouse.com",
-        ca: 70000,
-        niche: "Fashion féminine",
-        highlight: "Brand positioning local"
-      }
-    ]
-  }
-];
-
-function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
-  const { formattedCount, ref } = useCountUp({ end, suffix, duration: 2000 });
+const boutiques = [{
+  year: 2023,
+  shops: [{
+    name: "Shors.fr",
+    ca: 200000,
+    niche: "Fashion streetwear",
+    highlight: "Principale source de CA, scaling agressif (Nov 2023: 8k€ → Déc 2023: +100k€)"
+  }]
+}, {
+  year: 2024,
+  shops: [{
+    name: "Domozi.com",
+    ca: 150000,
+    niche: "Fashion mixte",
+    highlight: "Deuxième plus grosse boutique"
+  }, {
+    name: "Loumys.com",
+    ca: 90000,
+    niche: "Fashion mixte (homme/femme)",
+    highlight: null
+  }, {
+    name: "Hartic.fr",
+    ca: 80000,
+    niche: "Tech beauté féminine (lisseurs, boucleurs, épilateurs)",
+    highlight: "Diversification de niche réussie"
+  }]
+}, {
+  year: 2025,
+  shops: [{
+    name: "Juliette-Toulouse.com",
+    ca: 70000,
+    niche: "Fashion féminine",
+    highlight: "Brand positioning local"
+  }]
+}];
+function CountUpKPI({
+  end,
+  suffix = "€"
+}: {
+  end: number;
+  suffix?: string;
+}) {
+  const {
+    formattedCount,
+    ref
+  } = useCountUp({
+    end,
+    suffix,
+    duration: 2000
+  });
   return <div ref={ref}>{formattedCount}</div>;
 }
-
 function EcommerceContent() {
   const [adsExpanded, setAdsExpanded] = useState(false);
   // Removed version selector - now responsive: table on desktop, list on mobile
   const adsBreakdownRef = useRef<HTMLDivElement>(null);
-
   const handleAdsClick = () => {
     const newExpanded = !adsExpanded;
     setAdsExpanded(newExpanded);
     if (newExpanded) {
       setTimeout(() => {
-        adsBreakdownRef.current?.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'center' 
+        adsBreakdownRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
         });
       }, 100);
     }
   };
-
   return <div className="space-y-12">
       {/* Hero Section */}
       <motion.div initial={{
@@ -569,7 +636,7 @@ function EcommerceContent() {
           E-commerce
         </h2>
         <p className="text-muted-foreground text-lg">
-          700k€ de CA sur 4 boutiques Shopify
+          700k€ de CA & +10 boutiques Shopify lancée          
         </p>
       </motion.div>
 
@@ -610,11 +677,9 @@ function EcommerceContent() {
         </GlassCard>
 
         {/* Investissement Ads - Clickable */}
-        <GlassCard 
-          className={`p-4 md:p-6 opacity-0 animate-fade-in cursor-pointer transition-all duration-300 hover:border-primary/50 ${adsExpanded ? 'ring-2 ring-primary/30' : ''}`} 
-          style={{ animationDelay: "0.2s" } as React.CSSProperties}
-          onClick={handleAdsClick}
-        >
+        <GlassCard className={`p-4 md:p-6 opacity-0 animate-fade-in cursor-pointer transition-all duration-300 hover:border-primary/50 ${adsExpanded ? 'ring-2 ring-primary/30' : ''}`} style={{
+        animationDelay: "0.2s"
+      } as React.CSSProperties} onClick={handleAdsClick}>
           <div className="flex items-center justify-between mb-3 md:mb-4">
             <div className="flex items-center -space-x-2">
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
@@ -630,11 +695,11 @@ function EcommerceContent() {
                 <SiPinterest className="w-3.5 h-3.5 md:w-4 md:h-4 text-white" />
               </div>
             </div>
-            <motion.div 
-              animate={{ rotate: adsExpanded ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
-              className="p-1.5 rounded-full bg-primary/10 text-primary"
-            >
+            <motion.div animate={{
+            rotate: adsExpanded ? 180 : 0
+          }} transition={{
+            duration: 0.2
+          }} className="p-1.5 rounded-full bg-primary/10 text-primary">
               <ChevronDown className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </motion.div>
           </div>
@@ -677,22 +742,22 @@ function EcommerceContent() {
 
       {/* Ads Breakdown - Expandable */}
       <AnimatePresence>
-        {adsExpanded && (
-          <motion.div
-            ref={adsBreakdownRef}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden -mt-8"
-          >
+        {adsExpanded && <motion.div ref={adsBreakdownRef} initial={{
+        opacity: 0,
+        height: 0
+      }} animate={{
+        opacity: 1,
+        height: "auto"
+      }} exit={{
+        opacity: 0,
+        height: 0
+      }} transition={{
+        duration: 0.3
+      }} className="overflow-hidden -mt-8">
             <GlassCard className="p-4 md:p-6" hover={false}>
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-sm font-semibold text-foreground">Répartition du budget publicitaire</h4>
-                <button 
-                  onClick={() => setAdsExpanded(false)}
-                  className="p-1 rounded-full hover:bg-muted transition-colors"
-                >
+                <button onClick={() => setAdsExpanded(false)} className="p-1 rounded-full hover:bg-muted transition-colors">
                   <X className="w-4 h-4 text-muted-foreground" />
                 </button>
               </div>
@@ -739,8 +804,7 @@ function EcommerceContent() {
                 </div>
               </div>
             </GlassCard>
-          </motion.div>
-        )}
+          </motion.div>}
       </AnimatePresence>
 
 
@@ -749,12 +813,15 @@ function EcommerceContent() {
         <SectionTitle>Boutiques</SectionTitle>
         
         {/* Info about closed shops */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="mb-8 p-4 rounded-xl bg-muted/50 border border-border/50"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 10
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        delay: 0.2
+      }} className="mb-8 p-4 rounded-xl bg-muted/50 border border-border/50">
           <p className="text-muted-foreground text-sm">
             <span className="text-foreground font-medium">Note :</span> Toutes les boutiques sont fermées. Elles fonctionnaient uniquement via la publicité payante — sans ads, pas de traffic. Il était donc inutile de les maintenir actives.
           </p>
@@ -763,19 +830,20 @@ function EcommerceContent() {
         {/* Mobile: Liste - Desktop: Tableau */}
         
         {/* VERSION MOBILE - Liste */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="md:hidden space-y-3"
-        >
-          {boutiques.flatMap(yearGroup => 
-            yearGroup.shops.map((shop, index) => (
-              <motion.div
-                key={shop.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05 }}
-              >
+        <motion.div initial={{
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} className="md:hidden space-y-3">
+          {boutiques.flatMap(yearGroup => yearGroup.shops.map((shop, index) => <motion.div key={shop.name} initial={{
+          opacity: 0,
+          x: -20
+        }} animate={{
+          opacity: 1,
+          x: 0
+        }} transition={{
+          delay: index * 0.05
+        }}>
                 <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-border dark:border-border/50 border-l-4 border-l-primary hover:bg-card/80 transition-colors">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
@@ -788,14 +856,16 @@ function EcommerceContent() {
                     <p className="text-xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
                   </div>
                 </div>
-              </motion.div>
-            ))
-          )}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-          >
+              </motion.div>))}
+          <motion.div initial={{
+          opacity: 0,
+          x: -20
+        }} animate={{
+          opacity: 1,
+          x: 0
+        }} transition={{
+          delay: 0.3
+        }}>
             <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 border border-border dark:border-border/50 border-l-4 border-l-muted-foreground/50">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
@@ -810,26 +880,24 @@ function EcommerceContent() {
         </motion.div>
 
         {/* VERSION DESKTOP - Tableau */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="hidden md:block rounded-2xl border border-border dark:border-border/50 overflow-hidden"
-        >
+        <motion.div initial={{
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} className="hidden md:block rounded-2xl border border-border dark:border-border/50 overflow-hidden">
           <div className="bg-muted/30 px-4 py-3 border-b border-border dark:border-border/50 grid grid-cols-12 gap-4 text-xs font-medium text-muted-foreground uppercase tracking-wider">
             <div className="col-span-4">Boutique</div>
             <div className="col-span-4">Niche</div>
             <div className="col-span-2 text-center">Année</div>
             <div className="col-span-2 text-right">CA</div>
           </div>
-          {boutiques.flatMap(yearGroup => 
-            yearGroup.shops.map((shop, index) => (
-              <motion.div
-                key={shop.name}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: index * 0.05 }}
-                className="px-4 py-4 border-b border-border dark:border-border/30 grid grid-cols-12 gap-4 items-center hover:bg-muted/20 transition-colors"
-              >
+          {boutiques.flatMap(yearGroup => yearGroup.shops.map((shop, index) => <motion.div key={shop.name} initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} transition={{
+          delay: index * 0.05
+        }} className="px-4 py-4 border-b border-border dark:border-border/30 grid grid-cols-12 gap-4 items-center hover:bg-muted/20 transition-colors">
                 <div className="col-span-4">
                   <h4 className="font-semibold text-foreground">{shop.name}</h4>
                 </div>
@@ -842,15 +910,14 @@ function EcommerceContent() {
                 <div className="col-span-2 text-right">
                   <p className="font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
                 </div>
-              </motion.div>
-            ))
-          )}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="px-4 py-4 grid grid-cols-12 gap-4 items-center bg-muted/10"
-          >
+              </motion.div>))}
+          <motion.div initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} transition={{
+          delay: 0.3
+        }} className="px-4 py-4 grid grid-cols-12 gap-4 items-center bg-muted/10">
             <div className="col-span-4">
               <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
             </div>
@@ -872,20 +939,26 @@ function EcommerceContent() {
 
       {/* Expertise Section - 3 Pillars */}
       <div>
-        <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
-          transition={{ delay: 0.2 }}
-        >
+        <motion.div initial={{
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} transition={{
+        delay: 0.2
+      }}>
           <SectionTitle>Expertise</SectionTitle>
         </motion.div>
         <div className="grid md:grid-cols-3 gap-4">
           {/* Acquisition */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.2 }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.2
+        }}>
             <GlassCard className="p-5 h-full">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -915,11 +988,15 @@ function EcommerceContent() {
           </motion.div>
 
           {/* Conversion */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.3 }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.3
+        }}>
             <GlassCard className="p-5 h-full">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -949,11 +1026,15 @@ function EcommerceContent() {
           </motion.div>
 
           {/* Operations */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.4 }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.4
+        }}>
             <GlassCard className="p-5 h-full">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -990,20 +1071,27 @@ function EcommerceContent() {
 
       {/* Méthodologie Section - Timeline horizontale */}
       <div>
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }}>
           <SectionTitle>Méthodologie</SectionTitle>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Étape 1 - Test */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.1 }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.1
+        }}>
             <GlassCard className="p-5 h-full relative overflow-hidden">
               <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                 <span className="text-primary font-bold text-sm">1</span>
@@ -1019,11 +1107,15 @@ function EcommerceContent() {
           </motion.div>
 
           {/* Étape 2 - Analyse */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.2 }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.2
+        }}>
             <GlassCard className="p-5 h-full relative overflow-hidden">
               <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                 <span className="text-primary font-bold text-sm">2</span>
@@ -1039,11 +1131,15 @@ function EcommerceContent() {
           </motion.div>
 
           {/* Étape 3 - Scale */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.3 }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.3
+        }}>
             <GlassCard className="p-5 h-full relative overflow-hidden">
               <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                 <span className="text-primary font-bold text-sm">3</span>
@@ -1059,11 +1155,15 @@ function EcommerceContent() {
           </motion.div>
 
           {/* Étape 4 - Optimize */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.4 }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          delay: 0.4
+        }}>
             <GlassCard className="p-5 h-full relative overflow-hidden">
               <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                 <span className="text-primary font-bold text-sm">4</span>
@@ -1113,18 +1213,21 @@ const timeline = [{
   title: "Baccalauréat S",
   subtitle: "Mention Assez Bien • Lycée Masséna",
   location: "Nice",
-  
   current: false,
   image: massenaImage
 }];
 function AcademiqueContent() {
   return <div className="space-y-6">
       {/* Présentation */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div initial={{
+      opacity: 0,
+      y: 20
+    }} animate={{
+      opacity: 1,
+      y: 0
+    }} transition={{
+      duration: 0.5
+    }}>
         <SectionTitle>Parcours</SectionTitle>
       </motion.div>
 
