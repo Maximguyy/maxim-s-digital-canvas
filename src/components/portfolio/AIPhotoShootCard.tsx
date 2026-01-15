@@ -80,8 +80,6 @@ export function AIPhotoShootCard({ index }: AIPhotoShootCardProps) {
             ))}
           </div>
 
-          {/* Stats */}
-          <p className="text-primary text-sm font-medium">MVP fonctionnel</p>
         </button>
 
         {/* Expandable Content */}
