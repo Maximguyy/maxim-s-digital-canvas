@@ -471,11 +471,11 @@ function AcquisitionContent() {
 // ==================== ACADÉMIQUE ====================
 
 const timeline = [{
-  period: "2023 - Présent",
+  period: "2023 - 2024",
   title: "ESILV Paris",
   subtitle: "École d'ingénieur informatique",
   location: "Paris",
-  current: true,
+  current: false,
   image: esilvImage
 }, {
   period: "2021 - 2023",
