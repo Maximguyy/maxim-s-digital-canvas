@@ -9,7 +9,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ activeTab, onTabChange }: HeroSectionProps) {
   return (
-    <section className="min-h-screen flex flex-col pt-20 pb-12">
+    <section className="min-h-screen flex flex-col pt-20 pb-14">
       <div className="container mx-auto px-4">
         {/* Profile Header */}
         <div className="relative flex flex-col items-center text-center mb-10">
