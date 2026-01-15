@@ -1,4 +1,5 @@
-import { SectionContainer } from "./SectionContainer";
+import { motion } from "framer-motion";
+import { SectionTitle } from "./SectionTitle";
 import { 
   SiShopify, 
   SiGoogleanalytics,
@@ -11,93 +12,91 @@ import {
 } from "@icons-pack/react-simple-icons";
 import { MessageSquare, Package, BarChart3, TrendingUp, Send, Mail } from "lucide-react";
 
-const categories = [
+const ecomStack = [
   {
-    title: "Platforms",
+    category: "Platforms",
     items: [
-      { name: "Shopify", icon: SiShopify },
+      { icon: SiShopify, name: "Shopify" },
     ],
   },
   {
-    title: "Analytics",
+    category: "Analytics",
     items: [
-      { name: "Triple Whale", icon: BarChart3 },
-      { name: "True Profit", icon: TrendingUp },
-      { name: "Meta Pixel", icon: SiMeta },
-      { name: "Google Analytics 4", icon: SiGoogleanalytics },
-      { name: "Hotjar", icon: SiHotjar },
+      { icon: BarChart3, name: "Triple Whale" },
+      { icon: TrendingUp, name: "True Profit" },
+      { icon: SiMeta, name: "Meta Pixel" },
+      { icon: SiGoogleanalytics, name: "Google Analytics 4" },
+      { icon: SiHotjar, name: "Hotjar" },
     ],
   },
   {
-    title: "Marketing",
+    category: "Marketing",
     items: [
-      { name: "Meta Ads", icon: SiMeta },
-      { name: "Klaviyo", icon: Mail },
-      { name: "SMS Automation", icon: Send },
+      { icon: SiMeta, name: "Meta Ads" },
+      { icon: Mail, name: "Klaviyo" },
+      { icon: Send, name: "SMS Automation" },
     ],
   },
   {
-    title: "Development",
+    category: "Development",
     items: [
-      { name: "Liquid", icon: SiShopify },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "HTML/CSS", icon: SiHtml5 },
-      { name: "React", icon: SiReact },
-      { name: "GraphQL", icon: SiGraphql },
+      { icon: SiShopify, name: "Liquid" },
+      { icon: SiJavascript, name: "JavaScript" },
+      { icon: SiHtml5, name: "HTML/CSS" },
+      { icon: SiReact, name: "React" },
+      { icon: SiGraphql, name: "GraphQL" },
     ],
   },
   {
-    title: "Fulfillment",
+    category: "Fulfillment",
     items: [
-      { name: "Infinite Fulfillment", icon: Package },
+      { icon: Package, name: "Infinite Fulfillment" },
     ],
   },
   {
-    title: "Support",
+    category: "Support",
     items: [
-      { name: "Gorgias", icon: MessageSquare },
+      { icon: MessageSquare, name: "Gorgias" },
     ],
   },
 ];
 
 export function EcomStackSection() {
   return (
-    <SectionContainer
-      id="ecom-stack"
-      title="Stack E-commerce"
-      subtitle="Outils et technologies maîtrisés pour le e-commerce"
-    >
-      <div className="space-y-12 md:space-y-16">
-        {categories.map((category, catIndex) => (
-          <div 
-            key={category.title}
-            className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 opacity-0 animate-fade-in"
-            style={{ animationDelay: `${0.1 * catIndex}s` } as React.CSSProperties}
+    <div>
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ delay: 0.2 }}
+      >
+        <SectionTitle>Stack</SectionTitle>
+      </motion.div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {ecomStack.map((category, catIndex) => (
+          <motion.div 
+            key={category.category} 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.2 + catIndex * 0.1 }} 
+            className="p-4 rounded-xl border border-border/50 bg-card/30"
           >
-            <div className="sm:col-span-4 lg:col-span-3">
-              <p className="text-3xl md:text-5xl font-bold leading-none text-muted-foreground uppercase tracking-tight">
-                {category.title}
-              </p>
-            </div>
-            <div className="sm:col-span-8 lg:col-span-9 flex gap-x-8 gap-y-6 flex-wrap items-center">
-              {category.items.map((item) => {
+            <h4 className="text-xs uppercase tracking-wider text-primary mb-3 font-medium">
+              {category.category}
+            </h4>
+            <div className="space-y-2">
+              {category.items.map(item => {
                 const IconComponent = item.icon;
                 return (
-                  <div
-                    key={item.name}
-                    className="flex gap-3 items-center leading-none group"
-                  >
-                    <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-secondary/50 group-hover:bg-primary/20 transition-colors">
-                      <IconComponent className="h-6 w-6 text-primary" />
-                    </div>
-                    <span className="text-lg md:text-xl capitalize text-foreground">{item.name}</span>
+                  <div key={item.name} className="flex items-center gap-2 text-foreground text-sm">
+                    <IconComponent className="h-4 w-4 text-muted-foreground" />
+                    {item.name}
                   </div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </SectionContainer>
+    </div>
   );
 }
