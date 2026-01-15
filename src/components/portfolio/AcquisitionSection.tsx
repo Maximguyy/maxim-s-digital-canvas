@@ -221,26 +221,6 @@ export function AcquisitionSection() {
           </div>
         </GlassCard>
 
-        {/* Formats winners */}
-        <GlassCard className="p-6 mt-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s" } as React.CSSProperties}>
-          <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-            <Star className="h-5 w-5 text-primary" />
-            Formats winners
-          </h4>
-          <div className="grid md:grid-cols-3 gap-4">
-            {winnerFormats.map((format, idx) => (
-              <div key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10">
-                <format.icon className="h-5 w-5 text-primary flex-shrink-0" />
-                <div>
-                  <span className="text-foreground text-sm font-medium">{format.label}</span>
-                  {format.note && (
-                    <span className="text-muted-foreground text-xs ml-1">({format.note})</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </GlassCard>
       </div>
 
       {/* Section 3: Automatisations IA */}
