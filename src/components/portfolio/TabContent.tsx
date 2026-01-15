@@ -390,6 +390,7 @@ function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
 
 function EcommerceContent() {
   const [adsExpanded, setAdsExpanded] = useState(false);
+  const [boutiquesVersion, setBoutiquesVersion] = useState<'A' | 'B'>('A');
 
   return <div className="space-y-12">
       {/* KPI's Title */}
@@ -584,93 +585,189 @@ function EcommerceContent() {
           </p>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-0.5 bg-border" />
+        {/* Version selector for preview */}
+        <div className="mb-6 flex gap-2 flex-wrap">
+          <Badge 
+            variant={boutiquesVersion === 'A' ? 'default' : 'outline'} 
+            className="cursor-pointer"
+            onClick={() => setBoutiquesVersion('A')}
+          >
+            Version A - Grid moderne
+          </Badge>
+          <Badge 
+            variant={boutiquesVersion === 'B' ? 'default' : 'outline'} 
+            className="cursor-pointer"
+            onClick={() => setBoutiquesVersion('B')}
+          >
+            Version B - Cards horizontales
+          </Badge>
+        </div>
 
-          <div className="space-y-8">
+        {/* VERSION A - Grid moderne avec année en badge */}
+        {boutiquesVersion === 'A' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="space-y-6"
+          >
+            {/* All shops in a grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {boutiques.flatMap(yearGroup => 
+                yearGroup.shops.map((shop, index) => (
+                  <motion.div
+                    key={shop.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <GlassCard className="p-5 h-full flex flex-col">
+                      <div className="flex items-start justify-between gap-3 mb-3">
+                        <div className="flex items-center gap-3">
+                          <span className="text-3xl">{shop.emoji}</span>
+                          <div>
+                            <h4 className="font-semibold text-foreground">{shop.name}</h4>
+                            <Badge variant="outline" className="text-xs mt-1">
+                              {yearGroup.year}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground text-sm mb-3 flex-1">{shop.niche}</p>
+                      <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                        <span className="text-2xl font-bold text-primary">
+                          {shop.ca.toLocaleString('fr-FR')}€
+                        </span>
+                      </div>
+                      {shop.highlight && (
+                        <p className="text-xs text-muted-foreground mt-3 p-2 rounded-lg bg-primary/5">
+                          {shop.highlight}
+                        </p>
+                      )}
+                    </GlassCard>
+                  </motion.div>
+                ))
+              )}
+              
+              {/* Test shops card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <GlassCard className="p-5 h-full flex flex-col bg-muted/30">
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl">🧪</span>
+                      <div>
+                        <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
+                        <Badge variant="outline" className="text-xs mt-1">
+                          2023-2024
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground text-sm mb-3 flex-1">
+                    Approche test & learn pour validation produits
+                  </p>
+                  <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                    <span className="text-2xl font-bold text-primary">80 000€</span>
+                  </div>
+                </GlassCard>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* VERSION B - Cards horizontales par année */}
+        {boutiquesVersion === 'B' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="space-y-8"
+          >
             {boutiques.map((yearGroup, yearIndex) => (
               <motion.div
                 key={yearGroup.year}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 + yearIndex * 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: yearIndex * 0.1 }}
               >
-                {/* Year marker */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm md:text-base z-10">
-                    {yearGroup.year.toString().slice(-2)}
-                  </div>
-                  <span className="text-xl md:text-2xl font-bold text-foreground">{yearGroup.year}</span>
+                {/* Year header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
+                  <span className="text-3xl font-bold text-primary">{yearGroup.year}</span>
+                  <div className="h-px flex-1 bg-gradient-to-l from-primary/50 to-transparent" />
                 </div>
 
-                {/* Shops for this year */}
-                <div className="ml-12 md:ml-16 space-y-4">
+                {/* Horizontal scroll on mobile, grid on desktop */}
+                <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
                   {yearGroup.shops.map((shop, shopIndex) => (
                     <motion.div
                       key={shop.name}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 + yearIndex * 0.1 + shopIndex * 0.05 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: yearIndex * 0.1 + shopIndex * 0.05 }}
+                      className="min-w-[280px] md:min-w-0"
                     >
-                      <GlassCard className="p-4 md:p-5">
-                        <div className="flex items-start justify-between gap-4 mb-3">
-                          <div className="flex items-center gap-3">
-                            <span className="text-2xl">{shop.emoji}</span>
-                            <div>
-                              <h4 className="font-semibold text-foreground">{shop.name}</h4>
-                              <p className="text-muted-foreground text-sm">{shop.niche}</p>
-                            </div>
-                          </div>
-                          <Badge variant="secondary" className="text-primary font-bold whitespace-nowrap">
-                            {shop.ca.toLocaleString('fr-FR')}€
-                          </Badge>
+                      <div className="relative p-5 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm">
+                        {/* Emoji badge top right */}
+                        <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-background border-2 border-primary/20 flex items-center justify-center text-2xl shadow-lg">
+                          {shop.emoji}
                         </div>
+                        
+                        <h4 className="font-bold text-lg text-foreground mb-1 pr-10">{shop.name}</h4>
+                        <p className="text-muted-foreground text-sm mb-4">{shop.niche}</p>
+                        
+                        <div className="flex items-end justify-between">
+                          <div>
+                            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Chiffre d'affaires</p>
+                            <p className="text-2xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
+                          </div>
+                        </div>
+                        
                         {shop.highlight && (
-                          <p className="text-sm text-muted-foreground border-t border-border/50 pt-3 mt-3">
-                            <span className="text-primary">→</span> {shop.highlight}
-                          </p>
+                          <div className="mt-4 pt-3 border-t border-border/30">
+                            <p className="text-xs text-muted-foreground flex items-start gap-2">
+                              <Star className="w-3 h-3 text-primary mt-0.5 flex-shrink-0" />
+                              {shop.highlight}
+                            </p>
+                          </div>
                         )}
-                      </GlassCard>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
               </motion.div>
             ))}
 
-            {/* Test shops */}
+            {/* Autres - Test shops */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground z-10">
-                  <Store className="w-4 h-4 md:w-5 md:h-5" />
-                </div>
-                <span className="text-xl md:text-2xl font-bold text-foreground">Autres</span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px flex-1 bg-gradient-to-r from-muted-foreground/30 to-transparent" />
+                <span className="text-xl font-bold text-muted-foreground">Autres</span>
+                <div className="h-px flex-1 bg-gradient-to-l from-muted-foreground/30 to-transparent" />
               </div>
 
-              <div className="ml-12 md:ml-16">
-                <GlassCard className="p-4 md:p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">🧪</span>
-                      <div>
-                        <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
-                        <p className="text-muted-foreground text-sm">Approche test & learn pour validation produits</p>
-                      </div>
-                    </div>
-                    <Badge variant="secondary" className="text-primary font-bold whitespace-nowrap">
-                      80 000€
-                    </Badge>
-                  </div>
-                </GlassCard>
+              <div className="relative p-5 rounded-2xl border border-border/30 bg-muted/20">
+                <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-background border-2 border-muted flex items-center justify-center text-2xl shadow-lg">
+                  🧪
+                </div>
+                
+                <h4 className="font-bold text-lg text-foreground mb-1 pr-10">6-7 boutiques test</h4>
+                <p className="text-muted-foreground text-sm mb-4">Approche test & learn pour validation produits</p>
+                
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">CA Cumulé</p>
+                  <p className="text-2xl font-bold text-primary">80 000€</p>
+                </div>
               </div>
             </motion.div>
-          </div>
-        </div>
+          </motion.div>
+        )}
       </div>
     </div>;
 }
