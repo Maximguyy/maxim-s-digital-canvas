@@ -390,7 +390,7 @@ function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
 
 function EcommerceContent() {
   const [adsExpanded, setAdsExpanded] = useState(false);
-  const [boutiquesVersion, setBoutiquesVersion] = useState<'A' | 'B'>('A');
+  const [boutiquesVersion, setBoutiquesVersion] = useState<'A' | 'B' | 'C' | 'D'>('A');
   const adsBreakdownRef = useRef<HTMLDivElement>(null);
 
   const handleAdsClick = () => {
@@ -601,14 +601,28 @@ function EcommerceContent() {
             className="cursor-pointer"
             onClick={() => setBoutiquesVersion('A')}
           >
-            Version A - Grid moderne
+            Version A - Grid
           </Badge>
           <Badge 
             variant={boutiquesVersion === 'B' ? 'default' : 'outline'} 
             className="cursor-pointer"
             onClick={() => setBoutiquesVersion('B')}
           >
-            Version B - Cards horizontales
+            Version B - Horizontale
+          </Badge>
+          <Badge 
+            variant={boutiquesVersion === 'C' ? 'default' : 'outline'} 
+            className="cursor-pointer"
+            onClick={() => setBoutiquesVersion('C')}
+          >
+            Version C - Timeline
+          </Badge>
+          <Badge 
+            variant={boutiquesVersion === 'D' ? 'default' : 'outline'} 
+            className="cursor-pointer"
+            onClick={() => setBoutiquesVersion('D')}
+          >
+            Version D - Bento
           </Badge>
         </div>
 
@@ -619,7 +633,6 @@ function EcommerceContent() {
             animate={{ opacity: 1 }}
             className="space-y-6"
           >
-            {/* All shops in a grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {boutiques.flatMap(yearGroup => 
                 yearGroup.shops.map((shop, index) => (
@@ -657,7 +670,6 @@ function EcommerceContent() {
                 ))
               )}
               
-              {/* Test shops card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -701,14 +713,12 @@ function EcommerceContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: yearIndex * 0.1 }}
               >
-                {/* Year header */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
                   <span className="text-3xl font-bold text-primary">{yearGroup.year}</span>
                   <div className="h-px flex-1 bg-gradient-to-l from-primary/50 to-transparent" />
                 </div>
 
-                {/* Horizontal scroll on mobile, grid on desktop */}
                 <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
                   {yearGroup.shops.map((shop, shopIndex) => (
                     <motion.div
@@ -719,7 +729,6 @@ function EcommerceContent() {
                       className="min-w-[280px] md:min-w-0"
                     >
                       <div className="relative p-5 rounded-2xl border border-border/50 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm">
-                        {/* Emoji badge top right */}
                         <div className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-background border-2 border-primary/20 flex items-center justify-center text-2xl shadow-lg">
                           {shop.emoji}
                         </div>
@@ -749,7 +758,6 @@ function EcommerceContent() {
               </motion.div>
             ))}
 
-            {/* Autres - Test shops */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -772,6 +780,156 @@ function EcommerceContent() {
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">CA Cumulé</p>
                   <p className="text-2xl font-bold text-primary">80 000€</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* VERSION C - Timeline verticale minimaliste */}
+        {boutiquesVersion === 'C' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative"
+          >
+            {/* Timeline line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-muted" />
+            
+            <div className="space-y-8">
+              {boutiques.flatMap((yearGroup, yearIdx) => 
+                yearGroup.shops.map((shop, shopIdx) => {
+                  const isLeft = (yearIdx + shopIdx) % 2 === 0;
+                  return (
+                    <motion.div
+                      key={shop.name}
+                      initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: (yearIdx * yearGroup.shops.length + shopIdx) * 0.1 }}
+                      className={`relative flex items-center gap-4 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                    >
+                      {/* Timeline dot */}
+                      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center text-lg z-10">
+                        {shop.emoji}
+                      </div>
+                      
+                      {/* Content */}
+                      <div className={`ml-16 md:ml-0 md:w-[calc(50%-2rem)] ${isLeft ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
+                        <GlassCard className="p-4">
+                          <div className={`flex items-center gap-2 mb-2 ${isLeft ? 'md:justify-end' : ''}`}>
+                            <Badge variant="secondary" className="text-xs">{yearGroup.year}</Badge>
+                          </div>
+                          <h4 className="font-bold text-foreground mb-1">{shop.name}</h4>
+                          <p className="text-muted-foreground text-sm mb-3">{shop.niche}</p>
+                          <p className="text-xl font-bold text-primary">{shop.ca.toLocaleString('fr-FR')}€</p>
+                          {shop.highlight && (
+                            <p className="text-xs text-muted-foreground mt-2 italic">{shop.highlight}</p>
+                          )}
+                        </GlassCard>
+                      </div>
+                    </motion.div>
+                  );
+                })
+              )}
+              
+              {/* Test shops at end */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="relative flex items-center gap-4"
+              >
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-muted border-2 border-muted-foreground/30 flex items-center justify-center text-lg z-10">
+                  🧪
+                </div>
+                <div className="ml-16 md:ml-0 md:w-[calc(50%-2rem)] md:pr-8 md:text-right">
+                  <GlassCard className="p-4 bg-muted/30">
+                    <Badge variant="outline" className="text-xs mb-2">2023-2024</Badge>
+                    <h4 className="font-bold text-foreground mb-1">6-7 boutiques test</h4>
+                    <p className="text-muted-foreground text-sm mb-3">Test & learn</p>
+                    <p className="text-xl font-bold text-primary">80 000€</p>
+                  </GlassCard>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* VERSION D - Bento Grid asymétrique */}
+        {boutiquesVersion === 'D' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[140px]"
+          >
+            {boutiques.flatMap((yearGroup, yearIdx) => 
+              yearGroup.shops.map((shop, shopIdx) => {
+                const totalIdx = yearIdx * 3 + shopIdx;
+                const isLarge = totalIdx === 0 || totalIdx === 3;
+                const isTall = totalIdx === 1 || totalIdx === 4;
+                
+                return (
+                  <motion.div
+                    key={shop.name}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: totalIdx * 0.08 }}
+                    className={`
+                      ${isLarge ? 'col-span-2 row-span-2' : ''}
+                      ${isTall ? 'row-span-2' : ''}
+                      ${!isLarge && !isTall ? 'col-span-1' : ''}
+                    `}
+                  >
+                    <div className={`
+                      h-full p-4 rounded-2xl border border-border/50 
+                      bg-gradient-to-br from-card to-card/60 backdrop-blur-sm
+                      flex flex-col justify-between
+                      hover:border-primary/30 transition-colors
+                      ${isLarge ? 'p-6' : ''}
+                    `}>
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className={isLarge ? 'text-4xl' : 'text-2xl'}>{shop.emoji}</span>
+                          <Badge variant="outline" className="text-xs">{yearGroup.year}</Badge>
+                        </div>
+                        <h4 className={`font-bold text-foreground ${isLarge ? 'text-lg' : 'text-sm'}`}>{shop.name}</h4>
+                        {(isLarge || isTall) && (
+                          <p className="text-muted-foreground text-xs mt-1">{shop.niche}</p>
+                        )}
+                      </div>
+                      
+                      <div className="mt-auto">
+                        <p className={`font-bold text-primary ${isLarge ? 'text-3xl' : isTall ? 'text-xl' : 'text-lg'}`}>
+                          {shop.ca.toLocaleString('fr-FR')}€
+                        </p>
+                        {isLarge && shop.highlight && (
+                          <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
+                            <Star className="w-3 h-3 text-primary" />
+                            {shop.highlight}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })
+            )}
+            
+            {/* Test shops - small card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
+              className="col-span-2"
+            >
+              <div className="h-full p-4 rounded-2xl border border-border/30 bg-muted/20 flex flex-col justify-between">
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl">🧪</span>
+                  <Badge variant="outline" className="text-xs">2023-24</Badge>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground text-sm">6-7 boutiques test</h4>
+                  <p className="text-xl font-bold text-primary mt-1">80 000€</p>
                 </div>
               </div>
             </motion.div>
