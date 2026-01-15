@@ -217,13 +217,15 @@ export function AcquisitionSection() {
             <TrendingUp className="h-5 w-5 text-primary" />
             Process d'optimisation
           </h4>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-            {optimizationSteps.map((step, idx) => <div key={idx} className="flex flex-col md:flex-row items-center gap-2">
-                <div className="px-4 py-2 rounded-lg bg-secondary/50 text-sm text-foreground text-center">
-                  {step}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            {optimizationSteps.map((step, idx) => (
+              <div key={idx} className="relative flex items-start gap-3 p-3 rounded-lg bg-secondary/30 border border-border/20">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+                  <span className="text-xs font-bold text-primary">{idx + 1}</span>
                 </div>
-                {idx < optimizationSteps.length - 1 && <ArrowDown className="h-4 w-4 text-primary md:rotate-[-90deg]" />}
-              </div>)}
+                <p className="text-sm text-foreground leading-snug">{step}</p>
+              </div>
+            ))}
           </div>
         </GlassCard>
 
