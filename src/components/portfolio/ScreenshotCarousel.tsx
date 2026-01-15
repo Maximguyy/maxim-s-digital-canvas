@@ -11,6 +11,8 @@ import noorScreen7 from "@/assets/noor-screen-7.png";
 import noorScreen8 from "@/assets/noor-screen-8.png";
 import noorScreen9 from "@/assets/noor-screen-9.png";
 import noorScreen10 from "@/assets/noor-screen-10.png";
+import noorScreen11 from "@/assets/noor-screen-11.png";
+import noorScreen12 from "@/assets/noor-screen-12.png";
 
 const screenshots = [
   { src: noorScreen1, alt: "Suivi des prières" },
@@ -23,6 +25,8 @@ const screenshots = [
   { src: noorScreen8, alt: "Interprétation" },
   { src: noorScreen9, alt: "Journal spirituel" },
   { src: noorScreen10, alt: "Série quotidienne" },
+  { src: noorScreen11, alt: "Calendrier des séries" },
+  { src: noorScreen12, alt: "Page Coran" },
 ];
 
 export function ScreenshotCarousel() {
@@ -54,8 +58,8 @@ export function ScreenshotCarousel() {
     <div className="mt-4">
       <p className="text-muted-foreground text-xs mb-3">Screenshots</p>
       
-      {/* Desktop Grid - visible on md+ */}
-      <div className="hidden md:grid md:grid-cols-5 gap-2">
+      {/* Desktop Grid - visible on md+ : 6 columns for 2 rows of 6 */}
+      <div className="hidden md:grid md:grid-cols-6 gap-2">
         {screenshots.map((screenshot, i) => (
           <div 
             key={i} 
