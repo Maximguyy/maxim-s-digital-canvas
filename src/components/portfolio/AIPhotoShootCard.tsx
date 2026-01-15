@@ -26,7 +26,6 @@ interface AIPhotoShootCardProps {
 export function AIPhotoShootCard({ index }: AIPhotoShootCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isStackExpanded, setIsStackExpanded] = useState(false);
-  const [isWorkflowExpanded, setIsWorkflowExpanded] = useState(false);
 
   return (
     <motion.div
@@ -144,45 +143,6 @@ export function AIPhotoShootCard({ index }: AIPhotoShootCardProps) {
                               </div>
                             );
                           })}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Workflow n8n - Expandable */}
-                <div className="border border-border/30 rounded-xl overflow-hidden">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsWorkflowExpanded(!isWorkflowExpanded);
-                    }}
-                    className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
-                  >
-                    <span className="text-sm font-semibold text-foreground">Workflow n8n</span>
-                    <motion.div
-                      animate={{ rotate: isWorkflowExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
-                    </motion.div>
-                  </button>
-                  <AnimatePresence>
-                    {isWorkflowExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-4 pb-4">
-                          <div className="flex items-center justify-center p-8 rounded-lg bg-secondary/30 border border-dashed border-border/50">
-                            <div className="text-center">
-                              <SiN8n className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                              <p className="text-sm text-muted-foreground">Screenshot du workflow à ajouter</p>
-                            </div>
-                          </div>
                         </div>
                       </motion.div>
                     )}
