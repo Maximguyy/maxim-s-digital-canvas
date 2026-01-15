@@ -1,5 +1,5 @@
 import { useTheme } from "./ThemeProvider";
-import flowerDark from "@/assets/flower-dark.svg";
+import flowerDark from "@/assets/flower-dark.png";
 import flowerLight from "@/assets/flower-light.svg";
 
 export function SectionFlower() {
