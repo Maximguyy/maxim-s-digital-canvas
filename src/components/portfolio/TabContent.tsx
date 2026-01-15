@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github } from "lucide-react";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag } from "lucide-react";
 import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
+import { useCountUp } from "@/hooks/useCountUp";
 import cpgeImage from "@/assets/cpge-eucalyptus.jpg";
 import esilvImage from "@/assets/esilv.webp";
 import ucaImage from "@/assets/uca.jpg";
@@ -328,8 +329,67 @@ const ecomSkills = [{
   title: "Automation Marketing",
   items: ["Emailing automatisé", "SMS & WhatsApp automation", "Séquences de relance"]
 }];
+// Boutiques data
+const boutiques = [
+  {
+    year: 2023,
+    shops: [
+      {
+        name: "Shors.fr",
+        emoji: "🏆",
+        ca: 200000,
+        niche: "Fashion streetwear",
+        highlight: "Principale source de CA, scaling agressif (Nov 2023: 8k€ → Déc 2023: +100k€)"
+      }
+    ]
+  },
+  {
+    year: 2024,
+    shops: [
+      {
+        name: "Domozi.com",
+        emoji: "✨",
+        ca: 150000,
+        niche: "Fashion mixte",
+        highlight: "Deuxième plus grosse boutique"
+      },
+      {
+        name: "Loumys.com",
+        emoji: "🎯",
+        ca: 90000,
+        niche: "Fashion mixte (homme/femme)",
+        highlight: null
+      },
+      {
+        name: "Hartic.fr",
+        emoji: "💄",
+        ca: 80000,
+        niche: "Tech beauté féminine (lisseurs, boucleurs, épilateurs)",
+        highlight: "Diversification de niche réussie"
+      }
+    ]
+  },
+  {
+    year: 2025,
+    shops: [
+      {
+        name: "Juliette-Toulouse.com",
+        emoji: "👗",
+        ca: 70000,
+        niche: "Fashion féminine",
+        highlight: "Brand positioning local"
+      }
+    ]
+  }
+];
+
+function CountUpKPI({ end, suffix = "€" }: { end: number; suffix?: string }) {
+  const { formattedCount, ref } = useCountUp({ end, suffix, duration: 2000 });
+  return <div ref={ref}>{formattedCount}</div>;
+}
+
 function EcommerceContent() {
-  return <div className="space-y-8">
+  return <div className="space-y-12">
       {/* KPI's Title */}
       <motion.div initial={{
       opacity: 0
@@ -361,7 +421,7 @@ function EcommerceContent() {
             </div>
           </div>
           <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
-            700k€
+            <CountUpKPI end={700000} />
           </div>
           <div className="text-muted-foreground text-xs md:text-base">Chiffre d'affaires généré</div>
         </GlassCard>
@@ -387,7 +447,7 @@ function EcommerceContent() {
             </div>
           </div>
           <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
-            200k€
+            <CountUpKPI end={200000} />
           </div>
           <div className="text-muted-foreground text-xs md:text-base">Investis en publicité</div>
         </GlassCard>
@@ -402,7 +462,7 @@ function EcommerceContent() {
             </div>
           </div>
           <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
-            11,000+
+            <CountUpKPI end={11000} suffix="+" />
           </div>
           <div className="text-muted-foreground text-xs md:text-base">Commandes traitées</div>
         </GlassCard>
@@ -417,7 +477,7 @@ function EcommerceContent() {
             </div>
           </div>
           <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
-            100k€
+            <CountUpKPI end={100000} />
           </div>
           <div className="text-muted-foreground text-xs md:text-base">Meilleur mois (Décembre 2023)</div>
         </GlassCard>
@@ -437,6 +497,111 @@ function EcommerceContent() {
                 </li>)}
             </ul>
           </GlassCard>)}
+      </div>
+
+      {/* Boutiques Section */}
+      <div className="mt-12">
+        <SectionTitle>Boutiques</SectionTitle>
+        
+        {/* Info about closed shops */}
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8 p-4 rounded-xl bg-muted/50 border border-border/50"
+        >
+          <p className="text-muted-foreground text-sm">
+            <span className="text-foreground font-medium">Note :</span> Toutes les boutiques sont fermées. Elles fonctionnaient uniquement via la publicité payante — sans ads, pas de traffic. Il était donc inutile de les maintenir actives.
+          </p>
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-0.5 bg-border" />
+
+          <div className="space-y-8">
+            {boutiques.map((yearGroup, yearIndex) => (
+              <motion.div
+                key={yearGroup.year}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 + yearIndex * 0.1 }}
+              >
+                {/* Year marker */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm md:text-base z-10">
+                    {yearGroup.year.toString().slice(-2)}
+                  </div>
+                  <span className="text-xl md:text-2xl font-bold text-foreground">{yearGroup.year}</span>
+                </div>
+
+                {/* Shops for this year */}
+                <div className="ml-12 md:ml-16 space-y-4">
+                  {yearGroup.shops.map((shop, shopIndex) => (
+                    <motion.div
+                      key={shop.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + yearIndex * 0.1 + shopIndex * 0.05 }}
+                    >
+                      <GlassCard className="p-4 md:p-5">
+                        <div className="flex items-start justify-between gap-4 mb-3">
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl">{shop.emoji}</span>
+                            <div>
+                              <h4 className="font-semibold text-foreground">{shop.name}</h4>
+                              <p className="text-muted-foreground text-sm">{shop.niche}</p>
+                            </div>
+                          </div>
+                          <Badge variant="secondary" className="text-primary font-bold whitespace-nowrap">
+                            {shop.ca.toLocaleString('fr-FR')}€
+                          </Badge>
+                        </div>
+                        {shop.highlight && (
+                          <p className="text-sm text-muted-foreground border-t border-border/50 pt-3 mt-3">
+                            <span className="text-primary">→</span> {shop.highlight}
+                          </p>
+                        )}
+                      </GlassCard>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Test shops */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground z-10">
+                  <Store className="w-4 h-4 md:w-5 md:h-5" />
+                </div>
+                <span className="text-xl md:text-2xl font-bold text-foreground">Autres</span>
+              </div>
+
+              <div className="ml-12 md:ml-16">
+                <GlassCard className="p-4 md:p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">🧪</span>
+                      <div>
+                        <h4 className="font-semibold text-foreground">6-7 boutiques test</h4>
+                        <p className="text-muted-foreground text-sm">Approche test & learn pour validation produits</p>
+                      </div>
+                    </div>
+                    <Badge variant="secondary" className="text-primary font-bold whitespace-nowrap">
+                      80 000€
+                    </Badge>
+                  </div>
+                </GlassCard>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </div>;
 }
