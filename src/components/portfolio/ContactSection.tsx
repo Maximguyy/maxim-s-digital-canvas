@@ -98,9 +98,7 @@ ${formData.message}`;
                         <span className="font-medium text-foreground leading-none">
                           {link.label}
                         </span>
-                        <span className="text-xs text-muted-foreground truncate max-w-[14rem]">
-                          {link.description}
-                        </span>
+                        
                       </span>
                     </span>
                     <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-60" />
