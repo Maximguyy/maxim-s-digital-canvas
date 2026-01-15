@@ -7,46 +7,47 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Github, ArrowUpRight, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-const links = [
-  {
-    label: "Email",
-    href: "mailto:guymaxim@gmail.com",
-    icon: Mail,
-    description: "guymaxim@gmail.com",
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/Maximguyy",
-    icon: Github,
-    description: "Voir mes projets",
-  },
-];
-
+const links = [{
+  label: "Email",
+  href: "mailto:guymaxim@gmail.com",
+  icon: Mail,
+  description: "guymaxim@gmail.com"
+}, {
+  label: "GitHub",
+  href: "https://github.com/Maximguyy",
+  icon: Github,
+  description: "Voir mes projets"
+}];
 export function ContactSection() {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    message: "",
+    message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
       toast({
         title: "Erreur",
         description: "Veuillez remplir tous les champs",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -57,11 +58,10 @@ export function ContactSection() {
       toast({
         title: "Erreur",
         description: "Veuillez entrer une adresse email valide",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
-
     setIsSubmitting(true);
 
     // Create mailto link with form data
@@ -70,21 +70,15 @@ Email: ${formData.email}
 
 Message:
 ${formData.message}`;
-
     const mailtoLink = `mailto:guymaxim@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(mailtoBody)}`;
-    
     window.location.href = mailtoLink;
-
     toast({
       title: "Redirection vers votre client mail",
-      description: "Votre client de messagerie va s'ouvrir avec le message pré-rempli.",
+      description: "Votre client de messagerie va s'ouvrir avec le message pré-rempli."
     });
-
     setIsSubmitting(false);
   };
-
-  return (
-    <section id="contact" className="py-16 md:py-24">
+  return <section id="contact" className="py-16 md:py-0">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <SectionTitle>Contact</SectionTitle>
@@ -92,19 +86,10 @@ ${formData.message}`;
           <div className="space-y-6">
             {/* Email + GitHub (side by side) */}
             <div className="grid grid-cols-2 gap-4">
-              {links.map((link, index) => (
-                <Button
-                  key={link.label}
-                  asChild
-                  variant="secondary"
-                  className="w-full h-auto justify-between px-4 py-4 whitespace-normal opacity-0 animate-fade-in"
-                  style={{ animationDelay: `${0.1 * index}s` } as React.CSSProperties}
-                >
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                    rel="noopener noreferrer"
-                  >
+              {links.map((link, index) => <Button key={link.label} asChild variant="secondary" className="w-full h-auto justify-between px-4 py-4 whitespace-normal opacity-0 animate-fade-in" style={{
+              animationDelay: `${0.1 * index}s`
+            } as React.CSSProperties}>
+                  <a href={link.href} target={link.href.startsWith("mailto") ? undefined : "_blank"} rel="noopener noreferrer">
                     <span className="flex items-center gap-3 min-w-0">
                       <span className="p-2 rounded-lg bg-primary/10 text-primary">
                         <link.icon className="h-5 w-5" />
@@ -120,66 +105,33 @@ ${formData.message}`;
                     </span>
                     <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-60" />
                   </a>
-                </Button>
-              ))}
+                </Button>)}
             </div>
 
             {/* Form */}
-            <GlassCard
-              className="p-6 md:p-8 opacity-0 animate-fade-in"
-              style={{ animationDelay: "0.2s" } as React.CSSProperties}
-            >
+            <GlassCard className="p-6 md:p-8 opacity-0 animate-fade-in" style={{
+            animationDelay: "0.2s"
+          } as React.CSSProperties}>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Nom</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      placeholder="Votre nom"
-                      value={formData.name}
-                      onChange={handleChange}
-                      maxLength={100}
-                    />
+                    <Input id="name" name="name" placeholder="Votre nom" value={formData.name} onChange={handleChange} maxLength={100} />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="votre@email.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      maxLength={255}
-                    />
+                    <Input id="email" name="email" type="email" placeholder="votre@email.com" value={formData.email} onChange={handleChange} maxLength={255} />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="subject">Objet</Label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    placeholder="Sujet de votre message"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    maxLength={200}
-                  />
+                  <Input id="subject" name="subject" placeholder="Sujet de votre message" value={formData.subject} onChange={handleChange} maxLength={200} />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Votre message..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    maxLength={2000}
-                    className="resize-none"
-                  />
+                  <Textarea id="message" name="message" placeholder="Votre message..." value={formData.message} onChange={handleChange} rows={5} maxLength={2000} className="resize-none" />
                 </div>
 
                 <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
@@ -191,14 +143,12 @@ ${formData.message}`;
           </div>
 
           {/* Footer */}
-          <p
-            className="text-muted-foreground text-sm opacity-0 animate-fade-in pt-12"
-            style={{ animationDelay: "0.5s" }}
-          >
+          <p className="text-muted-foreground text-sm opacity-0 animate-fade-in pt-12 text-center my-0 py-[11px]" style={{
+          animationDelay: "0.5s"
+        }}>
             © {new Date().getFullYear()} Maxim Guy. Tous droits réservés.
           </p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
