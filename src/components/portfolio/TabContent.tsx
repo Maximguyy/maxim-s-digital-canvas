@@ -132,9 +132,11 @@ interface DevProject {
   content: string;
   githubUrl?: string;
   secondaryBadge?: string;
-  subSections?: { title: string; description: string }[];
+  subSections?: {
+    title: string;
+    description: string;
+  }[];
 }
-
 interface ProjectCardProps {
   project: DevProject;
   isExpanded: boolean;
@@ -172,17 +174,9 @@ function ProjectCard({
               <p className="text-muted-foreground text-sm">{project.tagline}</p>
             </div>
             <div className="flex items-center gap-2">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="p-2 rounded-full bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
-                >
+              {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="p-2 rounded-full bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
                   <Github className="h-4 w-4" />
-                </a>
-              )}
+                </a>}
               <motion.div animate={{
               rotate: isExpanded ? 180 : 0
             }} transition={{
@@ -260,12 +254,12 @@ function DeveloppementContent() {
       {/* Stack Section */}
       <div>
         <motion.div initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} transition={{
-          delay: 0.2
-        }}>
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} transition={{
+        delay: 0.2
+      }}>
           <SectionTitle>Stack</SectionTitle>
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -334,22 +328,25 @@ const ecomSkills = [{
   title: "Automation Marketing",
   items: ["Emailing automatisé", "SMS & WhatsApp automation", "Séquences de relance"]
 }];
-
 function EcommerceContent() {
   return <div className="space-y-8">
       {/* KPI's Title */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.1 }}
-      >
+      <motion.div initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} transition={{
+      delay: 0.1
+    }}>
         <SectionTitle>KPI's</SectionTitle>
       </motion.div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 gap-4 md:gap-6">
         {/* Chiffre d'affaires */}
-        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" } as React.CSSProperties}>
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
+        animationDelay: "0.1s"
+      } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-3 md:mb-4">
             <div className="flex items-center -space-x-2 md:-space-x-3">
               <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#635BFF] flex items-center justify-center ring-2 ring-background z-30">
@@ -370,7 +367,9 @@ function EcommerceContent() {
         </GlassCard>
 
         {/* Investissement Ads */}
-        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" } as React.CSSProperties}>
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
+        animationDelay: "0.2s"
+      } as React.CSSProperties}>
           <div className="flex items-center justify-between mb-3 md:mb-4">
             <div className="flex items-center -space-x-2 md:-space-x-3">
               <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#1877F2] flex items-center justify-center ring-2 ring-background z-40">
@@ -505,9 +504,7 @@ function AcademiqueContent() {
       {/* Présentation */}
       <div>
         <h3 className="text-lg font-semibold text-foreground mb-3">Parcours :</h3>
-        <p className="text-muted-foreground leading-relaxed">
-          Formation scientifique solide de Nice à Paris, du Bac S jusqu'à l'école d'ingénieur en informatique.
-        </p>
+        
       </div>
 
       {/* Timeline */}
@@ -516,11 +513,7 @@ function AcademiqueContent() {
             <div className="flex items-stretch gap-4">
               {/* Image */}
               <div className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 rounded-lg overflow-hidden">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
+                <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
               </div>
               
               {/* Content */}
@@ -538,7 +531,7 @@ function AcademiqueContent() {
                 </div>
                 <h4 className="font-semibold text-foreground">{item.title}</h4>
                 <p className="text-muted-foreground text-sm">{item.subtitle}</p>
-                {item.note && <p className="text-primary/70 text-xs mt-1">• {item.note}</p>}
+                {item.note}
               </div>
             </div>
           </GlassCard>)}
