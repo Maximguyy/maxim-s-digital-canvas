@@ -95,14 +95,34 @@ export function AIPhotoShootCard({ index }: AIPhotoShootCardProps) {
               className="overflow-hidden"
             >
               <div className="px-6 pb-6 space-y-6">
-                {/* Présentation */}
+                {/* Contexte */}
                 <div>
-                  <h5 className="text-sm font-semibold text-foreground mb-2">Présentation</h5>
+                  <h5 className="text-sm font-semibold text-foreground mb-2">Contexte</h5>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Bot Telegram permettant d'envoyer plusieurs produits e-commerce et de générer des shootings photos IA 
-                    avec mannequin portant les articles. Objectif : permettre aux petits e-commerçants de créer des bundles 
-                    visuels comme les grands sites (Asos, Levis). Coût par shooting : ~1€. Projet arrêté car la technologie 
-                    IA n'était pas encore assez mature pour les détails vestimentaires.
+                    Ce projet nécessitait un backend capable de générer des images IA (essayage virtuel sur mannequin), 
+                    ainsi qu'une application Shopify connectée à ce backend pour permettre aux e-commerçants de créer 
+                    facilement des bundles visuels comme les grands sites (Asos, Levis). Coût par shooting : ~1€.
+                  </p>
+                </div>
+
+                {/* Partie 1 - Bot Telegram */}
+                <div>
+                  <h5 className="text-sm font-semibold text-foreground mb-2">Phase 1 : Bot Telegram <Badge variant="outline" className="ml-2 text-xs text-green-500 border-green-500/30">100% opérationnel</Badge></h5>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Pour rapidement tester la technologie d'IA générative, j'ai développé un bot Telegram entièrement fonctionnel. 
+                    Il permet d'envoyer plusieurs produits e-commerce et de générer des shootings photos IA avec un mannequin 
+                    portant les articles. Le bot a validé la faisabilité technique du concept.
+                  </p>
+                </div>
+
+                {/* Partie 2 - App Shopify */}
+                <div>
+                  <h5 className="text-sm font-semibold text-foreground mb-2">Phase 2 : Application Shopify <Badge variant="outline" className="ml-2 text-xs text-amber-500 border-amber-500/30">En pause</Badge></h5>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Suite au succès du bot, j'ai commencé le développement d'une application Shopify intégrée (Remix + Polaris) 
+                    connectée au backend IA. Le développement a été mis en pause car la technologie d'IA présentait trop de 
+                    défauts sur des vêtements très spécifiques (détails vestimentaires, textures complexes). Le marché n'était 
+                    pas encore prêt.
                   </p>
                 </div>
 
