@@ -515,7 +515,7 @@ function EcommerceContent() {
             transition={{ duration: 0.3 }}
             className="overflow-hidden -mt-8"
           >
-            <GlassCard className="p-4 md:p-6">
+            <GlassCard className="p-4 md:p-6" hover={false}>
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-sm font-semibold text-foreground">Répartition du budget publicitaire</h4>
                 <button 
