@@ -495,7 +495,7 @@ const timeline = [{
   title: "Baccalauréat S",
   subtitle: "Mention Assez Bien • Lycée Masséna",
   location: "Nice",
-  note: "Année COVID",
+  
   current: false,
   image: massenaImage
 }];
@@ -534,7 +534,7 @@ function AcademiqueContent() {
                 </div>
                 <h4 className="font-semibold text-foreground">{item.title}</h4>
                 <p className="text-muted-foreground text-sm">{item.subtitle}</p>
-                {item.note}
+                
               </div>
             </div>
           </GlassCard>)}
