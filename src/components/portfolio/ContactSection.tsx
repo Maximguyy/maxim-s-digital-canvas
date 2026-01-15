@@ -85,12 +85,45 @@ ${formData.message}`;
 
   return (
     <section id="contact" className="py-16 md:py-24">
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="container mx-auto px-4">
         <SectionTitle>Contact</SectionTitle>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="space-y-6">
+          {/* Contact Links - Side by side */}
+          <div className="grid grid-cols-2 gap-4">
+            {links.map((link, index) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                className="group block"
+              >
+                <GlassCard 
+                  className="p-5 opacity-0 animate-fade-in h-full"
+                  style={{ animationDelay: `${0.1 * index}s` } as React.CSSProperties}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                      <link.icon className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium text-foreground mb-0.5 flex items-center gap-1">
+                        {link.label}
+                        <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                      <div className="text-sm text-muted-foreground truncate">
+                        {link.description}
+                      </div>
+                    </div>
+                  </div>
+                </GlassCard>
+              </a>
+            ))}
+          </div>
+
           {/* Form */}
-          <GlassCard className="p-6 md:p-8 opacity-0 animate-fade-in">
+          <GlassCard className="p-6 md:p-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" } as React.CSSProperties}>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -144,45 +177,12 @@ ${formData.message}`;
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
+              <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
                 <Send className="h-4 w-4 mr-2" />
                 Envoyer le message
               </Button>
             </form>
           </GlassCard>
-
-          {/* Contact Links */}
-          <div className="space-y-4">
-            {links.map((link, index) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                rel="noopener noreferrer"
-                className="group block"
-              >
-                <GlassCard 
-                  className="p-6 opacity-0 animate-fade-in"
-                  style={{ animationDelay: `${0.1 * (index + 1)}s` } as React.CSSProperties}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
-                      <link.icon className="h-6 w-6" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="font-medium text-foreground mb-1 flex items-center gap-1">
-                        {link.label}
-                        <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {link.description}
-                      </div>
-                    </div>
-                  </div>
-                </GlassCard>
-              </a>
-            ))}
-          </div>
         </div>
 
         {/* Footer */}

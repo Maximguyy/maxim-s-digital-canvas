@@ -96,6 +96,9 @@ export function NoorAppCard({ index }: NoorAppCardProps) {
             <div className="flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-2">
                 <h4 className="text-lg font-semibold text-foreground">Noor App</h4>
+                <Badge variant="outline" className="text-xs text-green-500 border-green-500/30">
+                  En production
+                </Badge>
               </div>
               <p className="text-muted-foreground text-sm">App mobile type Duolingo pour l'apprentissage du Coran</p>
             </div>
