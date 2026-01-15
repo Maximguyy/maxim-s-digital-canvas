@@ -217,7 +217,7 @@ export function AcquisitionSection() {
             <TrendingUp className="h-5 w-5 text-primary" />
             Process d'optimisation
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
             {optimizationSteps.map((step, idx) => (
               <div key={idx} className="relative flex items-start gap-3 p-3 rounded-lg bg-secondary/30 border border-border/20">
                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
