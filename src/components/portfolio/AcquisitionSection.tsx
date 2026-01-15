@@ -86,17 +86,13 @@ const techStack = [
     ],
   },
   {
-    category: "Infra",
+    category: "Infra & Automation",
     items: [
       { icon: SiDocker, name: "Docker + Compose" },
       { icon: Server, name: "VPS Hetzner (~5€/mois)" },
+      { icon: Zap, name: "n8n (workflows)" },
     ],
   },
-];
-
-const evolution = [
-  { phase: "Phase 1", title: "N8n", description: "no-code, prototypage rapide" },
-  { phase: "Phase 2", title: "Python", description: "cost efficiency + customisation avancée" },
 ];
 
 const learningsSuccess = [
@@ -285,27 +281,6 @@ export function AcquisitionSection() {
           </div>
         </GlassCard>
 
-        {/* Évolution */}
-        <GlassCard className="p-6 mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" } as React.CSSProperties}>
-          <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-primary" />
-            Évolution
-          </h4>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            {evolution.map((phase, idx) => (
-              <div key={idx} className="flex items-center gap-4">
-                <div className="text-center">
-                  <Badge variant="secondary" className="mb-2">{phase.phase}</Badge>
-                  <div className="text-foreground font-medium">{phase.title}</div>
-                  <div className="text-muted-foreground text-xs">{phase.description}</div>
-                </div>
-                {idx < evolution.length - 1 && (
-                  <ArrowDown className="h-5 w-5 text-primary rotate-[-90deg] hidden md:block" />
-                )}
-              </div>
-            ))}
-          </div>
-        </GlassCard>
 
         {/* Flows Automatisés - Expandable */}
         <GlassCard 
