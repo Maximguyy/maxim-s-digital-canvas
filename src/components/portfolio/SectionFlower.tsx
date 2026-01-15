@@ -7,7 +7,7 @@ export function SectionFlower() {
   
   return (
     <img
-      src={theme === "dark" ? flowerLight : flowerDark}
+      src={theme === "dark" ? flowerDark : flowerLight}
       alt="Decorative flower"
       width="25"
       height="25"
