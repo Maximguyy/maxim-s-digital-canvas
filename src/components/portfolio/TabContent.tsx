@@ -8,6 +8,7 @@ import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, 
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
+import { EcomStackSection } from "./EcomStackSection";
 import { useCountUp } from "@/hooks/useCountUp";
 import cpgeImage from "@/assets/cpge-eucalyptus.jpg";
 import esilvImage from "@/assets/esilv.webp";
@@ -695,6 +696,9 @@ function EcommerceContent() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Stack E-commerce Section */}
+      <EcomStackSection />
     </div>;
 }
 
