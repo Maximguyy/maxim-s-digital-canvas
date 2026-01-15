@@ -219,11 +219,11 @@ export function AcquisitionSection() {
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
             {optimizationSteps.map((step, idx) => (
-              <div key={idx} className="relative flex items-start gap-3 p-3 rounded-lg bg-secondary/30 border border-border/20">
+              <div key={idx} className="relative flex items-start gap-3 p-3 rounded-lg bg-secondary/30 border border-border/20 min-w-0 overflow-hidden">
                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
                   <span className="text-xs font-bold text-primary">{idx + 1}</span>
                 </div>
-                <p className="text-sm text-foreground leading-snug">{step}</p>
+                <p className="text-sm text-foreground leading-snug break-words min-w-0">{step}</p>
               </div>
             ))}
           </div>
