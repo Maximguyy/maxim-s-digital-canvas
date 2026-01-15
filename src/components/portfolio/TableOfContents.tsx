@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 interface TableOfContentsProps {
   activeTab: string;
@@ -26,15 +27,17 @@ const tableOfContentsConfig: Record<string, { id: string; label: string }[]> = {
     { id: "contact", label: "Contact" },
   ],
   academique: [
-    { id: "academique-timeline", label: "Timeline" },
+    { id: "academique-timeline", label: "Parcours" },
     { id: "contact", label: "Contact" },
   ],
 };
 
 export function TableOfContents({ activeTab }: TableOfContentsProps) {
   const items = tableOfContentsConfig[activeTab] || [];
+  const [activeSection, setActiveSection] = useState<string>(items[0]?.id || "");
 
   const scrollToSection = (id: string) => {
+    setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -42,6 +45,11 @@ export function TableOfContents({ activeTab }: TableOfContentsProps) {
   };
 
   if (items.length === 0) return null;
+
+  // Set first item as active when tab changes
+  const currentActiveSection = activeSection && items.some(item => item.id === activeSection) 
+    ? activeSection 
+    : items[0]?.id;
 
   return (
     <div className="hidden md:flex justify-center">
@@ -52,7 +60,10 @@ export function TableOfContents({ activeTab }: TableOfContentsProps) {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={cn(
-                "bg-secondary/60 hover:bg-secondary py-2.5 px-4 text-xs md:text-sm whitespace-nowrap rounded-lg transition-all text-foreground"
+                "py-2.5 px-4 text-xs md:text-sm whitespace-nowrap rounded-lg transition-all",
+                currentActiveSection === item.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary/60 hover:bg-secondary text-foreground"
               )}
             >
               {item.label}
