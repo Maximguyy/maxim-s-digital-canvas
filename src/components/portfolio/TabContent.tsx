@@ -342,7 +342,7 @@ function EcommerceContent() {
       </motion.div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {/* Chiffre d'affaires */}
         <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
         animationDelay: "0.1s"
@@ -390,6 +390,36 @@ function EcommerceContent() {
             200k€
           </div>
           <div className="text-muted-foreground text-xs md:text-base">Investis en publicité</div>
+        </GlassCard>
+
+        {/* Commandes traitées */}
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
+        animationDelay: "0.3s"
+      } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-3 md:mb-4">
+            <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
+              <Package className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary" />
+            </div>
+          </div>
+          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
+            11,000+
+          </div>
+          <div className="text-muted-foreground text-xs md:text-base">Commandes traitées</div>
+        </GlassCard>
+
+        {/* Meilleur mois */}
+        <GlassCard className="p-4 md:p-6 opacity-0 animate-fade-in" style={{
+        animationDelay: "0.4s"
+      } as React.CSSProperties}>
+          <div className="flex items-center justify-between mb-3 md:mb-4">
+            <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
+              <TrendingUp className="w-3.5 h-3.5 md:w-5 md:h-5 text-primary" />
+            </div>
+          </div>
+          <div className="text-2xl md:text-5xl font-bold text-primary mb-1 md:mb-2">
+            100k€
+          </div>
+          <div className="text-muted-foreground text-xs md:text-base">Meilleur mois (Décembre 2023)</div>
         </GlassCard>
       </div>
 
