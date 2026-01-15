@@ -8,6 +8,7 @@ import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, 
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
+import { AIPhotoShootCard } from "./AIPhotoShootCard";
 import { EcomStackSection } from "./EcomStackSection";
 import { AcquisitionSection } from "./AcquisitionSection";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -25,15 +26,6 @@ const devProjects = [{
   stats: "20k lignes • 6 serveurs MCP",
   content: "Environnement de développement configuré pour maximiser l'autonomie de Claude Code. Serveurs MCP intégrés : Figma, Supabase, ADB, Maestro, Mobile MCP, Sequential Thinking. Scripts permettant à l'IA de visualiser l'émulateur via screenshots automatiques et d'itérer jusqu'au résultat souhaité sans intervention humaine.",
   githubUrl: "https://github.com/Maximguyy/RN-Workspace"
-}, {
-  id: "outfit-bundle",
-  title: "Outfit Bundle",
-  tagline: "Génération de shootings photo IA pour e-commerce",
-  tags: ["Python", "Node.js", "Telegram API", "IA Générative", "Shopify/Liquid"],
-  stats: "MVP fonctionnel",
-  secondaryBadge: "Marché trop early",
-  content: "Bot Telegram permettant d'envoyer plusieurs produits e-commerce et de générer des shootings photos IA avec mannequin portant les articles. Objectif : permettre aux petits e-commerçants de créer des bundles visuels comme les grands sites (Asos, Levis). Coût par shooting : ~1€. Projet arrêté car la technologie IA n'était pas encore assez mature pour les détails vestimentaires.",
-  githubUrl: "https://github.com/Maximguyy/OutfitBundle"
 }, {
   id: "automations",
   title: "Automatisations IA E-commerce",
@@ -373,8 +365,11 @@ function DeveloppementContent() {
           {/* Noor App - Special Card */}
           <NoorAppCard index={0} />
           
+          {/* AI Photo Shoot - Special Card */}
+          <AIPhotoShootCard index={1} />
+          
           {/* Other Projects */}
-          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index + 1} />)}
+          {devProjects.map((project, index) => <ProjectCard key={project.id} project={project} isExpanded={expandedId === project.id} onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)} index={index + 2} />)}
         </div>
       </div>
     </div>;

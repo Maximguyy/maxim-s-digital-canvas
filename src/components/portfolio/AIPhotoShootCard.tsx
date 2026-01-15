@@ -1,0 +1,220 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { ChevronDown, Github, Camera, Wand2, Image } from "lucide-react";
+import { SiPython, SiNodedotjs, SiN8n, SiTelegram, SiShopify } from "@icons-pack/react-simple-icons";
+
+import aiPhoto1 from "@/assets/ai-photo-1.png";
+import aiPhoto2 from "@/assets/ai-photo-2.png";
+import aiPhoto3 from "@/assets/ai-photo-3.png";
+import aiPhoto4 from "@/assets/ai-photo-4.png";
+
+const aiPhotoStack = [
+  { icon: SiPython, name: "Python" },
+  { icon: SiNodedotjs, name: "Node.js" },
+  { icon: SiTelegram, name: "Telegram API" },
+  { icon: Wand2, name: "IA Générative" },
+  { icon: SiShopify, name: "Shopify/Liquid" },
+];
+
+const screenshots = [aiPhoto1, aiPhoto2, aiPhoto3, aiPhoto4];
+
+interface AIPhotoShootCardProps {
+  index: number;
+}
+
+export function AIPhotoShootCard({ index }: AIPhotoShootCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isStackExpanded, setIsStackExpanded] = useState(false);
+  const [isWorkflowExpanded, setIsWorkflowExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.4 }}
+    >
+      <div className="border border-border/50 rounded-2xl bg-card/50 backdrop-blur-sm overflow-hidden">
+        {/* Header - Clickable to expand/collapse */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full p-6 text-left hover:bg-secondary/30 transition-colors"
+        >
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 flex-wrap mb-2">
+                <h4 className="text-lg font-semibold text-foreground">Outfit Bundle</h4>
+                <Badge variant="outline" className="text-xs text-muted-foreground border-muted-foreground/30">
+                  Marché trop early
+                </Badge>
+              </div>
+              <p className="text-muted-foreground text-sm">Génération de shootings photo IA pour e-commerce</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://github.com/Maximguyy/OutfitBundle"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="p-2 rounded-full bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+              </a>
+              <motion.div
+                animate={{ rotate: isExpanded ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+                className="p-2"
+              >
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {["Python", "Node.js", "Telegram API", "IA Générative", "Shopify/Liquid"].map(tag => (
+              <Badge key={tag} variant="secondary" className="text-xs font-normal rounded-full">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Stats */}
+          <p className="text-primary text-sm font-medium">MVP fonctionnel</p>
+        </button>
+
+        {/* Expandable Content */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="px-6 pb-6 space-y-6">
+                {/* Présentation */}
+                <div>
+                  <h5 className="text-sm font-semibold text-foreground mb-2">Présentation</h5>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Bot Telegram permettant d'envoyer plusieurs produits e-commerce et de générer des shootings photos IA 
+                    avec mannequin portant les articles. Objectif : permettre aux petits e-commerçants de créer des bundles 
+                    visuels comme les grands sites (Asos, Levis). Coût par shooting : ~1€. Projet arrêté car la technologie 
+                    IA n'était pas encore assez mature pour les détails vestimentaires.
+                  </p>
+                </div>
+
+                {/* Stack - Expandable */}
+                <div className="border border-border/30 rounded-xl overflow-hidden">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsStackExpanded(!isStackExpanded);
+                    }}
+                    className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
+                  >
+                    <span className="text-sm font-semibold text-foreground">Stack technique</span>
+                    <motion.div
+                      animate={{ rotate: isStackExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                    </motion.div>
+                  </button>
+                  <AnimatePresence>
+                    {isStackExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 pb-4 flex flex-wrap gap-3">
+                          {aiPhotoStack.map((item) => {
+                            const IconComponent = item.icon;
+                            return (
+                              <div
+                                key={item.name}
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
+                              >
+                                <IconComponent className="h-4 w-4 text-primary" />
+                                <span className="text-sm text-foreground">{item.name}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Workflow n8n - Expandable */}
+                <div className="border border-border/30 rounded-xl overflow-hidden">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsWorkflowExpanded(!isWorkflowExpanded);
+                    }}
+                    className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
+                  >
+                    <span className="text-sm font-semibold text-foreground">Workflow n8n</span>
+                    <motion.div
+                      animate={{ rotate: isWorkflowExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                    </motion.div>
+                  </button>
+                  <AnimatePresence>
+                    {isWorkflowExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 pb-4">
+                          <div className="flex items-center justify-center p-8 rounded-lg bg-secondary/30 border border-dashed border-border/50">
+                            <div className="text-center">
+                              <SiN8n className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+                              <p className="text-sm text-muted-foreground">Screenshot du workflow à ajouter</p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Screenshots - Always visible when expanded */}
+                <div>
+                  <h5 className="text-sm font-semibold text-foreground mb-4">Shooting photo 100% IA</h5>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {screenshots.map((src, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="aspect-[3/4] rounded-lg overflow-hidden border border-border/30"
+                      >
+                        <img
+                          src={src}
+                          alt={`AI Photo Shoot ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
