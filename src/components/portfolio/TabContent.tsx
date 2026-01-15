@@ -388,9 +388,12 @@ function DeveloppementContent() {
     }} transition={{
       duration: 0.5
     }} className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
           AI Engineer
         </h2>
+        <p className="text-muted-foreground text-lg">
+          Automatisations IA & Apps React Native
+        </p>
       </motion.div>
 
       {/* Stack Section */}
@@ -552,6 +555,24 @@ function EcommerceContent() {
   };
 
   return <div className="space-y-12">
+      {/* Hero Section */}
+      <motion.div initial={{
+      opacity: 0,
+      y: 20
+    }} animate={{
+      opacity: 1,
+      y: 0
+    }} transition={{
+      duration: 0.5
+    }} className="text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+          E-commerce
+        </h2>
+        <p className="text-muted-foreground text-lg">
+          700k€ de CA sur 4 boutiques Shopify
+        </p>
+      </motion.div>
+
       {/* KPI's Title */}
       <motion.div initial={{
       opacity: 0
