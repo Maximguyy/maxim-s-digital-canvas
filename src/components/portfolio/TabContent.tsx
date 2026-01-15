@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings, Ship, type LucideIcon } from "lucide-react";
-import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest, SiFastapi, SiRedis, SiWhatsapp, SiDocker, SiHetzner, SiN8n, SiJavascript, SiHtml5, SiGmail, SiOpenai, type IconType } from "@icons-pack/react-simple-icons";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings, Ship, Navigation, Cog, TestTube, Wand2, Palette, MessageCircle, type LucideIcon } from "lucide-react";
+import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest, SiFastapi, SiRedis, SiWhatsapp, SiDocker, SiHetzner, SiN8n, SiJavascript, SiHtml5, SiGmail, SiOpenai, SiRemix, SiPrisma, SiSqlite, SiI18next, SiMeta, SiGooglesheets, type IconType } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
@@ -188,105 +188,65 @@ const devProjects = [{
     icon: SiN8n
   }]
 }];
+
+// Stack technique consolidé - 5 catégories au lieu de 9
 const devStack = [{
-  category: "Mobile",
-  items: [{
-    icon: SiReact,
-    name: "React Native"
-  }, {
-    icon: SiExpo,
-    name: "Expo"
-  }, {
-    icon: SiTypescript,
-    name: "TypeScript"
-  }]
+  category: "Mobile & Apps",
+  items: [
+    { icon: SiReact, name: "React Native" },
+    { icon: SiExpo, name: "Expo" },
+    { icon: SiTypescript, name: "TypeScript" },
+    { icon: Navigation, name: "Expo Router" },
+    { icon: Palette, name: "Unistyles" },
+    { icon: Zap, name: "Reanimated + Lottie" },
+    { icon: SiI18next, name: "i18next" },
+    { icon: Cog, name: "Expo SDK" },
+  ]
 }, {
-  category: "Frontend",
-  items: [{
-    icon: SiReact,
-    name: "React"
-  }, {
-    icon: SiJavascript,
-    name: "JavaScript"
-  }, {
-    icon: SiHtml5,
-    name: "HTML/CSS"
-  }]
+  category: "Frontend & Web",
+  items: [
+    { icon: SiReact, name: "React" },
+    { icon: SiRemix, name: "Remix" },
+    { icon: SiJavascript, name: "JavaScript" },
+    { icon: SiHtml5, name: "HTML/CSS" },
+    { icon: SiShopify, name: "Shopify (Liquid + Polaris)" },
+    { icon: SiGraphql, name: "GraphQL" },
+  ]
 }, {
-  category: "Backend & API",
-  items: [{
-    icon: SiSupabase,
-    name: "Supabase"
-  }, {
-    icon: SiNodedotjs,
-    name: "Node.js"
-  }, {
-    icon: SiFastapi,
-    name: "FastAPI (webhooks)"
-  }, {
-    icon: SiPython,
-    name: "Python (automations)"
-  }]
+  category: "Backend & Database",
+  items: [
+    { icon: SiSupabase, name: "Supabase" },
+    { icon: SiNodedotjs, name: "Node.js" },
+    { icon: SiFastapi, name: "FastAPI" },
+    { icon: SiPython, name: "Python" },
+    { icon: SiPostgresql, name: "PostgreSQL" },
+    { icon: SiSqlite, name: "SQLite" },
+    { icon: SiPrisma, name: "Prisma ORM" },
+    { icon: SiRedis, name: "Redis" },
+  ]
 }, {
-  category: "Bases de données",
-  items: [{
-    icon: SiPostgresql,
-    name: "PostgreSQL"
-  }, {
-    icon: SiRedis,
-    name: "Redis (cache)"
-  }]
+  category: "IA & APIs",
+  items: [
+    { icon: Bot, name: "Claude API" },
+    { icon: SiOpenai, name: "OpenAI API" },
+    { icon: Zap, name: "Perplexity API" },
+    { icon: Wand2, name: "Fashn Tryon IA" },
+    { icon: SiWhatsapp, name: "WhatsApp Business API" },
+    { icon: SiMeta, name: "Meta API (Instagram)" },
+    { icon: SiGmail, name: "Gmail API" },
+    { icon: SiGooglesheets, name: "Google Sheets API" },
+    { icon: Ship, name: "Searates API" },
+  ]
 }, {
-  category: "IA & Messaging",
-  items: [{
-    icon: Bot,
-    name: "Claude API"
-  }, {
-    icon: Zap,
-    name: "Perplexity API"
-  }, {
-    icon: SiWhatsapp,
-    name: "WhatsApp Business API"
-  }]
-}, {
-  category: "Infra & Automation",
-  items: [{
-    icon: SiDocker,
-    name: "Docker + Compose"
-  }, {
-    icon: SiHetzner,
-    name: "VPS Hetzner (~5€/mois)"
-  }, {
-    icon: SiN8n,
-    name: "n8n (workflows)"
-  }]
-}, {
-  category: "DevOps IA",
-  items: [{
-    icon: Code,
-    name: "MCP Servers"
-  }]
-}, {
-  category: "E-commerce",
-  items: [{
-    icon: SiShopify,
-    name: "Shopify"
-  }, {
-    icon: Code,
-    name: "Liquid"
-  }, {
-    icon: SiGraphql,
-    name: "GraphQL"
-  }]
-}, {
-  category: "Autres",
-  items: [{
-    icon: Code,
-    name: "SQL"
-  }, {
-    icon: SiGit,
-    name: "Git"
-  }]
+  category: "Infrastructure",
+  items: [
+    { icon: SiDocker, name: "Docker + Compose" },
+    { icon: SiHetzner, name: "VPS Hetzner" },
+    { icon: SiN8n, name: "n8n" },
+    { icon: TestTube, name: "Playwright" },
+    { icon: Cpu, name: "MCP Servers" },
+    { icon: SiGit, name: "Git" },
+  ]
 }];
 interface DevProject {
   id: string;
