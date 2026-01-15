@@ -117,10 +117,11 @@ export function AIPhotoShootCard({ index }: AIPhotoShootCardProps) {
                 <div>
                   <h5 className="text-sm font-semibold text-foreground mb-2">Phase 2 : Application Shopify <Badge variant="outline" className="ml-2 text-xs text-amber-500 border-amber-500/30">En pause</Badge></h5>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Suite au succès du bot, j'ai commencé le développement d'une application Shopify intégrée (Remix + Polaris) 
-                    connectée au backend IA. Le développement a été mis en pause car la technologie d'IA présentait trop de 
-                    défauts sur des vêtements très spécifiques (détails vestimentaires, textures complexes). Le marché n'était 
-                    pas encore prêt.
+                    Après avoir testé le bot de mon côté avec des résultats prometteurs, je l'ai partagé à mes confrères 
+                    e-commerçants dans la niche fashion pour qu'ils le testent pendant que je développais l'app Shopify. 
+                    Rapidement, de nombreux problèmes sont apparus sur les vêtements avec des détails spécifiques ou de 
+                    l'écriture dessus. J'ai cherché des solutions alternatives, mais force est de constater que la technologie 
+                    de génération d'images n'était pas encore assez mature pour ce cas d'usage.
                   </p>
                 </div>
 
