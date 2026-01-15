@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings } from "lucide-react";
-import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest, SiFastapi, SiRedis, SiWhatsapp, SiDocker, SiHetzner, SiN8n, SiJavascript, SiHtml5 } from "@icons-pack/react-simple-icons";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X, Rocket, BarChart3, Settings, Ship, type LucideIcon } from "lucide-react";
+import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest, SiFastapi, SiRedis, SiWhatsapp, SiDocker, SiHetzner, SiN8n, SiJavascript, SiHtml5, SiGmail, SiOpenai, type IconType } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
 import { NoorAppCard } from "./NoorAppCard";
@@ -35,11 +35,11 @@ const devProjects = [{
     description: "L'IA identifie si le client est satisfait avant d'envoyer le lien d'avis"
   }],
   stack: [
-    { name: "Gmail API", category: "Mail" },
-    { name: "Shopify API", category: "E-commerce" },
-    { name: "Searates API", category: "Tracking" },
-    { name: "OpenAI API", category: "IA" },
-    { name: "n8n", category: "Automation" },
+    { name: "Gmail API", category: "Mail", icon: SiGmail },
+    { name: "Shopify API", category: "E-commerce", icon: SiShopify },
+    { name: "Searates API", category: "Tracking", icon: Ship },
+    { name: "OpenAI API", category: "IA", icon: SiOpenai },
+    { name: "n8n", category: "Automation", icon: SiN8n },
   ]
 }, {
   id: "shopify-sections",
@@ -66,15 +66,15 @@ const devProjects = [{
     description: "Lead qualifié → Calendly → RDV ✅ | Non qualifié → Nurturing"
   }],
   stack: [
-    { name: "FastAPI (webhooks)", category: "Backend & API" },
-    { name: "Python (automations)", category: "Backend & API" },
-    { name: "Redis (cache conversations)", category: "Bases de données" },
-    { name: "PostgreSQL (leads persistants)", category: "Bases de données" },
-    { name: "Claude API (qualification)", category: "IA & Messaging" },
-    { name: "WhatsApp Business API", category: "IA & Messaging" },
-    { name: "Docker + Compose", category: "Infra & Automation" },
-    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation" },
-    { name: "n8n (workflows)", category: "Infra & Automation" },
+    { name: "FastAPI (webhooks)", category: "Backend & API", icon: SiFastapi },
+    { name: "Python (automations)", category: "Backend & API", icon: SiPython },
+    { name: "Redis (cache conversations)", category: "Bases de données", icon: SiRedis },
+    { name: "PostgreSQL (leads persistants)", category: "Bases de données", icon: SiPostgresql },
+    { name: "Claude API (qualification)", category: "IA & Messaging", icon: Bot },
+    { name: "WhatsApp Business API", category: "IA & Messaging", icon: SiWhatsapp },
+    { name: "Docker + Compose", category: "Infra & Automation", icon: SiDocker },
+    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation", icon: SiHetzner },
+    { name: "n8n (workflows)", category: "Infra & Automation", icon: SiN8n },
   ]
 }, {
   id: "flow-avis",
@@ -94,15 +94,15 @@ const devProjects = [{
     description: "Client a repris → Nouvelle séance | Satisfait → Avis Google ⭐"
   }],
   stack: [
-    { name: "FastAPI (webhooks)", category: "Backend & API" },
-    { name: "Python (automations)", category: "Backend & API" },
-    { name: "Redis (cache conversations)", category: "Bases de données" },
-    { name: "PostgreSQL (leads persistants)", category: "Bases de données" },
-    { name: "Claude API (qualification)", category: "IA & Messaging" },
-    { name: "WhatsApp Business API", category: "IA & Messaging" },
-    { name: "Docker + Compose", category: "Infra & Automation" },
-    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation" },
-    { name: "n8n (workflows)", category: "Infra & Automation" },
+    { name: "FastAPI (webhooks)", category: "Backend & API", icon: SiFastapi },
+    { name: "Python (automations)", category: "Backend & API", icon: SiPython },
+    { name: "Redis (cache conversations)", category: "Bases de données", icon: SiRedis },
+    { name: "PostgreSQL (leads persistants)", category: "Bases de données", icon: SiPostgresql },
+    { name: "Claude API (qualification)", category: "IA & Messaging", icon: Bot },
+    { name: "WhatsApp Business API", category: "IA & Messaging", icon: SiWhatsapp },
+    { name: "Docker + Compose", category: "Infra & Automation", icon: SiDocker },
+    { name: "VPS Hetzner (~5€/mois)", category: "Infra & Automation", icon: SiHetzner },
+    { name: "n8n (workflows)", category: "Infra & Automation", icon: SiN8n },
   ]
 }];
 const devStack = [{
@@ -221,6 +221,7 @@ interface DevProject {
   stack?: {
     name: string;
     category: string;
+    icon?: IconType | LucideIcon;
   }[];
 }
 interface ProjectCardProps {
@@ -344,14 +345,18 @@ function ProjectCard({
                           className="overflow-hidden"
                         >
                           <div className="px-4 pb-4 flex flex-wrap gap-2">
-                            {project.stack.map((item) => (
-                              <div
-                                key={item.name}
-                                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
-                              >
-                                <span className="text-sm text-foreground">{item.name}</span>
-                              </div>
-                            ))}
+                            {project.stack.map((item) => {
+                              const IconComponent = item.icon;
+                              return (
+                                <div
+                                  key={item.name}
+                                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
+                                >
+                                  {IconComponent && <IconComponent className="h-4 w-4 text-primary" />}
+                                  <span className="text-sm text-foreground">{item.name}</span>
+                                </div>
+                              );
+                            })}
                           </div>
                         </motion.div>
                       )}
