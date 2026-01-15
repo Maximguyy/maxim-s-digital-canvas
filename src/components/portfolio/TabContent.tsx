@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "./GlassCard";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag } from "lucide-react";
+import { Code, Cpu, Smartphone, TrendingUp, Globe, Users, Package, Mail, CreditCard, Target, Zap, Bot, ArrowRight, GraduationCap, MapPin, Calendar, ChevronDown, Star, AlertTriangle, Github, Store, ShoppingBag, X } from "lucide-react";
 import { SiReact, SiPython, SiShopify, SiSupabase, SiTypescript, SiGit, SiExpo, SiPostgresql, SiNodedotjs, SiGraphql, SiStripe, SiPaypal, SiFacebook, SiInstagram, SiGoogleads, SiPinterest } from "@icons-pack/react-simple-icons";
 import { SectionTitle } from "./SectionTitle";
 import { ScreenshotCarousel } from "./ScreenshotCarousel";
@@ -521,7 +521,15 @@ function EcommerceContent() {
             className="overflow-hidden -mt-8"
           >
             <GlassCard className="p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-foreground mb-4">Répartition du budget publicitaire</h4>
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-sm font-semibold text-foreground">Répartition du budget publicitaire</h4>
+                <button 
+                  onClick={() => setAdsExpanded(false)}
+                  className="p-1 rounded-full hover:bg-muted transition-colors"
+                >
+                  <X className="w-4 h-4 text-muted-foreground" />
+                </button>
+              </div>
               <div className="space-y-3">
                 {/* Meta (Facebook + Instagram) */}
                 <div className="flex items-center justify-between p-3 rounded-xl bg-secondary/30">
