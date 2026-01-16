@@ -139,7 +139,7 @@ const devProjects = [{
   title: "Automatisation IA Collecte d'avis",
   tagline: "Collecte automatisée d'avis Google post-RDV",
   tags: ["WhatsApp Business API", "Claude API", "n8n"],
-  stats: "Taux réponse : 60%",
+  stats: "",
   content: "",
   subSections: [{
     title: "RDV réalisé → Attente 7 jours",
