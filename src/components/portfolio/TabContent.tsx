@@ -193,61 +193,130 @@ const devProjects = [{
 // Stack technique consolidé - 5 catégories au lieu de 9
 const devStack = [{
   category: "Mobile & Apps",
-  items: [
-    { icon: SiReact, name: "React Native" },
-    { icon: SiExpo, name: "Expo" },
-    { icon: SiTypescript, name: "TypeScript" },
-    { icon: Navigation, name: "Expo Router" },
-    { icon: Palette, name: "Unistyles" },
-    { icon: Zap, name: "Reanimated + Lottie" },
-    { icon: SiI18next, name: "i18next" },
-    { icon: Cog, name: "Expo SDK" },
-  ]
+  items: [{
+    icon: SiReact,
+    name: "React Native"
+  }, {
+    icon: SiExpo,
+    name: "Expo"
+  }, {
+    icon: SiTypescript,
+    name: "TypeScript"
+  }, {
+    icon: Navigation,
+    name: "Expo Router"
+  }, {
+    icon: Palette,
+    name: "Unistyles"
+  }, {
+    icon: Zap,
+    name: "Reanimated + Lottie"
+  }, {
+    icon: SiI18next,
+    name: "i18next"
+  }, {
+    icon: Cog,
+    name: "Expo SDK"
+  }]
 }, {
   category: "Frontend & Web",
-  items: [
-    { icon: SiReact, name: "React" },
-    { icon: SiRemix, name: "Remix" },
-    { icon: SiJavascript, name: "JavaScript" },
-    { icon: SiHtml5, name: "HTML/CSS" },
-    { icon: SiShopify, name: "Shopify (Liquid + Polaris)" },
-    { icon: SiGraphql, name: "GraphQL" },
-  ]
+  items: [{
+    icon: SiReact,
+    name: "React"
+  }, {
+    icon: SiRemix,
+    name: "Remix"
+  }, {
+    icon: SiJavascript,
+    name: "JavaScript"
+  }, {
+    icon: SiHtml5,
+    name: "HTML/CSS"
+  }, {
+    icon: SiShopify,
+    name: "Shopify (Liquid + Polaris)"
+  }, {
+    icon: SiGraphql,
+    name: "GraphQL"
+  }]
 }, {
   category: "Backend & Database",
-  items: [
-    { icon: SiSupabase, name: "Supabase" },
-    { icon: SiNodedotjs, name: "Node.js" },
-    { icon: SiFastapi, name: "FastAPI" },
-    { icon: SiPython, name: "Python" },
-    { icon: SiPostgresql, name: "PostgreSQL" },
-    { icon: SiSqlite, name: "SQLite" },
-    { icon: SiPrisma, name: "Prisma ORM" },
-    { icon: SiRedis, name: "Redis" },
-  ]
+  items: [{
+    icon: SiSupabase,
+    name: "Supabase"
+  }, {
+    icon: SiNodedotjs,
+    name: "Node.js"
+  }, {
+    icon: SiFastapi,
+    name: "FastAPI"
+  }, {
+    icon: SiPython,
+    name: "Python"
+  }, {
+    icon: SiPostgresql,
+    name: "PostgreSQL"
+  }, {
+    icon: SiSqlite,
+    name: "SQLite"
+  }, {
+    icon: SiPrisma,
+    name: "Prisma ORM"
+  }, {
+    icon: SiRedis,
+    name: "Redis"
+  }]
 }, {
   category: "IA & APIs",
-  items: [
-    { icon: Bot, name: "Claude API" },
-    { icon: SiOpenai, name: "OpenAI API" },
-    { icon: Zap, name: "Perplexity API" },
-    { icon: Wand2, name: "Fashn Tryon IA" },
-    { icon: SiWhatsapp, name: "WhatsApp Business API" },
-    { icon: SiMeta, name: "Meta API (Instagram)" },
-    { icon: SiGmail, name: "Gmail API" },
-    { icon: SiGooglesheets, name: "Google Sheets API" },
-    { icon: Ship, name: "Searates API" },
-  ]
+  items: [{
+    icon: Bot,
+    name: "Claude API"
+  }, {
+    icon: SiOpenai,
+    name: "OpenAI API"
+  }, {
+    icon: Zap,
+    name: "Perplexity API"
+  }, {
+    icon: Wand2,
+    name: "Fashn Tryon IA"
+  }, {
+    icon: SiWhatsapp,
+    name: "WhatsApp Business API"
+  }, {
+    icon: SiMeta,
+    name: "Meta API (Instagram)"
+  }, {
+    icon: SiGmail,
+    name: "Gmail API"
+  }, {
+    icon: SiGooglesheets,
+    name: "Google Sheets API"
+  }, {
+    icon: Ship,
+    name: "Searates API"
+  }]
 }, {
   category: "Infrastructure",
-  items: [
-    { icon: SiDocker, name: "Docker + Compose" },
-    { icon: SiHetzner, name: "VPS Hetzner" },
-    { icon: SiN8n, name: "n8n" },
-    { icon: TestTube, name: "Playwright" },
-    { icon: Cpu, name: "MCP Servers" },
-    { icon: SiGit, name: "Git" },
-  ]
+  items: [{
+    icon: SiDocker,
+    name: "Docker + Compose"
+  }, {
+    icon: SiHetzner,
+    name: "VPS Hetzner"
+  }, {
+    icon: SiN8n,
+    name: "n8n"
+  }, {
+    icon: TestTube,
+    name: "Playwright"
+  }, {
+    icon: Cpu,
+    name: "MCP Servers"
+  }, {
+    icon: SiGit,
+    name: "Git"
+  }]
 }];
 interface DevProject {
   id: string;
@@ -327,7 +396,7 @@ function ProjectCard({
           </div>
 
           {/* Stats */}
-          {project.stats && <p className="text-primary text-sm font-medium">{project.stats}</p>}
+          {project.stats}
         </div>
 
         {/* Expandable Content */}
@@ -518,7 +587,7 @@ const boutiques = [{
   year: 2023,
   shops: [{
     name: "Shors.fr",
-    ca: 150000,
+    ca: 200000,
     niche: "Fashion streetwear",
     highlight: "Principale source de CA, scaling agressif (Nov 2023: 8k€ → Déc 2023: +100k€)"
   }]
@@ -526,17 +595,17 @@ const boutiques = [{
   year: 2024,
   shops: [{
     name: "Domozi.com",
-    ca: 90000,
+    ca: 150000,
     niche: "Fashion mixte",
     highlight: "Deuxième plus grosse boutique"
   }, {
     name: "Loumys.com",
-    ca: 60000,
+    ca: 90000,
     niche: "Fashion mixte (homme/femme)",
     highlight: null
   }, {
     name: "Hartic.fr",
-    ca: 70000,
+    ca: 80000,
     niche: "Tech beauté féminine (lisseurs, boucleurs, épilateurs)",
     highlight: "Diversification de niche réussie"
   }]
@@ -544,7 +613,7 @@ const boutiques = [{
   year: 2025,
   shops: [{
     name: "Juliette-Toulouse.com",
-    ca: 50000,
+    ca: 70000,
     niche: "Fashion féminine",
     highlight: "Brand positioning local"
   }]
@@ -837,7 +906,7 @@ function EcommerceContent() {
                 </div>
                 <p className="text-muted-foreground text-sm">Test & learn</p>
               </div>
-              <p className="text-xl font-bold text-primary">30 000€</p>
+              <p className="text-xl font-bold text-primary">80 000€</p>
             </div>
           </motion.div>
         </motion.div>
@@ -891,7 +960,7 @@ function EcommerceContent() {
               <Badge variant="outline" className="text-xs">2023-24</Badge>
             </div>
             <div className="col-span-2 text-right">
-              <p className="font-bold text-primary">30 000€</p>
+              <p className="font-bold text-primary">80 000€</p>
             </div>
           </motion.div>
         </motion.div>

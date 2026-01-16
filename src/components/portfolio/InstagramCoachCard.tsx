@@ -3,34 +3,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { ChevronDown, MessageCircle, Users, Bot, Clock } from "lucide-react";
 import { SiN8n, SiOpenai, SiGooglesheets } from "@icons-pack/react-simple-icons";
-
-const instagramCoachStack = [
-  { icon: SiGooglesheets, name: "Google Workspace API (Sheets)", category: "Data" },
-  { icon: MessageCircle, name: "Meta API (Instagram DM)", category: "Messaging" },
-  { icon: SiOpenai, name: "OpenAI API", category: "IA" },
-  { icon: SiN8n, name: "n8n (orchestration)", category: "Automation" },
-];
-
+const instagramCoachStack = [{
+  icon: SiGooglesheets,
+  name: "Google Workspace API (Sheets)",
+  category: "Data"
+}, {
+  icon: MessageCircle,
+  name: "Meta API (Instagram DM)",
+  category: "Messaging"
+}, {
+  icon: SiOpenai,
+  name: "OpenAI API",
+  category: "IA"
+}, {
+  icon: SiN8n,
+  name: "n8n (orchestration)",
+  category: "Automation"
+}];
 interface InstagramCoachCardProps {
   index: number;
 }
-
-export function InstagramCoachCard({ index }: InstagramCoachCardProps) {
+export function InstagramCoachCard({
+  index
+}: InstagramCoachCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isStackExpanded, setIsStackExpanded] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.4 }}
-    >
+  return <motion.div initial={{
+    opacity: 0,
+    y: 20
+  }} animate={{
+    opacity: 1,
+    y: 0
+  }} transition={{
+    delay: index * 0.1,
+    duration: 0.4
+  }}>
       <div className="border border-border rounded-2xl bg-card/50 backdrop-blur-sm overflow-hidden">
         {/* Header - Clickable to expand/collapse */}
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full p-6 text-left hover:bg-secondary/30 transition-colors"
-        >
+        <button onClick={() => setIsExpanded(!isExpanded)} className="w-full p-6 text-left hover:bg-secondary/30 transition-colors">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-2">
@@ -38,38 +48,40 @@ export function InstagramCoachCard({ index }: InstagramCoachCardProps) {
               </div>
               <p className="text-muted-foreground text-sm">Automatisation IA pour coach sportif - Qualification prospects via DM</p>
             </div>
-            <motion.div
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
-              className="p-2"
-            >
+            <motion.div animate={{
+            rotate: isExpanded ? 180 : 0
+          }} transition={{
+            duration: 0.2
+          }} className="p-2">
               <ChevronDown className="h-4 w-4 text-muted-foreground" />
             </motion.div>
           </div>
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-4">
-            {["Meta API", "Google Sheets", "OpenAI API", "n8n"].map(tag => (
-              <Badge key={tag} variant="secondary" className="text-xs font-normal rounded-full">
+            {["Meta API", "Google Sheets", "OpenAI API", "n8n"].map(tag => <Badge key={tag} variant="secondary" className="text-xs font-normal rounded-full">
                 {tag}
-              </Badge>
-            ))}
+              </Badge>)}
           </div>
 
           {/* Stats */}
-          <p className="text-primary text-sm font-medium">80% du temps de réponse automatisé</p>
+          
         </button>
 
         {/* Expandable Content */}
         <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
+          {isExpanded && <motion.div initial={{
+          height: 0,
+          opacity: 0
+        }} animate={{
+          height: "auto",
+          opacity: 1
+        }} exit={{
+          height: 0,
+          opacity: 0
+        }} transition={{
+          duration: 0.3
+        }} className="overflow-hidden">
               <div className="px-6 pb-6 space-y-6">
                 {/* Contexte / Problème */}
                 <div>
@@ -134,53 +146,47 @@ export function InstagramCoachCard({ index }: InstagramCoachCardProps) {
 
                 {/* Stack - Expandable */}
                 <div className="border border-border/30 rounded-xl overflow-hidden">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsStackExpanded(!isStackExpanded);
-                    }}
-                    className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
-                  >
+                  <button onClick={e => {
+                e.stopPropagation();
+                setIsStackExpanded(!isStackExpanded);
+              }} className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors">
                     <span className="text-sm font-semibold text-foreground">Stack technique</span>
-                    <motion.div
-                      animate={{ rotate: isStackExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
+                    <motion.div animate={{
+                  rotate: isStackExpanded ? 180 : 0
+                }} transition={{
+                  duration: 0.2
+                }}>
                       <ChevronDown className="h-4 w-4 text-muted-foreground" />
                     </motion.div>
                   </button>
                   <AnimatePresence>
-                    {isStackExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
+                    {isStackExpanded && <motion.div initial={{
+                  height: 0,
+                  opacity: 0
+                }} animate={{
+                  height: "auto",
+                  opacity: 1
+                }} exit={{
+                  height: 0,
+                  opacity: 0
+                }} transition={{
+                  duration: 0.3
+                }} className="overflow-hidden">
                         <div className="px-4 pb-4 flex flex-wrap gap-3">
-                          {instagramCoachStack.map((item) => {
-                            const IconComponent = item.icon;
-                            return (
-                              <div
-                                key={item.name}
-                                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50"
-                              >
+                          {instagramCoachStack.map(item => {
+                      const IconComponent = item.icon;
+                      return <div key={item.name} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50">
                                 <IconComponent className="h-4 w-4 text-primary" />
                                 <span className="text-sm text-foreground">{item.name}</span>
-                              </div>
-                            );
-                          })}
+                              </div>;
+                    })}
                         </div>
-                      </motion.div>
-                    )}
+                      </motion.div>}
                   </AnimatePresence>
                 </div>
               </div>
-            </motion.div>
-          )}
+            </motion.div>}
         </AnimatePresence>
       </div>
-    </motion.div>
-  );
+    </motion.div>;
 }
