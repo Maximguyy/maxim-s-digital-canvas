@@ -597,7 +597,7 @@ function EcommerceContent() {
           E-commerce
         </h2>
         <p className="text-muted-foreground text-lg">
-          700k€ de CA & +10 boutiques Shopify lancée          
+          450k€ de CA & +10 boutiques Shopify lancée          
         </p>
       </motion.div>
 
@@ -634,7 +634,7 @@ function EcommerceContent() {
             </div>
           </div>
           <div className="text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-primary mb-1 md:mb-2">
-            <CountUpKPI end={700000} />
+            <CountUpKPI end={450000} />
           </div>
           <div className="text-muted-foreground text-xs md:text-sm md:whitespace-nowrap">Chiffre d'affaires généré</div>
         </GlassCard>
