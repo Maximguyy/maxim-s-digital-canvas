@@ -21,7 +21,9 @@ export function HeroSection({ activeTab, onTabChange }: HeroSectionProps) {
             <img 
               src={profilePhoto} 
               alt="Maxim Guy" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover pointer-events-none select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
             />
           </div>
 
