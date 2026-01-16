@@ -146,7 +146,7 @@ const devProjects = [{
     description: "Déclenchement automatique après délai de suivi"
   }, {
     title: "Message WhatsApp IA",
-    description: "\"Comment va l'arrêt ?\" - Évaluation de la satisfaction client"
+    description: "\"Comment se passe l'arret du tabac ?\" - Évaluation de la satisfaction client"
   }, {
     title: "Routage selon réponse",
     description: "Client a repris → Nouvelle séance | Satisfait → Avis Google ⭐"
