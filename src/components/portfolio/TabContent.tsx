@@ -85,7 +85,7 @@ const devProjects = [{
   title: "Automatisation IA Qualification Leads",
   tagline: "Automatisation WhatsApp IA pour qualification prospects",
   tags: ["WhatsApp Business API", "Claude API", "Python", "n8n"],
-  stats: "Conversion : 6% formulaire → RDV",
+  stats: "",
   content: "",
   subSections: [{
     title: "Lead Meta → WhatsApp IA",
