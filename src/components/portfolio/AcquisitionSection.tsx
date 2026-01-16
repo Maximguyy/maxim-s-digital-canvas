@@ -161,6 +161,24 @@ export function AcquisitionSection() {
         </div>
       </div>
 
+      {/* Section 1.5: Présentation */}
+      <div id="acquisition-presentation">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.15 }}
+        >
+          <SectionTitle>Présentation</SectionTitle>
+        </motion.div>
+        <GlassCard className="p-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.15s" } as React.CSSProperties}>
+          <p className="text-foreground leading-relaxed">
+            En tant que consultant acquisition, j'ai accompagné <span className="text-primary font-medium">3 centres anti-tabac spécialisés en lasérothérapie</span> dans leur stratégie de génération de leads. 
+            Ma mission principale consistait à concevoir et piloter des campagnes Meta Ads performantes pour acquérir de nouveaux clients. 
+            En parallèle, j'ai développé et déployé des <span className="text-primary font-medium">automatisations IA</span> permettant d'optimiser le traitement des leads et de réduire significativement leur charge opérationnelle.
+          </p>
+        </GlassCard>
+      </div>
+
       {/* Section 2: Publicité Meta Ads */}
       <div id="acquisition-meta-ads">
         <motion.div initial={{
