@@ -587,7 +587,7 @@ const boutiques = [{
   year: 2023,
   shops: [{
     name: "Shors.fr",
-    ca: 200000,
+    ca: 150000,
     niche: "Fashion streetwear",
     highlight: "Principale source de CA, scaling agressif (Nov 2023: 8k€ → Déc 2023: +100k€)"
   }]
@@ -595,17 +595,17 @@ const boutiques = [{
   year: 2024,
   shops: [{
     name: "Domozi.com",
-    ca: 150000,
+    ca: 90000,
     niche: "Fashion mixte",
     highlight: "Deuxième plus grosse boutique"
   }, {
     name: "Loumys.com",
-    ca: 90000,
+    ca: 60000,
     niche: "Fashion mixte (homme/femme)",
     highlight: null
   }, {
     name: "Hartic.fr",
-    ca: 80000,
+    ca: 70000,
     niche: "Tech beauté féminine (lisseurs, boucleurs, épilateurs)",
     highlight: "Diversification de niche réussie"
   }]
@@ -613,7 +613,7 @@ const boutiques = [{
   year: 2025,
   shops: [{
     name: "Juliette-Toulouse.com",
-    ca: 70000,
+    ca: 50000,
     niche: "Fashion féminine",
     highlight: "Brand positioning local"
   }]
@@ -906,7 +906,7 @@ function EcommerceContent() {
                 </div>
                 <p className="text-muted-foreground text-sm">Test & learn</p>
               </div>
-              <p className="text-xl font-bold text-primary">80 000€</p>
+              <p className="text-xl font-bold text-primary">30 000€</p>
             </div>
           </motion.div>
         </motion.div>
@@ -960,7 +960,7 @@ function EcommerceContent() {
               <Badge variant="outline" className="text-xs">2023-24</Badge>
             </div>
             <div className="col-span-2 text-right">
-              <p className="font-bold text-primary">80 000€</p>
+              <p className="font-bold text-primary">30 000€</p>
             </div>
           </motion.div>
         </motion.div>
